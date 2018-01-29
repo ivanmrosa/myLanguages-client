@@ -1,0 +1,40 @@
+<div id="[{(textSelector) id }]">
+  <!-- Modal Trigger -->
+  <a class="waves-effect waves-light btn modal-trigger hide open" href="#[{(textSelector) id }]Modal"></a>
+
+  <!-- Modal Structure -->
+  <div id="[{(textSelector) id }]Modal" class="modal bottom-sheet">
+    <div class="modal-content">
+      <h4>Choose an option</h4>
+      <span class="text-selected"></span>
+
+      <div class="collection">
+        <a href="javascript:void(0)" class="collection-item definition">Definition</a>
+        <a href="javascript:void(0)" class="collection-item googleTranslate">Translate using google</a>
+        <a href="javascript:void(0)" class="collection-item copyText">Copy</a>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <a href="javascript:void(0)" 
+         class="modal-action modal-close waves-effect waves-green btn-flat">close</a>
+    </div>
+  </div>
+
+
+  <!-- Modal Trigger -->
+  
+
+  <!-- Modal Structure -->
+  <div id="[{(textSelector) id }]Dictionary" class="modal modal-fixed-footer">
+    <div class="modal-content">
+      <div data-component="yes" data-component-name="dictionary" 
+           data-component-id="[{(textSelector) id }]selectTextDictionary" data-auto-create="no">
+      </div>
+    </div>
+    <div class="modal-footer">
+      <a href="javascript:void(0)" class="modal-action modal-close waves-effect waves-green btn-flat ">Close</a>
+    </div>
+  </div>
+
+
+</div>

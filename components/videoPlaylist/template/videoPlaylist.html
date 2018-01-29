@@ -1,0 +1,21 @@
+<div id="[{(videoPlaylist) id }]">
+
+    <div class="row">
+        <ul class="collection with-header">
+            <li class="collection-header"><h4>Videos</h4></li>
+            <div data-datasetname="videos">
+                <li class="collection-item">
+                    <div class="video-container" data-remove="[{(videos)embed:ternary@yes@false@true}]">
+                        <iframe width="853" height="480" data-src="[{(videos) link}]" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
+                        </iframe>
+                    </div>
+                    <video class="responsive-video" controls data-remove="[{(videos)embed:ternary@no@false@true}]">
+                        <source data-src="[{(videos) link}]" type="video/mp4">
+                    </video>
+                    <span>[{(videos) subject}]</span>
+                </li>
+            </div>
+            <li data-datasetname-empty="videos" class="hide collection-item">No video found</li>
+        </ul>
+    </div>    
+</div>

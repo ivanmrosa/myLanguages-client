@@ -1,0 +1,21 @@
+<!-- Modal Trigger -->
+
+
+  <!-- Modal Structure -->
+  <div id="modal_list_images" class="modal modal-fixed-footer">
+    <div class="modal-content">
+        <label>My official language:</label>
+        <select data-lookup-url='language/' data-lookup-field='id' data-lookup-field2='name'></select>
+       
+        <label>I'm learning</label>
+        <select data-lookup-url='language/?active=true'></select>    
+    </div>
+    <div class="modal-footer">
+      <a href="javascript:void(0)" 
+         class="modal-action modal-close waves-effect waves-green btn-flat" 
+         onclick="$('#modal_list_images').modal('close')">close</a>
+    </div>
+  </div>
+          
+
+

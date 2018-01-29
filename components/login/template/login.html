@@ -1,0 +1,27 @@
+<span data-component="yes" data-component-name="header" data-component-id="login-header" data-component-container="#header">
+</span>
+
+<div class="row">
+  <form class="col s12" id="form_login" onkeyup="frango.onPressEnterClick(event, '#form_login .sign')">
+    <div class="row">
+      <div class="input-field col s12 ">
+        <input name="user" type="text" class="validate">
+        <label for="user">Username</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <input name="password" type="password" class="validate">
+        <label for="password">Password</label>
+      </div>
+    </div>
+    <div class="col s6">
+      <a class="waves-effect waves-light btn sign blue lighten-2 col s12" 
+         onclick="loginComponent.handleLogin(form_login.user.value, form_login.password.value)">sign in</a>    
+    </div>     
+    <div class="col s6">
+      <a class="waves-effect waves-light btn blue lighten-2  col s12" href="#signup">sign up</a>
+    </div>
+  </form>
+
+</div>

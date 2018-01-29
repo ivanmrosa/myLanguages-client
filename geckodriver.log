@@ -1,0 +1,626 @@
+1515362068499	geckodriver	INFO	geckodriver 0.19.1
+1515362068503	geckodriver	INFO	Listening on 127.0.0.1:56634
+1515362069656	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.Q9w12EEWSn4e"
+1515362070511	Marionette	INFO	Enabled via --marionette
+1515362073785	Marionette	INFO	Listening on port 42292
+1515362074007	Marionette	WARN	TLS certificate errors will be ignored for this session
+1515362074091	Marionette	DEBUG	Register listener.js for window 2147483649
+1515362074112	Marionette	DEBUG	Received DOM event "beforeunload" for "about:blank"
+1515362074128	Marionette	DEBUG	Received DOM event "pagehide" for "about:blank"
+1515362074128	Marionette	DEBUG	Received DOM event "unload" for "about:blank"
+1515362074294	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "http://localhost:8081/frango-framework-build-app"
+1515362074464	Marionette	DEBUG	Received DOM event "pageshow" for "http://localhost:8081/frango-framework-build-app#login"
+[Child 7584, Chrome_ChildThread] WARNING: pipe error (35): Conexão fechada pela outra ponta: file /build/firefox-itlqqH/firefox-57.0.4+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 7584, Chrome_ChildThread] WARNING: pipe error (21): Conexão fechada pela outra ponta: file /build/firefox-itlqqH/firefox-57.0.4+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 7584, Chrome_ChildThread] WARNING: pipe error (3): Conexão fechada pela outra ponta: file /build/firefox-itlqqH/firefox-57.0.4+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+1515362250656	geckodriver	INFO	geckodriver 0.19.1
+1515362250659	geckodriver	INFO	Listening on 127.0.0.1:49916
+1515362251809	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.OQQ7udnK20OR"
+1515362252670	Marionette	INFO	Enabled via --marionette
+1515362256258	Marionette	INFO	Listening on port 32944
+1515362256477	Marionette	WARN	TLS certificate errors will be ignored for this session
+1515362256574	Marionette	DEBUG	Register listener.js for window 2147483649
+1515362256600	Marionette	DEBUG	Received DOM event "beforeunload" for "about:blank"
+1515362256617	Marionette	DEBUG	Received DOM event "pagehide" for "about:blank"
+1515362256617	Marionette	DEBUG	Received DOM event "unload" for "about:blank"
+1515362256767	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "http://localhost:8081/frango-framework-build-app"
+1515362256805	Marionette	DEBUG	Received DOM event "pageshow" for "http://localhost:8081/frango-framework-build-app#login"
+[Child 7889, Chrome_ChildThread] WARNING: pipe error (35): Conexão fechada pela outra ponta: file /build/firefox-itlqqH/firefox-57.0.4+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 7889, Chrome_ChildThread] WARNING: pipe error (19): Conexão fechada pela outra ponta: file /build/firefox-itlqqH/firefox-57.0.4+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 7889, Chrome_ChildThread] WARNING: pipe error (3): Conexão fechada pela outra ponta: file /build/firefox-itlqqH/firefox-57.0.4+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+1516473657285	geckodriver	INFO	geckodriver 0.19.1
+1516473657305	geckodriver	INFO	Listening on 127.0.0.1:45368
+1516473658565	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.qrd7NdYbwoIp"
+1516473665611	Marionette	INFO	Enabled via --marionette
+1516473674784	Marionette	INFO	Listening on port 38296
+1516473675080	Marionette	WARN	TLS certificate errors will be ignored for this session
+1516473675181	Marionette	DEBUG	Register listener.js for window 2147483649
+1516473675587	Marionette	DEBUG	Received DOM event "beforeunload" for "about:blank"
+1516473675611	Marionette	DEBUG	Received DOM event "pagehide" for "about:blank"
+1516473675612	Marionette	DEBUG	Received DOM event "unload" for "about:blank"
+1516473675963	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "http://localhost:8081/frango-framework-build-app"
+1516473676112	Marionette	DEBUG	Received DOM event "pageshow" for "http://localhost:8081/frango-framework-build-app#login"
+1516567761086	geckodriver	INFO	geckodriver 0.19.1
+1516567761103	geckodriver	INFO	Listening on 127.0.0.1:57922
+1516567762232	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.sjWFQxxbTgD3"
+1516567764093	Marionette	INFO	Enabled via --marionette
+1516567769395	Marionette	INFO	Listening on port 36409
+1516567769724	Marionette	WARN	TLS certificate errors will be ignored for this session
+1516567769822	Marionette	DEBUG	Register listener.js for window 2147483649
+1516567770122	Marionette	DEBUG	Received DOM event "beforeunload" for "about:blank"
+1516567770194	Marionette	DEBUG	Received DOM event "pagehide" for "about:blank"
+1516567770195	Marionette	DEBUG	Received DOM event "unload" for "about:blank"
+1516567770681	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "http://localhost:8081/frango-framework-build-app"
+1516567770858	Marionette	DEBUG	Received DOM event "pageshow" for "http://localhost:8081/frango-framework-build-app#login"
+[Child 2419, Chrome_ChildThread] WARNING: pipe error (35): Conexão fechada pela outra ponta: file /build/firefox-itlqqH/firefox-57.0.4+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 2419, Chrome_ChildThread] WARNING: pipe error (21): Conexão fechada pela outra ponta: file /build/firefox-itlqqH/firefox-57.0.4+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 2419, Chrome_ChildThread] WARNING: pipe error (3): Conexão fechada pela outra ponta: file /build/firefox-itlqqH/firefox-57.0.4+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+1516631278932	geckodriver	INFO	geckodriver 0.19.1
+1516631278936	geckodriver	INFO	Listening on 127.0.0.1:47129
+1516631280104	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.l5C244VYfN8E"
+1516631287909	geckodriver	INFO	geckodriver 0.19.1
+1516631287912	geckodriver	INFO	Listening on 127.0.0.1:44700
+1516631289063	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.bMcI5RtNBJTZ"
+1516738168357	geckodriver	INFO	geckodriver 0.19.1
+1516738168454	geckodriver	INFO	Listening on 127.0.0.1:59889
+1516738169547	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.k7R2UdcaXEJS"
+1516738179362	Marionette	INFO	Enabled via --marionette
+1516738194161	Marionette	INFO	Listening on port 36979
+1516738194341	Marionette	WARN	TLS certificate errors will be ignored for this session
+1516738194408	Marionette	DEBUG	Register listener.js for window 2147483649
+1516738195492	Marionette	DEBUG	Received DOM event "beforeunload" for "about:blank"
+1516738195696	Marionette	DEBUG	Received DOM event "pagehide" for "about:blank"
+1516738195697	Marionette	DEBUG	Received DOM event "unload" for "about:blank"
+1516738197397	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "http://localhost:8081/frango-framework-build-app"
+1516738197437	Marionette	DEBUG	Received DOM event "pageshow" for "http://localhost:8081/frango-framework-build-app#login"
+[Child 29784, Chrome_ChildThread] WARNING: pipe error (20): Conexão fechada pela outra ponta: file /build/firefox-itlqqH/firefox-57.0.4+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 29784, Chrome_ChildThread] WARNING: pipe error (35): Conexão fechada pela outra ponta: file /build/firefox-itlqqH/firefox-57.0.4+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 29784, Chrome_ChildThread] WARNING: pipe error (3): Conexão fechada pela outra ponta: file /build/firefox-itlqqH/firefox-57.0.4+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+1516738402355	geckodriver	INFO	geckodriver 0.19.1
+1516738402367	geckodriver	INFO	Listening on 127.0.0.1:39141
+1516738403504	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.Y7TUe9U911le"
+1516738405050	Marionette	INFO	Enabled via --marionette
+1516738408846	Marionette	INFO	Listening on port 37603
+1516738409067	Marionette	WARN	TLS certificate errors will be ignored for this session
+1516738409157	Marionette	DEBUG	Register listener.js for window 2147483649
+1516738409184	Marionette	DEBUG	Received DOM event "beforeunload" for "about:blank"
+1516738409200	Marionette	DEBUG	Received DOM event "pagehide" for "about:blank"
+1516738409200	Marionette	DEBUG	Received DOM event "unload" for "about:blank"
+1516738410130	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "http://localhost:8081/frango-framework-build-app"
+1516738410159	Marionette	DEBUG	Received DOM event "pageshow" for "http://localhost:8081/frango-framework-build-app#login"
+[Child 30444, Chrome_ChildThread] WARNING: pipe error (35): Conexão fechada pela outra ponta: file /build/firefox-itlqqH/firefox-57.0.4+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 30444, Chrome_ChildThread] WARNING: pipe error (20): Conexão fechada pela outra ponta: file /build/firefox-itlqqH/firefox-57.0.4+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 30444, Chrome_ChildThread] WARNING: pipe error (3): Conexão fechada pela outra ponta: file /build/firefox-itlqqH/firefox-57.0.4+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+1516756648436	geckodriver	INFO	geckodriver 0.19.1
+1516756648464	geckodriver	INFO	Listening on 127.0.0.1:47228
+1516756649645	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.UZ4jQt8eZ4UV"
+1516756660391	Marionette	INFO	Enabled via --marionette
+1516756669965	Marionette	INFO	Listening on port 34861
+1516756670273	Marionette	WARN	TLS certificate errors will be ignored for this session
+1516756670352	Marionette	DEBUG	Register listener.js for window 2147483649
+1516756670422	Marionette	DEBUG	Received DOM event "beforeunload" for "about:blank"
+1516756671231	Marionette	DEBUG	Received DOM event "pagehide" for "about:blank"
+1516756671232	Marionette	DEBUG	Received DOM event "unload" for "about:blank"
+1516756672170	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "http://localhost:8081/frango-framework-build-app"
+1516756672212	Marionette	DEBUG	Received DOM event "pageshow" for "http://localhost:8081/frango-framework-build-app#login"
+[Child 6355, Chrome_ChildThread] WARNING: pipe error (35): Conexão fechada pela outra ponta: file /build/firefox-itlqqH/firefox-57.0.4+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 6355, Chrome_ChildThread] WARNING: pipe error (19): Conexão fechada pela outra ponta: file /build/firefox-itlqqH/firefox-57.0.4+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 6355, Chrome_ChildThread] WARNING: pipe error (3): Conexão fechada pela outra ponta: file /build/firefox-itlqqH/firefox-57.0.4+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+1516797344680	geckodriver	INFO	geckodriver 0.19.1
+1516797344705	geckodriver	INFO	Listening on 127.0.0.1:48250
+1516797345900	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.NnXSTEkkKUbx"
+1516797352165	Marionette	INFO	Enabled via --marionette
+1516797361190	Marionette	INFO	Listening on port 38808
+1516797361493	Marionette	WARN	TLS certificate errors will be ignored for this session
+1516797361584	Marionette	DEBUG	Register listener.js for window 2147483649
+1516797361998	Marionette	DEBUG	Received DOM event "beforeunload" for "about:blank"
+1516797362118	Marionette	DEBUG	Received DOM event "pagehide" for "about:blank"
+1516797362118	Marionette	DEBUG	Received DOM event "unload" for "about:blank"
+1516797363343	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "http://localhost:8081/frango-framework-build-app"
+1516797363428	Marionette	DEBUG	Received DOM event "pageshow" for "http://localhost:8081/frango-framework-build-app#login"
+[Child 4550, Chrome_ChildThread] WARNING: pipe error (20): Conexão fechada pela outra ponta: file /build/firefox-itlqqH/firefox-57.0.4+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 4550, Chrome_ChildThread] WARNING: pipe error (35): Conexão fechada pela outra ponta: file /build/firefox-itlqqH/firefox-57.0.4+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 4550, Chrome_ChildThread] WARNING: pipe error (3): Conexão fechada pela outra ponta: file /build/firefox-itlqqH/firefox-57.0.4+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+1516799333430	geckodriver	INFO	geckodriver 0.19.1
+1516799333433	geckodriver	INFO	Listening on 127.0.0.1:51420
+1516799334582	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.hjR0E69thRPQ"
+1516799335371	Marionette	INFO	Enabled via --marionette
+1516799338629	Marionette	INFO	Listening on port 46289
+1516799338810	Marionette	WARN	TLS certificate errors will be ignored for this session
+1516799338913	Marionette	DEBUG	Register listener.js for window 2147483649
+1516799338942	Marionette	DEBUG	Received DOM event "beforeunload" for "about:blank"
+1516799338961	Marionette	DEBUG	Received DOM event "pagehide" for "about:blank"
+1516799338962	Marionette	DEBUG	Received DOM event "unload" for "about:blank"
+1516799339596	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "http://localhost:8081/frango-framework-build-app"
+1516799339633	Marionette	DEBUG	Received DOM event "pageshow" for "http://localhost:8081/frango-framework-build-app#login"
+[Child 6027, Chrome_ChildThread] WARNING: pipe error (35): Conexão fechada pela outra ponta: file /build/firefox-itlqqH/firefox-57.0.4+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 6027, Chrome_ChildThread] WARNING: pipe error (19): Conexão fechada pela outra ponta: file /build/firefox-itlqqH/firefox-57.0.4+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 6027, Chrome_ChildThread] WARNING: pipe error (3): Conexão fechada pela outra ponta: file /build/firefox-itlqqH/firefox-57.0.4+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+1516800144874	geckodriver	INFO	geckodriver 0.19.1
+1516800144878	geckodriver	INFO	Listening on 127.0.0.1:42285
+1516800146036	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.tkcFtbtvCOwI"
+1516800146921	Marionette	INFO	Enabled via --marionette
+1516800150698	Marionette	INFO	Listening on port 43072
+1516800150909	Marionette	WARN	TLS certificate errors will be ignored for this session
+1516800151004	Marionette	DEBUG	Register listener.js for window 2147483649
+1516800151019	Marionette	DEBUG	Received DOM event "beforeunload" for "about:blank"
+1516800151040	Marionette	DEBUG	Received DOM event "beforeunload" for "about:blank"
+1516800151076	Marionette	DEBUG	Received DOM event "pagehide" for "about:blank"
+1516800151076	Marionette	DEBUG	Received DOM event "unload" for "about:blank"
+1516800151416	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "about:neterror?e=connectionFailure&u=http%3A//localhost%3A8081/frango-framework-build-app&c=UTF-8&f=regular&d=Firefox%20can%E2%80%99t%20establish%20a%20connection%20to%20the%20server%20at%20localhost%3A8081."
+1516800250094	geckodriver	INFO	geckodriver 0.19.1
+1516800250099	geckodriver	INFO	Listening on 127.0.0.1:58949
+1516800251251	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.wrmL0KKm8eps"
+1516800252190	Marionette	INFO	Enabled via --marionette
+1516800255483	Marionette	INFO	Listening on port 33214
+1516800255685	Marionette	WARN	TLS certificate errors will be ignored for this session
+1516800255770	Marionette	DEBUG	Register listener.js for window 2147483649
+1516800255801	Marionette	DEBUG	Received DOM event "beforeunload" for "about:blank"
+1516800255816	Marionette	DEBUG	Received DOM event "pagehide" for "about:blank"
+1516800255816	Marionette	DEBUG	Received DOM event "unload" for "about:blank"
+1516800256495	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "http://localhost:8081/frango-framework-build-app"
+1516800256530	Marionette	DEBUG	Received DOM event "pageshow" for "http://localhost:8081/frango-framework-build-app#login"
+[Child 7450, Chrome_ChildThread] WARNING: pipe error (35): Conexão fechada pela outra ponta: file /build/firefox-itlqqH/firefox-57.0.4+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 7450, Chrome_ChildThread] WARNING: pipe error (19): Conexão fechada pela outra ponta: file /build/firefox-itlqqH/firefox-57.0.4+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 7450, Chrome_ChildThread] WARNING: pipe error (3): Conexão fechada pela outra ponta: file /build/firefox-itlqqH/firefox-57.0.4+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+1516800496419	geckodriver	INFO	geckodriver 0.19.1
+1516800496424	geckodriver	INFO	Listening on 127.0.0.1:38436
+1516800497576	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.v0uNwVG1WEwH"
+1516800498424	Marionette	INFO	Enabled via --marionette
+1516800501753	Marionette	INFO	Listening on port 38152
+1516800501936	Marionette	WARN	TLS certificate errors will be ignored for this session
+1516800502000	Marionette	DEBUG	Register listener.js for window 2147483649
+1516800502021	Marionette	DEBUG	Received DOM event "beforeunload" for "about:blank"
+1516800502037	Marionette	DEBUG	Received DOM event "pagehide" for "about:blank"
+1516800502038	Marionette	DEBUG	Received DOM event "unload" for "about:blank"
+1516800502630	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "http://localhost:8081/frango-framework-build-app"
+1516800502659	Marionette	DEBUG	Received DOM event "pageshow" for "http://localhost:8081/frango-framework-build-app#login"
+[Child 7883, Chrome_ChildThread] WARNING: pipe error (35): Conexão fechada pela outra ponta: file /build/firefox-itlqqH/firefox-57.0.4+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 7883, Chrome_ChildThread] WARNING: pipe error (20): Conexão fechada pela outra ponta: file /build/firefox-itlqqH/firefox-57.0.4+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 7883, Chrome_ChildThread] WARNING: pipe error (3): Conexão fechada pela outra ponta: file /build/firefox-itlqqH/firefox-57.0.4+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+1516800773439	geckodriver	INFO	geckodriver 0.19.1
+1516800773444	geckodriver	INFO	Listening on 127.0.0.1:44037
+1516800774587	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.9ilDfDYJmGZH"
+1516800775509	Marionette	INFO	Enabled via --marionette
+1516800778997	Marionette	INFO	Listening on port 46458
+1516800779006	Marionette	WARN	TLS certificate errors will be ignored for this session
+1516800779071	Marionette	DEBUG	Register listener.js for window 2147483649
+1516800779307	Marionette	DEBUG	Received DOM event "beforeunload" for "about:blank"
+1516800779329	Marionette	DEBUG	Received DOM event "pagehide" for "about:blank"
+1516800779329	Marionette	DEBUG	Received DOM event "unload" for "about:blank"
+1516800779959	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "http://localhost:8081/frango-framework-build-app"
+1516800779992	Marionette	DEBUG	Received DOM event "pageshow" for "http://localhost:8081/frango-framework-build-app#login"
+[Child 8218, Chrome_ChildThread] WARNING: pipe error (35): Conexão fechada pela outra ponta: file /build/firefox-itlqqH/firefox-57.0.4+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 8218, Chrome_ChildThread] WARNING: pipe error (20): Conexão fechada pela outra ponta: file /build/firefox-itlqqH/firefox-57.0.4+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 8218, Chrome_ChildThread] WARNING: pipe error (3): Conexão fechada pela outra ponta: file /build/firefox-itlqqH/firefox-57.0.4+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+1516801312861	geckodriver	INFO	geckodriver 0.19.1
+1516801312866	geckodriver	INFO	Listening on 127.0.0.1:59967
+1516801314013	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.hTExfTYZNQNO"
+1516801314872	Marionette	INFO	Enabled via --marionette
+[Child 8804, Chrome_ChildThread] WARNING: pipe error (35): Conexão fechada pela outra ponta: file /build/firefox-itlqqH/firefox-57.0.4+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+1516801372913	geckodriver	INFO	geckodriver 0.19.1
+1516801372918	geckodriver	INFO	Listening on 127.0.0.1:55155
+1516801374069	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.mqRhj2VC6z0n"
+1516801374955	Marionette	INFO	Enabled via --marionette
+1516801378157	Marionette	INFO	Listening on port 36735
+1516801378188	Marionette	WARN	TLS certificate errors will be ignored for this session
+1516801378254	Marionette	DEBUG	Register listener.js for window 2147483649
+1516801378407	Marionette	DEBUG	Received DOM event "beforeunload" for "about:blank"
+1516801378433	Marionette	DEBUG	Received DOM event "pagehide" for "about:blank"
+1516801378433	Marionette	DEBUG	Received DOM event "unload" for "about:blank"
+1516801379046	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "http://localhost:8081/frango-framework-build-app"
+1516801379083	Marionette	DEBUG	Received DOM event "pageshow" for "http://localhost:8081/frango-framework-build-app#login"
+[Child 8974, Chrome_ChildThread] WARNING: pipe error (35): Conexão fechada pela outra ponta: file /build/firefox-itlqqH/firefox-57.0.4+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 8974, Chrome_ChildThread] WARNING: pipe error (21): Conexão fechada pela outra ponta: file /build/firefox-itlqqH/firefox-57.0.4+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 8974, Chrome_ChildThread] WARNING: pipe error (3): Conexão fechada pela outra ponta: file /build/firefox-itlqqH/firefox-57.0.4+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+1516801615944	geckodriver	INFO	geckodriver 0.19.1
+1516801615948	geckodriver	INFO	Listening on 127.0.0.1:33429
+1516801617098	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.kB3L4Ov5UMyK"
+1516801617908	Marionette	INFO	Enabled via --marionette
+1516801621007	Marionette	INFO	Listening on port 44155
+1516801621015	Marionette	WARN	TLS certificate errors will be ignored for this session
+1516801621083	Marionette	DEBUG	Register listener.js for window 2147483649
+1516801621260	Marionette	DEBUG	Received DOM event "beforeunload" for "about:blank"
+1516801621278	Marionette	DEBUG	Received DOM event "pagehide" for "about:blank"
+1516801621278	Marionette	DEBUG	Received DOM event "unload" for "about:blank"
+1516801621852	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "http://localhost:8081/frango-framework-build-app"
+1516801621881	Marionette	DEBUG	Received DOM event "pageshow" for "http://localhost:8081/frango-framework-build-app#login"
+[Child 9283, Chrome_ChildThread] WARNING: pipe error (35): Conexão fechada pela outra ponta: file /build/firefox-itlqqH/firefox-57.0.4+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 9283, Chrome_ChildThread] WARNING: pipe error (19): Conexão fechada pela outra ponta: file /build/firefox-itlqqH/firefox-57.0.4+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 9283, Chrome_ChildThread] WARNING: pipe error (3): Conexão fechada pela outra ponta: file /build/firefox-itlqqH/firefox-57.0.4+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+1516802995450	geckodriver	INFO	geckodriver 0.19.1
+1516802995455	geckodriver	INFO	Listening on 127.0.0.1:48187
+1516802996607	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.XSEQwCUv0Oif"
+1516802997477	Marionette	INFO	Enabled via --marionette
+1516803000902	Marionette	INFO	Listening on port 39188
+1516803000931	Marionette	WARN	TLS certificate errors will be ignored for this session
+1516803000994	Marionette	DEBUG	Register listener.js for window 2147483649
+1516803001137	Marionette	DEBUG	Received DOM event "beforeunload" for "about:blank"
+1516803001158	Marionette	DEBUG	Received DOM event "pagehide" for "about:blank"
+1516803001158	Marionette	DEBUG	Received DOM event "unload" for "about:blank"
+1516803001781	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "http://localhost:8081/frango-framework-build-app"
+1516803001812	Marionette	DEBUG	Received DOM event "pageshow" for "http://localhost:8081/frango-framework-build-app#login"
+[Child 10628, Chrome_ChildThread] WARNING: pipe error (35): Conexão fechada pela outra ponta: file /build/firefox-itlqqH/firefox-57.0.4+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 10628, Chrome_ChildThread] WARNING: pipe error (20): Conexão fechada pela outra ponta: file /build/firefox-itlqqH/firefox-57.0.4+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 10628, Chrome_ChildThread] WARNING: pipe error (3): Conexão fechada pela outra ponta: file /build/firefox-itlqqH/firefox-57.0.4+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+1516804287155	geckodriver	INFO	geckodriver 0.19.1
+1516804287161	geckodriver	INFO	Listening on 127.0.0.1:44008
+1516804288297	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.Tq69rWqzPf8k"
+1516804289142	Marionette	INFO	Enabled via --marionette
+1516804394250	geckodriver	INFO	geckodriver 0.19.1
+1516804394255	geckodriver	INFO	Listening on 127.0.0.1:59131
+1516804395446	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.2IfP59bz3olr"
+1516804396622	Marionette	INFO	Enabled via --marionette
+1516804400141	Marionette	INFO	Listening on port 45152
+1516804400173	Marionette	WARN	TLS certificate errors will be ignored for this session
+1516804400237	Marionette	DEBUG	Register listener.js for window 2147483649
+1516804400401	Marionette	DEBUG	Received DOM event "beforeunload" for "about:blank"
+1516804400440	Marionette	DEBUG	Received DOM event "pagehide" for "about:blank"
+1516804400441	Marionette	DEBUG	Received DOM event "unload" for "about:blank"
+1516804401032	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "http://localhost:8081/frango-framework-build-app"
+1516804401062	Marionette	DEBUG	Received DOM event "pageshow" for "http://localhost:8081/frango-framework-build-app#login"
+[Child 11358, Chrome_ChildThread] WARNING: pipe error (35): Conexão fechada pela outra ponta: file /build/firefox-itlqqH/firefox-57.0.4+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 11358, Chrome_ChildThread] WARNING: pipe error (21): Conexão fechada pela outra ponta: file /build/firefox-itlqqH/firefox-57.0.4+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 11358, Chrome_ChildThread] WARNING: pipe error (3): Conexão fechada pela outra ponta: file /build/firefox-itlqqH/firefox-57.0.4+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+1516805141947	geckodriver	INFO	geckodriver 0.19.1
+1516805141951	geckodriver	INFO	Listening on 127.0.0.1:54385
+1516805143106	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.Yjgqs0Qj6PVI"
+1516805143971	Marionette	INFO	Enabled via --marionette
+1516805148014	Marionette	INFO	Listening on port 34439
+1516805148031	Marionette	WARN	TLS certificate errors will be ignored for this session
+1516805148096	Marionette	DEBUG	Register listener.js for window 2147483649
+1516805148245	Marionette	DEBUG	Received DOM event "beforeunload" for "about:blank"
+1516805148279	Marionette	DEBUG	Received DOM event "pagehide" for "about:blank"
+1516805148279	Marionette	DEBUG	Received DOM event "unload" for "about:blank"
+1516805148932	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "http://localhost:8081/frango-framework-build-app"
+1516805148968	Marionette	DEBUG	Received DOM event "pageshow" for "http://localhost:8081/frango-framework-build-app#login"
+1516805235628	geckodriver	INFO	geckodriver 0.19.1
+1516805235634	geckodriver	INFO	Listening on 127.0.0.1:44766
+1516805236773	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.1RiJuNh3SROj"
+1516805237634	Marionette	INFO	Enabled via --marionette
+1516805240893	Marionette	INFO	Listening on port 45237
+1516805241088	Marionette	WARN	TLS certificate errors will be ignored for this session
+1516805241159	Marionette	DEBUG	Register listener.js for window 2147483649
+1516805241172	Marionette	DEBUG	Received DOM event "beforeunload" for "about:blank"
+1516805241187	Marionette	DEBUG	Received DOM event "pagehide" for "about:blank"
+1516805241187	Marionette	DEBUG	Received DOM event "unload" for "about:blank"
+1516805241769	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "http://localhost:8081/frango-framework-build-app"
+1516805241798	Marionette	DEBUG	Received DOM event "pageshow" for "http://localhost:8081/frango-framework-build-app#login"
+[Child 12333, Chrome_ChildThread] WARNING: pipe error (35): Conexão fechada pela outra ponta: file /build/firefox-itlqqH/firefox-57.0.4+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 12333, Chrome_ChildThread] WARNING: pipe error (19): Conexão fechada pela outra ponta: file /build/firefox-itlqqH/firefox-57.0.4+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 12333, Chrome_ChildThread] WARNING: pipe error (3): Conexão fechada pela outra ponta: file /build/firefox-itlqqH/firefox-57.0.4+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+1516805398613	geckodriver	INFO	geckodriver 0.19.1
+1516805398616	geckodriver	INFO	Listening on 127.0.0.1:59107
+1516805399771	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.NsHucbiNztm1"
+1516805400629	Marionette	INFO	Enabled via --marionette
+1516805403652	Marionette	INFO	Listening on port 34075
+1516805403837	Marionette	WARN	TLS certificate errors will be ignored for this session
+1516805403928	Marionette	DEBUG	Register listener.js for window 2147483649
+1516805403965	Marionette	DEBUG	Received DOM event "beforeunload" for "about:blank"
+1516805403981	Marionette	DEBUG	Received DOM event "pagehide" for "about:blank"
+1516805403981	Marionette	DEBUG	Received DOM event "unload" for "about:blank"
+1516805404590	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "http://localhost:8081/frango-framework-build-app"
+1516805404623	Marionette	DEBUG	Received DOM event "pageshow" for "http://localhost:8081/frango-framework-build-app#login"
+[Child 12655, Chrome_ChildThread] WARNING: pipe error (35): Conexão fechada pela outra ponta: file /build/firefox-itlqqH/firefox-57.0.4+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 12655, Chrome_ChildThread] WARNING: pipe error (20): Conexão fechada pela outra ponta: file /build/firefox-itlqqH/firefox-57.0.4+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 12655, Chrome_ChildThread] WARNING: pipe error (3): Conexão fechada pela outra ponta: file /build/firefox-itlqqH/firefox-57.0.4+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+1516805708864	geckodriver	INFO	geckodriver 0.19.1
+1516805708868	geckodriver	INFO	Listening on 127.0.0.1:45968
+1516805710018	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.cGbHEeFuNKsg"
+1516805710904	Marionette	INFO	Enabled via --marionette
+1516805714280	Marionette	INFO	Listening on port 42537
+1516805714485	Marionette	WARN	TLS certificate errors will be ignored for this session
+1516805714563	Marionette	DEBUG	Register listener.js for window 2147483649
+1516805714576	Marionette	DEBUG	Received DOM event "beforeunload" for "about:blank"
+1516805714590	Marionette	DEBUG	Received DOM event "pagehide" for "about:blank"
+1516805714590	Marionette	DEBUG	Received DOM event "unload" for "about:blank"
+JavaScript error: http://localhost:8081/cordova.js, line 1: SyntaxError: missing ; before statement
+1516805715173	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "http://localhost:8081/frango-framework-build-app"
+1516805715202	Marionette	DEBUG	Received DOM event "pageshow" for "http://localhost:8081/frango-framework-build-app#login"
+[Child 13033, Chrome_ChildThread] WARNING: pipe error (35): Conexão fechada pela outra ponta: file /build/firefox-itlqqH/firefox-57.0.4+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 13033, Chrome_ChildThread] WARNING: pipe error (19): Conexão fechada pela outra ponta: file /build/firefox-itlqqH/firefox-57.0.4+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 13033, Chrome_ChildThread] WARNING: pipe error (3): Conexão fechada pela outra ponta: file /build/firefox-itlqqH/firefox-57.0.4+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+1516805939166	geckodriver	INFO	geckodriver 0.19.1
+1516805939170	geckodriver	INFO	Listening on 127.0.0.1:45037
+1516805940322	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.8BPPTHWxRqzH"
+1516805941219	Marionette	INFO	Enabled via --marionette
+1516805944571	Marionette	INFO	Listening on port 35786
+1516805944768	Marionette	WARN	TLS certificate errors will be ignored for this session
+1516805944845	Marionette	DEBUG	Register listener.js for window 2147483649
+1516805944876	Marionette	DEBUG	Received DOM event "beforeunload" for "about:blank"
+1516805944892	Marionette	DEBUG	Received DOM event "pagehide" for "about:blank"
+1516805944892	Marionette	DEBUG	Received DOM event "unload" for "about:blank"
+JavaScript error: http://localhost:8081/cordova.js, line 1: SyntaxError: missing ; before statement
+JavaScript error: http://localhost:8081/js/js-centralizer.js, line 8: TypeError: app.initialize is not a function
+1516805945488	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "http://localhost:8081/frango-framework-build-app"
+1516805945509	Marionette	DEBUG	Received DOM event "pageshow" for "http://localhost:8081/frango-framework-build-app"
+[Child 13451, Chrome_ChildThread] WARNING: pipe error (35): Conexão fechada pela outra ponta: file /build/firefox-itlqqH/firefox-57.0.4+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 13451, Chrome_ChildThread] WARNING: pipe error (19): Conexão fechada pela outra ponta: file /build/firefox-itlqqH/firefox-57.0.4+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 13451, Chrome_ChildThread] WARNING: pipe error (3): Conexão fechada pela outra ponta: file /build/firefox-itlqqH/firefox-57.0.4+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+1516805978771	geckodriver	INFO	geckodriver 0.19.1
+1516805978776	geckodriver	INFO	Listening on 127.0.0.1:59302
+1516805979928	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.X8gtnTEZUB8J"
+1516805980798	Marionette	INFO	Enabled via --marionette
+1516805984057	Marionette	INFO	Listening on port 34239
+1516805984265	Marionette	WARN	TLS certificate errors will be ignored for this session
+1516805984332	Marionette	DEBUG	Register listener.js for window 2147483649
+1516805984350	Marionette	DEBUG	Received DOM event "beforeunload" for "about:blank"
+1516805984365	Marionette	DEBUG	Received DOM event "pagehide" for "about:blank"
+1516805984365	Marionette	DEBUG	Received DOM event "unload" for "about:blank"
+JavaScript error: http://localhost:8081/cordova.js, line 1: SyntaxError: missing ; before statement
+JavaScript error: http://localhost:8081/js/js-centralizer.js, line 8: TypeError: app.initialize is not a function
+1516805984979	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "http://localhost:8081/frango-framework-build-app"
+1516805985006	Marionette	DEBUG	Received DOM event "pageshow" for "http://localhost:8081/frango-framework-build-app"
+[Child 13607, Chrome_ChildThread] WARNING: pipe error (35): Conexão fechada pela outra ponta: file /build/firefox-itlqqH/firefox-57.0.4+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 13607, Chrome_ChildThread] WARNING: pipe error (20): Conexão fechada pela outra ponta: file /build/firefox-itlqqH/firefox-57.0.4+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 13607, Chrome_ChildThread] WARNING: pipe error (3): Conexão fechada pela outra ponta: file /build/firefox-itlqqH/firefox-57.0.4+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+1516806044550	geckodriver	INFO	geckodriver 0.19.1
+1516806044556	geckodriver	INFO	Listening on 127.0.0.1:54546
+1516806045707	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.2cLCS1iaK5VN"
+1516806046500	Marionette	INFO	Enabled via --marionette
+1516806049837	Marionette	INFO	Listening on port 46251
+1516806050018	Marionette	WARN	TLS certificate errors will be ignored for this session
+1516806050095	Marionette	DEBUG	Register listener.js for window 2147483649
+1516806050126	Marionette	DEBUG	Received DOM event "beforeunload" for "about:blank"
+1516806050142	Marionette	DEBUG	Received DOM event "pagehide" for "about:blank"
+1516806050142	Marionette	DEBUG	Received DOM event "unload" for "about:blank"
+JavaScript error: http://localhost:8081/cordova.js, line 1: SyntaxError: missing ; before statement
+1516806050753	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "http://localhost:8081/frango-framework-build-app"
+1516806050785	Marionette	DEBUG	Received DOM event "pageshow" for "http://localhost:8081/frango-framework-build-app#login"
+[Child 13775, Chrome_ChildThread] WARNING: pipe error (35): Conexão fechada pela outra ponta: file /build/firefox-itlqqH/firefox-57.0.4+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 13775, Chrome_ChildThread] WARNING: pipe error (20): Conexão fechada pela outra ponta: file /build/firefox-itlqqH/firefox-57.0.4+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 13775, Chrome_ChildThread] WARNING: pipe error (3): Conexão fechada pela outra ponta: file /build/firefox-itlqqH/firefox-57.0.4+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+1516824845649	geckodriver	INFO	geckodriver 0.19.1
+1516824845676	geckodriver	INFO	Listening on 127.0.0.1:44091
+1516824846807	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.P9T5LKEX9BY0"
+1516824847811	Marionette	INFO	Enabled via --marionette
+1516824851043	Marionette	INFO	Listening on port 42767
+1516824851287	Marionette	WARN	TLS certificate errors will be ignored for this session
+1516824851358	Marionette	DEBUG	Register listener.js for window 2147483649
+1516824851371	Marionette	DEBUG	Received DOM event "beforeunload" for "about:blank"
+1516824851385	Marionette	DEBUG	Received DOM event "pagehide" for "about:blank"
+1516824851386	Marionette	DEBUG	Received DOM event "unload" for "about:blank"
+JavaScript error: http://localhost:8081/cordova.js, line 1: SyntaxError: missing ; before statement
+1516824852036	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "http://localhost:8081/frango-framework-build-app"
+1516824852072	Marionette	DEBUG	Received DOM event "pageshow" for "http://localhost:8081/frango-framework-build-app#login"
+[Child 18850, Chrome_ChildThread] WARNING: pipe error (35): Conexão fechada pela outra ponta: file /build/firefox-itlqqH/firefox-57.0.4+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 18850, Chrome_ChildThread] WARNING: pipe error (20): Conexão fechada pela outra ponta: file /build/firefox-itlqqH/firefox-57.0.4+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 18850, Chrome_ChildThread] WARNING: pipe error (3): Conexão fechada pela outra ponta: file /build/firefox-itlqqH/firefox-57.0.4+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+1516854547603	geckodriver	INFO	geckodriver 0.19.1
+1516854547675	geckodriver	INFO	Listening on 127.0.0.1:55029
+1516854548790	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.6yaYP6uOCDvb"
+1516854550348	Marionette	INFO	Enabled via --marionette
+1516854553874	Marionette	INFO	Listening on port 46844
+1516854553917	Marionette	WARN	TLS certificate errors will be ignored for this session
+1516854553981	Marionette	DEBUG	Register listener.js for window 2147483649
+1516854554134	Marionette	DEBUG	Received DOM event "beforeunload" for "about:blank"
+1516854554163	Marionette	DEBUG	Received DOM event "pagehide" for "about:blank"
+1516854554164	Marionette	DEBUG	Received DOM event "unload" for "about:blank"
+JavaScript error: http://localhost:8081/cordova.js, line 1: SyntaxError: missing ; before statement
+1516854554846	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "http://localhost:8081/frango-framework-build-app"
+1516854554880	Marionette	DEBUG	Received DOM event "pageshow" for "http://localhost:8081/frango-framework-build-app#login"
+[Child 32108, Chrome_ChildThread] WARNING: pipe error (35): Conexão fechada pela outra ponta: file /build/firefox-itlqqH/firefox-57.0.4+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 32108, Chrome_ChildThread] WARNING: pipe error (20): Conexão fechada pela outra ponta: file /build/firefox-itlqqH/firefox-57.0.4+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 32108, Chrome_ChildThread] WARNING: pipe error (3): Conexão fechada pela outra ponta: file /build/firefox-itlqqH/firefox-57.0.4+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+1516925145629	geckodriver	INFO	geckodriver 0.19.1
+1516925145673	geckodriver	INFO	Listening on 127.0.0.1:54331
+1516925146851	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.lzU7avhGozPl"
+1516925155932	Marionette	INFO	Enabled via --marionette
+1516925165442	Marionette	INFO	Listening on port 46473
+1516925165605	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://localhost:8081/cordova.js, line 1: SyntaxError: unexpected token: numeric literal
+[Child 28396, Chrome_ChildThread] WARNING: pipe error (21): Conexão fechada pela outra ponta: file /build/firefox-iXzMln/firefox-58.0+build6/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 28396, Chrome_ChildThread] WARNING: pipe error (35): Conexão fechada pela outra ponta: file /build/firefox-iXzMln/firefox-58.0+build6/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 28396, Chrome_ChildThread] WARNING: pipe error (3): Conexão fechada pela outra ponta: file /build/firefox-iXzMln/firefox-58.0+build6/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+1517000818088	geckodriver	INFO	geckodriver 0.19.1
+1517000818098	geckodriver	INFO	Listening on 127.0.0.1:43549
+1517000819277	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.bcFSQPFZsNgk"
+1517000827181	Marionette	INFO	Enabled via --marionette
+1517000833784	Marionette	INFO	Listening on port 33655
+1517000833913	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://localhost:8081/cordova.js, line 1: SyntaxError: unexpected token: numeric literal
+[Child 23795, Chrome_ChildThread] WARNING: pipe error (35): Conexão fechada pela outra ponta: file /build/firefox-iXzMln/firefox-58.0+build6/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 23795, Chrome_ChildThread] WARNING: pipe error (24): Conexão fechada pela outra ponta: file /build/firefox-iXzMln/firefox-58.0+build6/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 23795, Chrome_ChildThread] WARNING: pipe error (3): Conexão fechada pela outra ponta: file /build/firefox-iXzMln/firefox-58.0+build6/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[GFX1-]: Receive IPC close with reason=AbnormalShutdown
+1517004079199	geckodriver	INFO	geckodriver 0.19.1
+1517004079208	geckodriver	INFO	Listening on 127.0.0.1:44644
+1517004080330	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.3DGwAqknnc2Y"
+1517004087856	Marionette	INFO	Enabled via --marionette
+1517004094836	Marionette	INFO	Listening on port 44101
+1517004096980	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://localhost:8081/cordova.js, line 1: SyntaxError: unexpected token: numeric literal
+[Child 25866, Chrome_ChildThread] WARNING: pipe error (35): Conexão fechada pela outra ponta: file /build/firefox-iXzMln/firefox-58.0+build6/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 25866, Chrome_ChildThread] WARNING: pipe error (24): Conexão fechada pela outra ponta: file /build/firefox-iXzMln/firefox-58.0+build6/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 25866, Chrome_ChildThread] WARNING: pipe error (3): Conexão fechada pela outra ponta: file /build/firefox-iXzMln/firefox-58.0+build6/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+1517005297404	geckodriver	INFO	geckodriver 0.19.1
+1517005297412	geckodriver	INFO	Listening on 127.0.0.1:50326
+1517005298543	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.mMXJg4a4p41f"
+1517005308155	Marionette	INFO	Enabled via --marionette
+1517005317656	Marionette	INFO	Listening on port 40780
+1517005319473	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://localhost:8081/cordova.js, line 1: SyntaxError: unexpected token: numeric literal
+[Child 27153, Chrome_ChildThread] WARNING: pipe error (17): Conexão fechada pela outra ponta: file /build/firefox-iXzMln/firefox-58.0+build6/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 27153, Chrome_ChildThread] WARNING: pipe error (35): Conexão fechada pela outra ponta: file /build/firefox-iXzMln/firefox-58.0+build6/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 27153, Chrome_ChildThread] WARNING: pipe error (3): Conexão fechada pela outra ponta: file /build/firefox-iXzMln/firefox-58.0+build6/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+1517010654661	geckodriver	INFO	geckodriver 0.19.1
+1517010654671	geckodriver	INFO	Listening on 127.0.0.1:41366
+1517010655887	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.GKLiGGL1vgKg"
+1517010663161	Marionette	INFO	Enabled via --marionette
+1517010670420	Marionette	INFO	Listening on port 33654
+1517010670439	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://localhost:8081/cordova.js, line 1: SyntaxError: unexpected token: numeric literal
+[Child 30512, Chrome_ChildThread] WARNING: pipe error (35): Conexão fechada pela outra ponta: file /build/firefox-iXzMln/firefox-58.0+build6/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 30512, Chrome_ChildThread] WARNING: pipe error (23): Conexão fechada pela outra ponta: file /build/firefox-iXzMln/firefox-58.0+build6/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 30512, Chrome_ChildThread] WARNING: pipe error (3): Conexão fechada pela outra ponta: file /build/firefox-iXzMln/firefox-58.0+build6/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+1517084520832	geckodriver	INFO	geckodriver 0.19.1
+1517084521011	geckodriver	INFO	Listening on 127.0.0.1:55801
+1517084522540	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.GlYu61fo47jt"
+1517084536413	Marionette	INFO	Enabled via --marionette
+1517084543023	Marionette	INFO	Listening on port 46764
+1517084543232	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://localhost:8081/cordova.js, line 1: SyntaxError: unexpected token: numeric literal
+[Child 14444, Chrome_ChildThread] WARNING: pipe error (23): Conexão fechada pela outra ponta: file /build/firefox-iXzMln/firefox-58.0+build6/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 14444, Chrome_ChildThread] WARNING: pipe error (35): Conexão fechada pela outra ponta: file /build/firefox-iXzMln/firefox-58.0+build6/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 14444, Chrome_ChildThread] WARNING: pipe error (3): Conexão fechada pela outra ponta: file /build/firefox-iXzMln/firefox-58.0+build6/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+1517096853048	geckodriver	INFO	geckodriver 0.19.1
+1517096853086	geckodriver	INFO	Listening on 127.0.0.1:46293
+1517096854237	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.wrAGuABMYrJw"
+1517096861144	Marionette	INFO	Enabled via --marionette
+1517096867494	Marionette	INFO	Listening on port 34202
+1517096867602	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://localhost:8081/cordova.js, line 1: SyntaxError: unexpected token: numeric literal
+[Child 8646, Chrome_ChildThread] WARNING: pipe error (35): Conexão fechada pela outra ponta: file /build/firefox-iXzMln/firefox-58.0+build6/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 8646, Chrome_ChildThread] WARNING: pipe error (23): Conexão fechada pela outra ponta: file /build/firefox-iXzMln/firefox-58.0+build6/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 8646, Chrome_ChildThread] WARNING: pipe error (3): Conexão fechada pela outra ponta: file /build/firefox-iXzMln/firefox-58.0+build6/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+1517097888863	geckodriver	INFO	geckodriver 0.19.1
+1517097888868	geckodriver	INFO	Listening on 127.0.0.1:59744
+1517097890022	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.l6yfln1AGxRj"
+1517097890905	Marionette	INFO	Enabled via --marionette
+1517097893422	Marionette	INFO	Listening on port 44052
+1517097893451	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://localhost:8081/cordova.js, line 1: SyntaxError: unexpected token: numeric literal
+[Child 10119, Chrome_ChildThread] WARNING: pipe error (19): Conexão fechada pela outra ponta: file /build/firefox-iXzMln/firefox-58.0+build6/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 10119, Chrome_ChildThread] WARNING: pipe error (35): Conexão fechada pela outra ponta: file /build/firefox-iXzMln/firefox-58.0+build6/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 10119, Chrome_ChildThread] WARNING: pipe error (3): Conexão fechada pela outra ponta: file /build/firefox-iXzMln/firefox-58.0+build6/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+1517102590745	geckodriver	INFO	geckodriver 0.19.1
+1517102590750	geckodriver	INFO	Listening on 127.0.0.1:57199
+1517102591902	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.AegBM7OSnLZf"
+1517102592838	Marionette	INFO	Enabled via --marionette
+1517102595598	Marionette	INFO	Listening on port 38861
+1517102595619	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://localhost:8081/cordova.js, line 1: SyntaxError: unexpected token: numeric literal
+[Child 12934, Chrome_ChildThread] WARNING: pipe error (19): Conexão fechada pela outra ponta: file /build/firefox-iXzMln/firefox-58.0+build6/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 12934, Chrome_ChildThread] WARNING: pipe error (35): Conexão fechada pela outra ponta: file /build/firefox-iXzMln/firefox-58.0+build6/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 12934, Chrome_ChildThread] WARNING: pipe error (3): Conexão fechada pela outra ponta: file /build/firefox-iXzMln/firefox-58.0+build6/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+1517102897750	geckodriver	INFO	geckodriver 0.19.1
+1517102897754	geckodriver	INFO	Listening on 127.0.0.1:33150
+1517102898906	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.uZV0MCEcnj3V"
+1517102899831	Marionette	INFO	Enabled via --marionette
+1517102902535	Marionette	INFO	Listening on port 42757
+1517102902629	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://localhost:8081/cordova.js, line 1: SyntaxError: unexpected token: numeric literal
+[Child 13343, Chrome_ChildThread] WARNING: pipe error (19): Conexão fechada pela outra ponta: file /build/firefox-iXzMln/firefox-58.0+build6/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 13343, Chrome_ChildThread] WARNING: pipe error (35): Conexão fechada pela outra ponta: file /build/firefox-iXzMln/firefox-58.0+build6/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 13343, Chrome_ChildThread] WARNING: pipe error (3): Conexão fechada pela outra ponta: file /build/firefox-iXzMln/firefox-58.0+build6/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+1517183906421	geckodriver	INFO	geckodriver 0.19.1
+1517183906531	geckodriver	INFO	Listening on 127.0.0.1:51605
+1517183907637	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.L5NnqNjRtknQ"
+1517183920942	Marionette	INFO	Enabled via --marionette
+1517183928219	Marionette	INFO	Listening on port 46391
+1517183928335	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://localhost:8081/cordova.js, line 1: SyntaxError: unexpected token: numeric literal
+[Child 19143, Chrome_ChildThread] WARNING: pipe error (35): Conexão fechada pela outra ponta: file /build/firefox-iXzMln/firefox-58.0+build6/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 19143, Chrome_ChildThread] WARNING: pipe error (23): Conexão fechada pela outra ponta: file /build/firefox-iXzMln/firefox-58.0+build6/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 19143, Chrome_ChildThread] WARNING: pipe error (3): Conexão fechada pela outra ponta: file /build/firefox-iXzMln/firefox-58.0+build6/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+1517187827723	geckodriver	INFO	geckodriver 0.19.1
+1517187827730	geckodriver	INFO	Listening on 127.0.0.1:44244
+1517187828928	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.Inuwe5ypjwow"
+1517187836233	Marionette	INFO	Enabled via --marionette
+1517187842579	Marionette	INFO	Listening on port 41612
+1517187842694	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://localhost:8081/cordova.js, line 1: SyntaxError: unexpected token: numeric literal
+[Child 20903, Chrome_ChildThread] WARNING: pipe error (35): Conexão fechada pela outra ponta: file /build/firefox-iXzMln/firefox-58.0+build6/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 20903, Chrome_ChildThread] WARNING: pipe error (23): Conexão fechada pela outra ponta: file /build/firefox-iXzMln/firefox-58.0+build6/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 20903, Chrome_ChildThread] WARNING: pipe error (3): Conexão fechada pela outra ponta: file /build/firefox-iXzMln/firefox-58.0+build6/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+1517230540175	geckodriver	INFO	geckodriver 0.19.1
+1517230540186	geckodriver	INFO	Listening on 127.0.0.1:42157
+1517230541342	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.BNTV6FKdtqmx"
+1517230549049	Marionette	INFO	Enabled via --marionette
+1517230555937	Marionette	INFO	Listening on port 43449
+1517230557011	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://localhost:8081/cordova.js, line 1: SyntaxError: unexpected token: numeric literal
+[Child 26532, Chrome_ChildThread] WARNING: pipe error (35): Conexão fechada pela outra ponta: file /build/firefox-iXzMln/firefox-58.0+build6/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 26532, Chrome_ChildThread] WARNING: pipe error (23): Conexão fechada pela outra ponta: file /build/firefox-iXzMln/firefox-58.0+build6/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 26532, Chrome_ChildThread] WARNING: pipe error (3): Conexão fechada pela outra ponta: file /build/firefox-iXzMln/firefox-58.0+build6/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[GFX1-]: Receive IPC close with reason=AbnormalShutdown
+1517232671478	geckodriver	INFO	geckodriver 0.19.1
+1517232671491	geckodriver	INFO	Listening on 127.0.0.1:60013
+1517232672653	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.H97FN7E2T6k8"
+1517232680433	Marionette	INFO	Enabled via --marionette
+1517232687809	Marionette	INFO	Listening on port 36562
+1517232687829	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://localhost:8081/cordova.js, line 1: SyntaxError: unexpected token: numeric literal
+[Child 27735, Chrome_ChildThread] WARNING: pipe error (35): Conexão fechada pela outra ponta: file /build/firefox-iXzMln/firefox-58.0+build6/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 27735, Chrome_ChildThread] WARNING: pipe error (23): Conexão fechada pela outra ponta: file /build/firefox-iXzMln/firefox-58.0+build6/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 27735, Chrome_ChildThread] WARNING: pipe error (3): Conexão fechada pela outra ponta: file /build/firefox-iXzMln/firefox-58.0+build6/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+1517232920557	geckodriver	INFO	geckodriver 0.19.1
+1517232920565	geckodriver	INFO	Listening on 127.0.0.1:53645
+1517232921723	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.PECEVBhRrF0O"
+1517232923425	Marionette	INFO	Enabled via --marionette
+1517232927194	Marionette	INFO	Listening on port 40103
+1517232927255	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://localhost:8081/cordova.js, line 1: SyntaxError: unexpected token: numeric literal
+[Child 28058, Chrome_ChildThread] WARNING: pipe error (19): Conexão fechada pela outra ponta: file /build/firefox-iXzMln/firefox-58.0+build6/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 28058, Chrome_ChildThread] WARNING: pipe error (35): Conexão fechada pela outra ponta: file /build/firefox-iXzMln/firefox-58.0+build6/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 28058, Chrome_ChildThread] WARNING: pipe error (3): Conexão fechada pela outra ponta: file /build/firefox-iXzMln/firefox-58.0+build6/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+1517233772216	geckodriver	INFO	geckodriver 0.19.1
+1517233772223	geckodriver	INFO	Listening on 127.0.0.1:55518
+1517233772489	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.NsiP2zAykeHq"
+1517233774106	Marionette	INFO	Enabled via --marionette
+1517233776835	Marionette	INFO	Listening on port 43188
+1517233776912	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://localhost:8081/cordova.js, line 1: SyntaxError: unexpected token: numeric literal
+[Child 28690, Chrome_ChildThread] WARNING: pipe error (19): Conexão fechada pela outra ponta: file /build/firefox-iXzMln/firefox-58.0+build6/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 28690, Chrome_ChildThread] WARNING: pipe error (35): Conexão fechada pela outra ponta: file /build/firefox-iXzMln/firefox-58.0+build6/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 28690, Chrome_ChildThread] WARNING: pipe error (3): Conexão fechada pela outra ponta: file /build/firefox-iXzMln/firefox-58.0+build6/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+1517234058782	geckodriver	INFO	geckodriver 0.19.1
+1517234058788	geckodriver	INFO	Listening on 127.0.0.1:42161
+1517234059942	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.RXcAGykfLS5R"
+1517234060896	Marionette	INFO	Enabled via --marionette
+1517234063633	Marionette	INFO	Listening on port 46626
+1517234063674	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://localhost:8081/cordova.js, line 1: SyntaxError: unexpected token: numeric literal
+[Child 29077, Chrome_ChildThread] WARNING: pipe error (19): Conexão fechada pela outra ponta: file /build/firefox-iXzMln/firefox-58.0+build6/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 29077, Chrome_ChildThread] WARNING: pipe error (35): Conexão fechada pela outra ponta: file /build/firefox-iXzMln/firefox-58.0+build6/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 29077, Chrome_ChildThread] WARNING: pipe error (3): Conexão fechada pela outra ponta: file /build/firefox-iXzMln/firefox-58.0+build6/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+1517234716303	geckodriver	INFO	geckodriver 0.19.1
+1517234716307	geckodriver	INFO	Listening on 127.0.0.1:45215
+1517234717460	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.DSAAb3haPXZJ"
+1517234718473	Marionette	INFO	Enabled via --marionette
+1517234721319	Marionette	INFO	Listening on port 36057
+1517234721384	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://localhost:8081/cordova.js, line 1: SyntaxError: unexpected token: numeric literal
+[Child 29557, Chrome_ChildThread] WARNING: pipe error (21): Conexão fechada pela outra ponta: file /build/firefox-iXzMln/firefox-58.0+build6/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 29557, Chrome_ChildThread] WARNING: pipe error (35): Conexão fechada pela outra ponta: file /build/firefox-iXzMln/firefox-58.0+build6/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 29557, Chrome_ChildThread] WARNING: pipe error (3): Conexão fechada pela outra ponta: file /build/firefox-iXzMln/firefox-58.0+build6/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+1517235062856	geckodriver	INFO	geckodriver 0.19.1
+1517235062861	geckodriver	INFO	Listening on 127.0.0.1:35479
+1517235064008	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.67d93yseg1Hr"
+1517235064914	Marionette	INFO	Enabled via --marionette
+1517235067642	Marionette	INFO	Listening on port 37144
+1517235067728	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://localhost:8081/cordova.js, line 1: SyntaxError: unexpected token: numeric literal
+[Child 30038, Chrome_ChildThread] WARNING: pipe error (19): Conexão fechada pela outra ponta: file /build/firefox-iXzMln/firefox-58.0+build6/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 30038, Chrome_ChildThread] WARNING: pipe error (35): Conexão fechada pela outra ponta: file /build/firefox-iXzMln/firefox-58.0+build6/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 30038, Chrome_ChildThread] WARNING: pipe error (3): Conexão fechada pela outra ponta: file /build/firefox-iXzMln/firefox-58.0+build6/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+1517235924140	geckodriver	INFO	geckodriver 0.19.1
+1517235924154	geckodriver	INFO	Listening on 127.0.0.1:37851
+1517235925295	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.oJrNCs1qaGOq"
+1517235926341	Marionette	INFO	Enabled via --marionette
+1517235929192	Marionette	INFO	Listening on port 34482
+1517235929225	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://localhost:8081/cordova.js, line 1: SyntaxError: unexpected token: numeric literal
+[Child 31017, Chrome_ChildThread] WARNING: pipe error (19): Conexão fechada pela outra ponta: file /build/firefox-iXzMln/firefox-58.0+build6/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 31017, Chrome_ChildThread] WARNING: pipe error (35): Conexão fechada pela outra ponta: file /build/firefox-iXzMln/firefox-58.0+build6/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 31017, Chrome_ChildThread] WARNING: pipe error (3): Conexão fechada pela outra ponta: file /build/firefox-iXzMln/firefox-58.0+build6/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+1517253987089	geckodriver	INFO	geckodriver 0.19.1
+1517253987095	geckodriver	INFO	Listening on 127.0.0.1:45716
+1517253988248	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.7CqVxYgQTIRk"
+1517253989193	Marionette	INFO	Enabled via --marionette
+1517253991997	Marionette	INFO	Listening on port 40593
+1517253992076	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://localhost:8081/cordova.js, line 1: SyntaxError: unexpected token: numeric literal
+[Child 10632, Chrome_ChildThread] WARNING: pipe error (35): Conexão fechada pela outra ponta: file /build/firefox-iXzMln/firefox-58.0+build6/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 10632, Chrome_ChildThread] WARNING: pipe error (19): Conexão fechada pela outra ponta: file /build/firefox-iXzMln/firefox-58.0+build6/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 10632, Chrome_ChildThread] WARNING: pipe error (3): Conexão fechada pela outra ponta: file /build/firefox-iXzMln/firefox-58.0+build6/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+1517259947146	geckodriver	INFO	geckodriver 0.19.1
+1517259947185	geckodriver	INFO	Listening on 127.0.0.1:36576
+1517259948353	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.J9F23Uoq7jxP"
+1517259955090	Marionette	INFO	Enabled via --marionette
+1517259961959	Marionette	INFO	Listening on port 40777
+1517259962620	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://localhost:8081/cordova.js, line 1: SyntaxError: unexpected token: numeric literal
+[Child 3220, Chrome_ChildThread] WARNING: pipe error (35): Conexão fechada pela outra ponta: file /build/firefox-iXzMln/firefox-58.0+build6/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 3220, Chrome_ChildThread] WARNING: pipe error (24): Conexão fechada pela outra ponta: file /build/firefox-iXzMln/firefox-58.0+build6/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 3220, Chrome_ChildThread] WARNING: pipe error (3): Conexão fechada pela outra ponta: file /build/firefox-iXzMln/firefox-58.0+build6/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353

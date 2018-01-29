@@ -1,0 +1,23 @@
+<div class="row">
+    <div class="col s12 m5">
+        <div class="card-panel teal">
+            <div data-datasetname="lesson">
+                <h5 class="white-text title">[{(lesson) name}]</h5>
+                <div class="white-text">[{(lesson) language_name}]</div>
+                <div class="white-text"> Minimum score : 70</div>
+                <div class="white-text">Score achieved : [{(lesson) score}]</div>
+                <div class="white-text">                    
+                   <a href="#lesson/detail/?lesson_id=[{(lesson) id}]">  
+                    <i class="mdi mdi-play mdi-24px white-text"></i>
+                   </a> 
+                   <a href="javascript:void(0)" class="[{(lesson) aproved:ternary@true@visible@hide  }]" 
+                      onclick="common_lessonComponent.goToNextLesson()" >  
+                      <i class="mdi mdi-skip-next mdi-24px white-text"></i>
+                   </a> 
+                 
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
