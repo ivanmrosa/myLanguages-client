@@ -13,7 +13,7 @@ headerComponent = {
             case "":
                 config["title"] = "home";
                 config["display"] = "block"; 
-                config["icon"]  = "dehaze"
+                config["icon"]  = "mdi-menu"
                 config["execute"]  = "headerComponent.showMenu()"
                 menuComponent.controller(frango.getComponent('menu'));
                 break;
@@ -36,7 +36,11 @@ headerComponent = {
             case "signup":
                 config["title"] = "Sign up";
                 config["display"] = "block";                
-                break                    
+                break     
+            case "search-dictionary":
+                config["title"] = "Dictionary";
+                config["display"] = "block";                
+                break                                     
                 
             default:
                 break;

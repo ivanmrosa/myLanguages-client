@@ -40,7 +40,9 @@
         "components/dictionary/js/dictionary-register.js",
         "components/dictionary/js/dictionary.js",
         "components/list_images/js/list_images-register.js",
-        "components/list_images/js/list_images.js"
+        "components/list_images/js/list_images.js",
+        "components/searchDictionary/js/searchDictionary-register.js",
+        "components/searchDictionary/js/searchDictionary.js"
     ],
     "general-js": [
         "js/app.js",

@@ -45,7 +45,7 @@ function textSelector(instanceId) {
         var learningLanguage = 'en';
         var url = frango.format('https://translate.google.com/translate?hl=%s#%s/%s/%s',
             [userLanguage, learningLanguage, userLanguageSufix, thisObject.selectedText]);
-        window.open(url, '_blank', 'location=no');                
+        window.open(url, '_blank', 'location=yes');                
             
     };
 

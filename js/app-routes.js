@@ -4,11 +4,12 @@ frango.app.configureRote(function () {
 
     frango.app.routes = 
         {
-    "/signup": "signup",
     "/": "home",
-    "/lesson/": "lesson",
+    "/signup": "signup",
     "/lesson/detail/": "lesson_detail",
-    "/login": "login"
+    "/lesson/": "lesson",
+    "/login": "login",
+    "/search-dictionary": "searchDictionary"
 }
     
 });

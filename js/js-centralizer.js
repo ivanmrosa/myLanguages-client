@@ -48,11 +48,12 @@ frango.app.configureRote(function () {
 
     frango.app.routes = 
         {
-    "/signup": "signup",
     "/": "home",
-    "/lesson/": "lesson",
+    "/signup": "signup",
     "/lesson/detail/": "lesson_detail",
-    "/login": "login"
+    "/lesson/": "lesson",
+    "/login": "login",
+    "/search-dictionary": "searchDictionary"
 }
     
 });
@@ -92,7 +93,7 @@ headerComponent = {
             case "":
                 config["title"] = "home";
                 config["display"] = "block"; 
-                config["icon"]  = "dehaze"
+                config["icon"]  = "mdi-menu"
                 config["execute"]  = "headerComponent.showMenu()"
                 menuComponent.controller(frango.getComponent('menu'));
                 break;
@@ -115,7 +116,11 @@ headerComponent = {
             case "signup":
                 config["title"] = "Sign up";
                 config["display"] = "block";                
-                break                    
+                break     
+            case "search-dictionary":
+                config["title"] = "Dictionary";
+                config["display"] = "block";                
+                break                                     
                 
             default:
                 break;
@@ -1429,7 +1434,7 @@ function textSelector(instanceId) {
         var learningLanguage = 'en';
         var url = frango.format('https://translate.google.com/translate?hl=%s#%s/%s/%s',
             [userLanguage, learningLanguage, userLanguageSufix, thisObject.selectedText]);
-        window.open(url, '_blank', 'location=no');                
+        window.open(url, '_blank', 'location=yes');                
             
     };
 
@@ -1870,3 +1875,30 @@ list_imagesComponent = {
     }
 };
 
+
+
+app.components.push(function () {
+    frango.component('searchDictionary').
+        setPathLocalTemplate('components/searchDictionary/template/searchDictionary.html').
+        objectGetData(searchDictionaryComponent).
+        controller(searchDictionaryComponent.controller).
+        register()
+});
+
+searchDictionaryComponent = {
+
+    controller: function(component){
+       component.bindData([], true, function(){
+           dictionaryComponent.getInstance('dictionary-search-dictionary', function(dictInstance){
+               //dictInstance 
+               var search = frango.find('.search-dictionay');
+               /*btn search */
+               search.find('.dict-search-btn').on('click', function(){
+                   var words = frango.find('#search-dictionary-words').first().value.trim().split(" ");
+                   
+                   dictInstance.showDictionary(words, false);
+               });
+           });
+       });
+    }
+}
