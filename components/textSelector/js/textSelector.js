@@ -51,7 +51,11 @@ function textSelector(instanceId) {
 
     var copySelectedText = function(){
         document.execCommand('copy');
-        Materialize.toast('Copied!', 2000);
+        frango.warning('Copied!');
+    };
+
+    var audio = function(){
+       dictionaryInstance.playPhrases(thisObject.selectedText);
     };
 
     var openDictionary = function(){        
@@ -89,6 +93,7 @@ function textSelector(instanceId) {
         htmlComponent.find('.googleTranslate').on('click', openGoogleTranslation);
         htmlComponent.find('.copyText').on('click', copySelectedText);
         htmlComponent.find('.definition').on('click', openDictionary);
+        htmlComponent.find('.audio').on('click', audio);
     };
 
     __init__();

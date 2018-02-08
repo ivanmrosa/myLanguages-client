@@ -381,9 +381,9 @@ frango.popup.openPopup = function (select, executeAfter) {
     };
 
     if (ele) {
-        if(frango.find(ele).attr('data-popup-configured') != 'yes'){
+        if (frango.find(ele).attr('data-popup-configured') != 'yes') {
             frango.find(ele).attr('data-popup-configured', 'yes');
-            frango.find(ele).on('click', function (event) {            
+            frango.find(ele).on('click', function (event) {
                 e = event || window.event;
                 var target = e.target || e.srcElement;
                 frango.find(target).loop(function () {
@@ -635,6 +635,13 @@ frango.canUploadFile = function () {
     return !elem.disabled;
 }
 
+frango.isMobileDevice = function(){
+    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+        return true;
+    }else{
+        return false;
+    }
+}
 
 
 frango.wait = {}
@@ -666,6 +673,7 @@ frango.touch.tab.oldX = 0;
 frango.touch.tab.oldy = 0;
 frango.touch.tab.startx = 0;
 frango.touch.tab.starty = 0;
+frango.touch.tab.scrolling = false;
 
 frango.touch.tab.addSlowMoviment = function (tabBodies) {
     tabBodies.adCl('slow-vertical-moviment');
@@ -674,12 +682,14 @@ frango.touch.tab.removeSlowMoviment = function (tabBodies) {
     tabBodies.rmCl('slow-vertical-moviment');
 };
 
+
 frango.touch.tab.moveX = function (elementTouched, posX, locked, slowMove) {
     var bodies = frango.find('.tab-body', elementTouched);
     var tot = bodies.elements.length;
     var leftLast = bodies.elements[tot - 1].offsetLeft;
     var leftFirst = bodies.elements[0].offsetLeft;
     var newLeft = 0;
+    var movied = false;
 
     if (slowMove) {
         frango.touch.tab.addSlowMoviment(bodies);
@@ -687,8 +697,10 @@ frango.touch.tab.moveX = function (elementTouched, posX, locked, slowMove) {
 
     bodies.loop(function () {
         if (posX < frango.touch.tab.oldX) {
+            
             //puxar para esquerda
             if (locked != 'left') {
+                movied = true;
                 if ((leftLast - (frango.touch.tab.oldX - posX) <= 0)) {
                     newLeft = (this.offsetLeft - leftLast);
                 } else {
@@ -704,8 +716,10 @@ frango.touch.tab.moveX = function (elementTouched, posX, locked, slowMove) {
                 };
             };
         } else if (posX > frango.touch.tab.oldX) {
+            
             //puxar para a direita
             if (locked != 'right') {
+                movied = true;
                 if (leftFirst + (posX - frango.touch.tab.oldX) >= 0) {
                     newLeft = this.offsetLeft + Math.abs(leftFirst);
                 } else {
@@ -723,22 +737,34 @@ frango.touch.tab.moveX = function (elementTouched, posX, locked, slowMove) {
         };
     });
 
+    return movied;
+
 }
 
+frango.touch.moveY = function (elementTouched, posY, locked, slowMove) {
+
+}
+
+
+
 frango.touch.tab.handleMoviment = function (event) {
-    event.preventDefault();
+    
     var elementTouched = this;
     var touches = event.changedTouches;
-    var locked = elementTouched.getAttribute('data-locked');
-    frango.touch.tab.moveX(elementTouched, touches[0].pageX, locked, false);
 
+    if(frango.touch.tab.scrolling == false){
+        
+        var locked = elementTouched.getAttribute('data-locked');
+        frango.touch.tab.moveX(elementTouched, touches[0].pageX, locked, false);        
+    };
     frango.touch.tab.oldX = touches[0].pageX;
-    frango.touch.tab.oldy = touches[0].pageY;
+    frango.touch.tab.oldy = touches[0].pageY;     
+
 
 }
 
 frango.touch.tab.startTouch = function (event) {
-    event.preventDefault();
+    //event.preventDefault();
     var touches = event.changedTouches;
     var elementTouched = this;
     frango.touch.tab.oldX = touches[0].pageX;
@@ -750,7 +776,7 @@ frango.touch.tab.startTouch = function (event) {
 };
 
 frango.touch.tab.endTouch = function (event) {
-    event.preventDefault();
+    //event.preventDefault();
     var elementTouched = this;
     var width = elementTouched.offsetWidth;
     var bodies = frango.find('.tab-body', elementTouched);
@@ -758,12 +784,11 @@ frango.touch.tab.endTouch = function (event) {
     var locked = elementTouched.getAttribute('data-locked');
 
 
-
     if (frango.touch.tab.oldX > frango.touch.tab.startx) {
         //puxada para a direita
 
         bodies.loop(function () {
-            if ((this.offsetLeft > 0) && (this.offsetLeft >= width * 0.65) && (!movedEnough)) {
+            if ((this.offsetLeft > 0) && (this.offsetLeft >= width * 0.50) && (!movedEnough)) {
                 frango.touch.tab.oldX = this.offsetLeft;
                 frango.touch.tab.moveX(elementTouched, width, locked, true);
                 movedEnough = true;
@@ -785,7 +810,7 @@ frango.touch.tab.endTouch = function (event) {
         //puxada para a esquerda
 
         bodies.loop(function () {
-            if ((this.offsetLeft > 0) && (this.offsetLeft <= width * 0.35) && (!movedEnough)) {
+            if ((this.offsetLeft > 0) && (this.offsetLeft <= width * 0.50) && (!movedEnough)) {
                 frango.touch.tab.oldX = this.offsetLeft;
                 frango.touch.tab.moveX(elementTouched, 0, locked, true);
                 movedEnough = true;
@@ -809,20 +834,35 @@ frango.touch.tab.endTouch = function (event) {
 };
 
 frango.touch.tab.config = function (tabBodyGroup) {
-
+    if(!frango.isMobileDevice()){        
+        return;
+    };
     tabBodyGroup.on("touchmove", frango.touch.tab.handleMoviment);
     tabBodyGroup.on("touchstart", frango.touch.tab.startTouch);
     tabBodyGroup.on("touchend", frango.touch.tab.endTouch);
+    
+    var checkScrolling = function(){
+        var idIntervalScrolling = setInterval(function(){
+            if(frango.touch.tab.scrolling == false){
+                clearInterval(checkScrolling);
+            }else{
+                frango.touch.tab.scrolling = false;
+            };
+        }, 1000);
+    }
 
+    frango.find(window).on('scroll', function(){
+       frango.touch.tab.scrolling = true;
+       checkScrolling();
+    });
 }
 
 
-frango.tab = function () {
-
+frango.tab = function (selector, touchEnabled) {
     var setTabsInitialSize = function (pageControl, tabWidth, tabBodies, pageControlWidth, resizing) {
 
         pageControl.find('.tab-group').adSty('width', pageControlWidth + "px");
-        pageControl.find('.tab').adSty('width', tabWidth + "px");
+        //pageControl.find('.tab').adSty('min-width', tabWidth + "px");
         pageControl.find('.tab-body-group').adSty('width', pageControlWidth + "px");
         var index = 0;
         var activeIndex = pageControl.find('.tab-body.active').first().getAttribute('data-index');
@@ -880,7 +920,8 @@ frango.tab = function () {
     };
 
     var configurePageControls = function (resizing) {
-        frango.find('.page-control').loop(function () {
+        var pgcSelector = selector || '.page-control';
+        frango.find(pgcSelector).loop(function () {
             var pageControl = this;
             var paretElWidth = pageControl.parentElement.offsetWidth;
 
@@ -896,10 +937,11 @@ frango.tab = function () {
 
             if (!resizing) {
                 configureClick(pageControl, tabBodies, tabs);
-                frango.touch.tab.config(pageControl.find('.tab-body-group'));
+                if(touchEnabled == true){
+                  frango.touch.tab.config(pageControl.find('.tab-body-group'));
+                };
+                
             };
-
-
         });
     };
     frango.find(window).on('resize', function () {

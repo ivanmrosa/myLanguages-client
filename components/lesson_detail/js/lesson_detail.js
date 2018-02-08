@@ -6,15 +6,15 @@ lesson_detailComponent = {
 
     controller: function (component) {
         var loadMedia = function () {
-            frango.find('#tab-media').on('click', function () {
+            /*frango.find('#tab-media').on('click', function () {
                 var element = frango.find(this).first();
                 var loaded = element.attr('data-loaded');
                 if (loaded == "true") {
                     return;
-                };
+                };*/
                 var params = frango.app.getURLParameters();
                 params["media_type"] = 'V';
-                frango.wait.start(component.selector_to_bid);
+                //frango.wait.start();
                 frango.ajaxGet({
                     url: 'lesson-media/',
                     data : params,
@@ -24,23 +24,24 @@ lesson_detailComponent = {
                             videos,
                             function (instance) {
                                 var playListVideo = instance;
-                                element.attr('data-loaded', "true");
-                                frango.wait.stop();
+                                //element.attr('data-loaded', "true");
+                                //frango.wait.stop();
                             });
                     },
                     onFailure: function (err) {
-                        frango.wait.stop();
+                        //frango.wait.stop();
                         frango.warnig(err);
                     }
                 });            
-            });
+            //});
         };
 
         component.bindData([], true, function () {
-            //frango.tab();
-            $(document).ready(function () {
-                $('ul.tabs').tabs();
-            });
+            frango.tab('.page-control-lesson', true);
+            //$('ul.tabs').tabs();                
+            /*$(document).ready(function () {
+                
+            });*/
             loadMedia();
 
 

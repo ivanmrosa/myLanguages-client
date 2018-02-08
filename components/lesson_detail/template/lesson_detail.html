@@ -1,7 +1,7 @@
 <span data-component="yes" data-component-name="header" data-component-id="login-header" data-component-container="#header">
 </span>
 
-
+<!--
 <ul id="tabs-swipe-demo" class="tabs">
     <li class="tab col s3"><a class="active" href="#words">Words</a></li>
     <li class="tab col s3" data-loaded="false" id="tab-media"><a href="#media">Media</a></li>
@@ -41,33 +41,51 @@
           data-component-id="lesson-speech" 
           data-component-container="#speech">
    </span>    
-</div> 
+</div> -->
     
 
-<!--
 
-<div class="page-control">
+<div class="page-control page-control-lesson">
     <div class="tab-group">
-        <div class="tab active" data-body="words">Words</div>
-        <div class="tab" data-body="articles">Articles</div>
+            <div class="tab active" data-body="words">Words</div>
+            <div class="tab" data-loaded="false" id="tab-media" data-body="media">Media</div>
+            <div class="tab" data-body="dictation">Dictation</div>    
+            <div class="tab" data-body="speech">Pronounce</div>                        
     </div>
     <div class="tab-body-group">
-        <div id="words" name="words" class="tab-body active">
-
-            <span data-component="yes" 
-                  data-component-name="lesson_detail_words" 
-                  data-component-id="lesson-words-list" 
-                  data-component-container="#words">
-            </span>
-
+        <div name="words" id="words" class="tab-body active">
+                <span data-component="yes" 
+                      data-component-name="lesson_detail_words" 
+                      data-component-id="lesson-words-list" 
+                      data-component-container="#words">
+                </span>
         </div>
-        <div id="articles" name="articles" class="tab-body">
-            <span data-component="yes" 
-                  data-component-name="lesson_detail_articles" 
-                  data-component-id="lesson-articles-list" 
-                  data-component-container="#articles">
-            </span>
+        
+        <div name="media" id="media" class="tab-body">
+             <div id="media-videos">
+                    <span data-component="yes" 
+                    data-component-name="videoPlaylist" 
+                    data-component-id="videoPlaylistLesson"
+                    data-auto-create="no"
+                    data-component-container="#media-videos">
+              </span>  
+            </div>
         </div>
+            
+        <div name="dictation" id="dictation" class="tab-body">
+            <span data-component="yes" 
+                  data-component-name="lesson_detail_dictation" 
+                  data-component-id="lesson-dictation" 
+                  data-component-container="#dictation">
+            </span>    
+        </div> 
+        
+        <div name="speech" id="speech" class="tab-body">
+            <span data-component="yes" 
+                  data-component-name="speech" 
+                  data-component-id="lesson-speech" 
+                  data-component-container="#speech">
+           </span>    
+        </div>                 
     </div>
 </div> 
--->

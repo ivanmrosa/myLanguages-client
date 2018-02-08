@@ -84,49 +84,110 @@ function dictionary(instanceId) {
 
     };
 
-    this.playWordAudio = function (word, reportError) {
+    this.getRandomWords = function(limit, minLength, maxLength){
+        var methodOnFinish = undefined;
+        var result = {};
+        
+        result.onFinish = function(method){
+           methodOnFinish = method;
+        };
+         
+        var key = wordknikKey()
+        var request_params = {"limit": 1, "api_key": key, "hasDictionaryDef": true, "minCorpusCount":1000,
+                              "maxCorpusCount":-1, "minDictionaryCount":1, "maxDictionaryCount":-1,
+                              "minLength": minLength, "maxLength": maxLength };
+        var url = "http://api.wordnik.com:80/v4/words.json/randomWords";
+                
+        frango.ajaxGet({
+            "url": url,
+            "data": request_params,
+            "useAuthorization": false,
+            "useFrangoHost": false,
+            "onSuccess": function (words) {
+                var words = JSON.parse(words);                 
+                methodOnFinish(words);                
+            },
+            "onFailure": function () {
+                //Materialize.toast("Sorry, that's something wrong! The data was unavailable.", 3000);
+                frango.warning("Sorry, something is wrong! The data was unavailable.");
+            }
+        });
 
+        return result;
+    };
+
+    var playFromWeb = function (word, reportError) {
+        thisObject.getWordAudioURL(word, function (url) {
+            try {
+                if (url) {
+                    var audio = frango.find('#word-list-audio-play').first();
+                    audio.setAttribute('src', url);
+                    audio.play();
+
+                } else {
+
+                    if (reportError == true) {
+                        frango.warning('Sorry, audio not found.')
+                    };
+                };
+            } catch (e) {
+                frango.warning(e);
+            };
+        });
+    };
+    var playFromBrowser = function(text, onFinish){        
+        if ('speechSynthesis' in window) {
+            var msg = new SpeechSynthesisUtterance(text);                
+            msg.voiceURI = 'native';
+            msg.volume = 1; // 0 to 1
+            msg.rate = 0.9; // 0.1 to 10
+            msg.pitch = 1; //0 to 2
+            msg.lang = 'en-US';        
+            msg.onend = function(e) {
+                onFinish(true);
+            };        
+            window.speechSynthesis.speak(msg);
+        }else{
+            onFinish(false);
+        };     
+    };
+
+    this.playWordAudio = function (word, reportError) {
+         thisObject.playPhrases(word, reportError);
+    };
+    
+    this.playPhrases = function(phrase, reportError){
         if (reportError == undefined || reportError == null) {
             reportError = true;
-        };
-
-        var playFromWeb = function () {
-            thisObject.getWordAudioURL(word, function (url) {
-                try {
-                    if (url) {
-                        var audio = frango.find('#word-list-audio-play').first();
-                        audio.setAttribute('src', url);
-                        audio.play();
-
-                    } else {
-
-                        if (reportError == true) {
-                            frango.warning('Sorry, audio not found.')
-                        };
-                    };
-                } catch (e) {
-                    frango.warning(e);
-                };
+        };        
+        phrase = phrase.trim();
+        var playOnException = function(){
+            playFromBrowser(phrase, function(success){
+                if(!success){
+                   var words = phrase.split(" ");
+                   playFromWeb(words[0], reportError);
+                   if(words.length > 1){
+                      frango.warning('Multiple words not supported.');
+                   };
+                };                
             });
         };
 
         if ('plugins' in window) {
             TTS.speak({
-                text: word,
+                text: phrase,
                 locale: 'en-US',
                 rate: 0.75
             }, function () {
-                played = true;
-
-
+                                
             }, function (reason) {
-                //frango.warning(reason);
-                playFromWeb();
+                playOnException();
             });
         } else {
-            playFromWeb();
-        };
+            playOnException();
+        };        
     };
+
     this.removeDictionary = function () {
         var dic = frango.find('#' + instanceId);
         if (dic.elements.length > 0) {

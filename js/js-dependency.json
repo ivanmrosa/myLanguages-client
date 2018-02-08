@@ -1,4 +1,8 @@
 {
+    "general-js": [
+        "js/app.js",
+        "js/app-routes.js"
+    ],
     "components-js": [
         "js/components.js",
         "components/header/js/header-register.js",
@@ -11,8 +15,6 @@
         "components/common_lesson/js/common_lesson.js",
         "components/lesson_detail_words/js/lesson_detail_words-register.js",
         "components/lesson_detail_words/js/lesson_detail_words.js",
-        "components/list_word_images/js/list_word_images-register.js",
-        "components/list_word_images/js/list_word_images.js",
         "components/home/js/home-register.js",
         "components/home/js/home.js",
         "components/menu/js/menu-register.js",
@@ -42,10 +44,12 @@
         "components/list_images/js/list_images-register.js",
         "components/list_images/js/list_images.js",
         "components/searchDictionary/js/searchDictionary-register.js",
-        "components/searchDictionary/js/searchDictionary.js"
-    ],
-    "general-js": [
-        "js/app.js",
-        "js/app-routes.js"
+        "components/searchDictionary/js/searchDictionary.js",
+        "components/keyboard/js/keyboard-register.js",
+        "components/keyboard/js/keyboard.js",
+        "components/gallows/js/gallows-register.js",
+        "components/gallows/js/gallows.js",
+        "components/games/js/games-register.js",
+        "components/games/js/games.js"
     ]
 }

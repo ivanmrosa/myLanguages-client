@@ -1,0 +1,41 @@
+.keyBoardComponent{
+    float: left;
+    width: 100%;    
+}
+
+.keyBoardComponent .line{
+    float: left;
+    width: 100%;
+}
+
+.keyBoardComponent .keyboard-key{
+   float: left;
+   border: 0.1px solid white;
+   width: 10%;   
+}
+
+.keyBoardComponent .second-line{
+    padding-left: 10%;    
+}
+
+.keyBoardComponent .third-line{
+    padding-left: 20%;
+}
+
+.gallowsComponent .gallows-letter{
+  float: left;
+  margin-left: 10px;
+  font-size: 20px !important;
+}
+
+.gallowsComponent .definition{
+   float: left;
+   width: 100%;
+   padding-top: 5px;
+}
+
+.tab-body-group{
+   height: calc(100% - 121px) !important;    
+
+}
+

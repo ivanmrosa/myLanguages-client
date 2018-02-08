@@ -6,10 +6,12 @@ frango.app.configureRote(function () {
         {
     "/": "home",
     "/signup": "signup",
-    "/lesson/detail/": "lesson_detail",
-    "/lesson/": "lesson",
+    "/search-dictionary": "searchDictionary",
     "/login": "login",
-    "/search-dictionary": "searchDictionary"
+    "/gallows": "gallows",
+    "/lesson/": "lesson",
+    "/games": "games",
+    "/lesson/detail/": "lesson_detail"
 }
     
 });

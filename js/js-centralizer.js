@@ -50,10 +50,12 @@ frango.app.configureRote(function () {
         {
     "/": "home",
     "/signup": "signup",
-    "/lesson/detail/": "lesson_detail",
-    "/lesson/": "lesson",
+    "/search-dictionary": "searchDictionary",
     "/login": "login",
-    "/search-dictionary": "searchDictionary"
+    "/gallows": "gallows",
+    "/lesson/": "lesson",
+    "/games": "games",
+    "/lesson/detail/": "lesson_detail"
 }
     
 });
@@ -84,6 +86,10 @@ headerComponent = {
 
     },
     controller: function(component){
+        var extra = component.extra_data;
+        if(extra){
+           extra = JSON.parse(extra);
+        };
         var config = {"title": "", "url":"", "display": "", "execute": "window.history.back()"};
         var hash = frango.app.getURL();
         if(hash == "#"){
@@ -123,7 +129,8 @@ headerComponent = {
                 break                                     
                 
             default:
-                break;
+                config["title"] = extra["title"];
+                config["display"] = extra["display_icon"] || "block";
         }
         
         
@@ -267,15 +274,15 @@ lesson_detailComponent = {
 
     controller: function (component) {
         var loadMedia = function () {
-            frango.find('#tab-media').on('click', function () {
+            /*frango.find('#tab-media').on('click', function () {
                 var element = frango.find(this).first();
                 var loaded = element.attr('data-loaded');
                 if (loaded == "true") {
                     return;
-                };
+                };*/
                 var params = frango.app.getURLParameters();
                 params["media_type"] = 'V';
-                frango.wait.start(component.selector_to_bid);
+                //frango.wait.start();
                 frango.ajaxGet({
                     url: 'lesson-media/',
                     data : params,
@@ -285,23 +292,24 @@ lesson_detailComponent = {
                             videos,
                             function (instance) {
                                 var playListVideo = instance;
-                                element.attr('data-loaded', "true");
-                                frango.wait.stop();
+                                //element.attr('data-loaded', "true");
+                                //frango.wait.stop();
                             });
                     },
                     onFailure: function (err) {
-                        frango.wait.stop();
+                        //frango.wait.stop();
                         frango.warnig(err);
                     }
                 });            
-            });
+            //});
         };
 
         component.bindData([], true, function () {
-            //frango.tab();
-            $(document).ready(function () {
-                $('ul.tabs').tabs();
-            });
+            frango.tab('.page-control-lesson', true);
+            //$('ul.tabs').tabs();                
+            /*$(document).ready(function () {
+                
+            });*/
             loadMedia();
 
 
@@ -443,65 +451,6 @@ lesson_detail_wordsComponent = {
             component.bindData([], true, onFinish);
         });
     },
-}
-
-
-app.components.push(function () {
-    frango.component('list_word_images').
-        setPathLocalTemplate('components/list_word_images/template/list_word_images.html').
-        objectGetData(list_word_imagesComponent).
-        controller(list_word_imagesComponent.controller).
-        register()
-});
-
-
-list_word_imagesComponent = {
-    getKey: function () {
-        return "7504667-62e4222bd016b8037990064a7";
-    },
-
-    getBaseURL: function () {
-        return "https://pixabay.com/api/"
-    },
-
-
-
-    getData: function (word, methodToSendData) {
-        params = { "key": list_word_imagesComponent.getKey(), "image_type": "all", "q": word,
-          "safesearch": true, "lang":"en"};
-        frango.ajaxGet({
-            "url": list_word_imagesComponent.getBaseURL(),
-            "data": params,
-            "onSuccess": methodToSendData,
-            "onFailure": methodToSendData,
-            "useAuthorization": false,
-            "useFrangoHost": false
-        });
-    },
-
-    resetImages: function () {
-        frango.find('#modal_list_images').first().innerHTML =
-            '<h4 data-datasetname="metadata" data-self="true">[{ (metadata) word }]</h4> ' +
-            ' <img class="responsive-img" data-datasetname="images"  data-self="true" ' +
-            '     src="[{ (images) webformatURL }]"> ';
-
-    },
-
-    openListImage: function (word, ) {
-        list_word_imagesComponent.resetImages();
-        list_word_imagesComponent.getData(word, function (imagesObject) {
-            imagesObject = JSON.parse(imagesObject);
-            frango.bindDataOnTemplate('metadata', [{ "word": word }]);
-            frango.bindDataOnTemplate('images', imagesObject['hits'])
-            $('#modal_list_images').modal('open');
-        });
-    },
-
-    controller: function (component) {
-        component.bindData([], true, function () {
-            $('.modal').modal();
-        });
-    }
 }
 
 
@@ -1440,7 +1389,11 @@ function textSelector(instanceId) {
 
     var copySelectedText = function(){
         document.execCommand('copy');
-        Materialize.toast('Copied!', 2000);
+        frango.warning('Copied!');
+    };
+
+    var audio = function(){
+       dictionaryInstance.playPhrases(thisObject.selectedText);
     };
 
     var openDictionary = function(){        
@@ -1478,6 +1431,7 @@ function textSelector(instanceId) {
         htmlComponent.find('.googleTranslate').on('click', openGoogleTranslation);
         htmlComponent.find('.copyText').on('click', copySelectedText);
         htmlComponent.find('.definition').on('click', openDictionary);
+        htmlComponent.find('.audio').on('click', audio);
     };
 
     __init__();
@@ -1621,49 +1575,110 @@ function dictionary(instanceId) {
 
     };
 
-    this.playWordAudio = function (word, reportError) {
+    this.getRandomWords = function(limit, minLength, maxLength){
+        var methodOnFinish = undefined;
+        var result = {};
+        
+        result.onFinish = function(method){
+           methodOnFinish = method;
+        };
+         
+        var key = wordknikKey()
+        var request_params = {"limit": 1, "api_key": key, "hasDictionaryDef": true, "minCorpusCount":1000,
+                              "maxCorpusCount":-1, "minDictionaryCount":1, "maxDictionaryCount":-1,
+                              "minLength": minLength, "maxLength": maxLength };
+        var url = "http://api.wordnik.com:80/v4/words.json/randomWords";
+                
+        frango.ajaxGet({
+            "url": url,
+            "data": request_params,
+            "useAuthorization": false,
+            "useFrangoHost": false,
+            "onSuccess": function (words) {
+                var words = JSON.parse(words);                 
+                methodOnFinish(words);                
+            },
+            "onFailure": function () {
+                //Materialize.toast("Sorry, that's something wrong! The data was unavailable.", 3000);
+                frango.warning("Sorry, something is wrong! The data was unavailable.");
+            }
+        });
 
+        return result;
+    };
+
+    var playFromWeb = function (word, reportError) {
+        thisObject.getWordAudioURL(word, function (url) {
+            try {
+                if (url) {
+                    var audio = frango.find('#word-list-audio-play').first();
+                    audio.setAttribute('src', url);
+                    audio.play();
+
+                } else {
+
+                    if (reportError == true) {
+                        frango.warning('Sorry, audio not found.')
+                    };
+                };
+            } catch (e) {
+                frango.warning(e);
+            };
+        });
+    };
+    var playFromBrowser = function(text, onFinish){        
+        if ('speechSynthesis' in window) {
+            var msg = new SpeechSynthesisUtterance(text);                
+            msg.voiceURI = 'native';
+            msg.volume = 1; // 0 to 1
+            msg.rate = 0.9; // 0.1 to 10
+            msg.pitch = 1; //0 to 2
+            msg.lang = 'en-US';        
+            msg.onend = function(e) {
+                onFinish(true);
+            };        
+            window.speechSynthesis.speak(msg);
+        }else{
+            onFinish(false);
+        };     
+    };
+
+    this.playWordAudio = function (word, reportError) {
+         thisObject.playPhrases(word, reportError);
+    };
+    
+    this.playPhrases = function(phrase, reportError){
         if (reportError == undefined || reportError == null) {
             reportError = true;
-        };
-
-        var playFromWeb = function () {
-            thisObject.getWordAudioURL(word, function (url) {
-                try {
-                    if (url) {
-                        var audio = frango.find('#word-list-audio-play').first();
-                        audio.setAttribute('src', url);
-                        audio.play();
-
-                    } else {
-
-                        if (reportError == true) {
-                            frango.warning('Sorry, audio not found.')
-                        };
-                    };
-                } catch (e) {
-                    frango.warning(e);
-                };
+        };        
+        phrase = phrase.trim();
+        var playOnException = function(){
+            playFromBrowser(phrase, function(success){
+                if(!success){
+                   var words = phrase.split(" ");
+                   playFromWeb(words[0], reportError);
+                   if(words.length > 1){
+                      frango.warning('Multiple words not supported.');
+                   };
+                };                
             });
         };
 
         if ('plugins' in window) {
             TTS.speak({
-                text: word,
+                text: phrase,
                 locale: 'en-US',
                 rate: 0.75
             }, function () {
-                played = true;
-
-
+                                
             }, function (reason) {
-                //frango.warning(reason);
-                playFromWeb();
+                playOnException();
             });
         } else {
-            playFromWeb();
-        };
+            playOnException();
+        };        
     };
+
     this.removeDictionary = function () {
         var dic = frango.find('#' + instanceId);
         if (dic.elements.length > 0) {
@@ -1900,5 +1915,350 @@ searchDictionaryComponent = {
                });
            });
        });
+    }
+}
+
+
+app.components.push(function () {
+    frango.component('keyboard').
+        setPathLocalTemplate('components/keyboard/template/keyboard.html').
+        objectGetData(keyboardComponent).
+        controller(keyboardComponent.controller).
+        register()
+});
+
+
+function keyboardClass(instanceId) {
+    //use htmlComponent.find() to access the child elements  
+    var htmlComponent = frango.find('#' + instanceId);
+    var thisObject = this;
+    var keysFirstLine = ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p'];
+    var keysSecondLine = ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l'];
+    var keysThirdLine = ['z', 'x', 'c', 'v', 'b', 'n', 'm']
+    var keysFourthLine = ['-']
+    var onKeyPress = undefined;
+
+    /*write the component functionalites here*/
+    var getKeyHtml = function (key) {
+        return frango.format('<div class="orange  white-text center-align cur-pointer keyboard-key" data-key="%s">%s</div>', 
+          [key, key]);
+    };
+
+    var drawKeys = function () {
+        var firstLine = htmlComponent.find('.first-line');
+        for (var index = 0; index < keysFirstLine.length; index++) {
+            var key = keysFirstLine[index];
+            firstLine.first().insertAdjacentHTML('beforeend', getKeyHtml(key));
+        };
+
+        var secondLine = htmlComponent.find('.second-line');
+        for (var index = 0; index < keysSecondLine.length; index++) {
+            var key = keysSecondLine[index];
+            secondLine.first().insertAdjacentHTML('beforeend', getKeyHtml(key));
+        };
+        var thirdLine = htmlComponent.find('.third-line');
+        for (var index = 0; index < keysThirdLine.length; index++) {
+            var key = keysThirdLine[index];
+            thirdLine.first().insertAdjacentHTML('beforeend', getKeyHtml(key));
+        };
+
+        var fourthLine = htmlComponent.find('.fourth-line');
+        for (var index = 0; index < keysFourthLine.length; index++) {
+            var key = keysFourthLine[index];
+            fourthLine.first().insertAdjacentHTML('beforeend', getKeyHtml(key));
+        };
+
+        htmlComponent.find('.keyboard-key').on('click', function () {
+            if (onKeyPress) {
+                if(this.getAttribute('data-disabled') != "yes")
+                   onKeyPress(this.innerHTML);
+            } else {
+                franggetKeyHtmlo.warning('onKeyPress event not provied');
+            };
+        });
+
+    };
+
+    this.disableKey = function(key){
+       var ele = htmlComponent.find(frango.format('[data-key="%s"]', [key]));
+       ele.attr('data-disabled', "yes");
+       ele.rmCl('orange');
+       ele.adCl('grey');
+    };
+
+    this.enableKey = function(key){
+        var ele = htmlComponent.find(frango.format('[data-key="%s"]', [key]));
+        ele.attr('data-disabled', "no");
+        ele.rmCl('grey');
+        ele.adCl('orange'); 
+    };
+
+    this.enableAllKeys = function(){
+
+        htmlComponent.find('.keyboard-key').loop(function(){
+            ele = frango.find(this);
+            ele.attr('data-disabled', "no");
+            ele.rmCl('grey');
+            ele.adCl('orange');     
+        });
+    };
+     
+    this.setOnKeyPress = function (keyPressEvent) {
+        onKeyPress = keyPressEvent;
+    };
+
+    var __init__ = function () {
+        drawKeys();
+    };
+
+    __init__();
+}
+
+
+keyboardComponent = {
+
+    controller: function (component) {
+        //This implementation permites to create component by url route
+
+    },
+
+    getInitialData: function (componentID, callBack) {
+        var dataTemplate = {
+            'keyboard': [{
+                id: componentID
+            }]
+        };
+        callBack(dataTemplate);
+
+    },
+
+    getInstance: function (componentID, methodToSendInstance) {
+        //This implementation permites to create reusable component. The property data-auto-create in the component html must be setted to "no".
+        frango.useNestedComponent(componentID, function () {
+            var component = frango.getComponent('keyboard');
+            var instanceID = component.componentID;
+
+            keyboardComponent.getInitialData(instanceID, function (data) {
+                component.bindData(data, true, function () {
+                    var instance = new keyboardClass(componentID);
+                    if (methodToSendInstance) {
+                        methodToSendInstance(instance);
+                    };
+                });
+            });
+        });
+    }
+};
+
+
+
+app.components.push(function () {
+    frango.component('gallows').
+        setPathLocalTemplate('components/gallows/template/gallows.html').
+        objectGetData(gallowsComponent).
+        controller(gallowsComponent.controller).
+        register()
+});
+
+
+function gallowsClass(instanceId) {
+    //use htmlComponent.find() to access the child elements  
+    var htmlComponent = frango.find('#' + instanceId);
+    var thisObject = this;
+    var actualWord;
+    var dictionaryInstance = undefined;
+    var keyboardInstance = undefined;
+    var keysCorrectPressed = {};
+    var countCorrectKeys = 0;
+    var errors = 0;
+    var htmlDefinition;
+    /*write the component functionalites here*/
+    var setImage = function () {
+        var src = 'img/gallow-%s.png'
+        htmlComponent.find('.gallow-img').attr('src', frango.format(src, [errors]));
+    };
+
+    var setHtmlDefinition = function () {
+        htmlDefinition = htmlComponent.find('.data-set-definition-container').first().innerHTML;
+    };
+    var redefineDatasetDefinition = function () {
+        htmlComponent.find('.data-set-definition-container').first().innerHTML = htmlDefinition;
+    };
+
+    var checkKeyAswer = function (key) {
+        var isKeyCorrect = false;
+
+        var check = function (keyCheck) {
+            for (var index = 0; index < actualWord.length; index++) {
+                var letter = actualWord[index];
+                if (letter == keyCheck) {                
+                    countCorrectKeys += 1;
+                    htmlComponent.find('[data-pos="' + index + '"]').first().innerHTML = letter;                                         
+                    isKeyCorrect = true;
+                };                
+            };
+        };
+
+        check(key);
+        keyboardInstance.disableKey(key);
+
+        if (!isKeyCorrect) {
+            errors += 1;
+            setImage();
+        };
+
+        if (countCorrectKeys == actualWord.length) {
+            //frango.warning('You won!');
+            alert('You won!');
+            setColorInWord('green');
+        } else if (errors == 6) {
+            //frango.warning('You lose!');
+            alert('You lose');
+            setColorInWord('red');
+            for (var index = 0; index < actualWord.length; index++) {
+                var letter = actualWord[index];
+                check(letter);
+            };
+        };
+    };
+
+
+    var getDefinition = function () {
+        dictionaryInstance.getWordDefinition(actualWord, function (definition) {
+            definition = JSON.parse(definition);
+            if(definition){
+                frango.bindDataOnTemplate('definition', definition);
+            }else{
+                alert('No definition found!');
+            };
+            
+        });
+    };
+
+    var __init__ = function () {
+        setHtmlDefinition();
+        dictionaryInstance = new dictionary(instanceId + 'Dictionary');
+        keyboardComponent.getInstance(instanceId + 'Keyboard', function (instance) {
+            keyboardInstance = instance;
+            instance.setOnKeyPress(checkKeyAswer);            
+        });
+
+        htmlComponent.find('.next-word').on('click', thisObject.newRandomGame)
+        htmlComponent.find('.bn-definition').on('click', getDefinition);
+    };
+
+    var getHtmlWord = function () {
+        var htmlLetter = '<div class="gallows-letter" data-pos="%s">%s</div>';
+        var html = "";
+        for (var index = 0; index < actualWord.length; index++) {
+            var letter = actualWord[index];
+            if (letter == '-') {
+                html += frango.format(htmlLetter, [index, '-']);
+            } else {
+                html += frango.format(htmlLetter, [index, '__']);
+            };
+        };
+        return html;
+    };
+
+    var setColorInWord = function (color) {
+        htmlComponent.find('.gallows-letter').adSty('color', color);
+    };
+
+    var setWordHTML = function () {
+        var containerLetter = htmlComponent.find('.letters');
+        containerLetter.find('*').remove();
+        containerLetter.first().insertAdjacentHTML('beforeend', getHtmlWord());
+    };
+
+    this.newRandomGame = function () {
+        dictionaryInstance.getRandomWords(1, 5, 20).onFinish(function (words) {
+            thisObject.newGame(words[0].word);
+        });
+    };
+
+    this.newGame = function (word) {
+        actualWord = word.toLowerCase();
+        keysCorrectPressed = {};
+        countCorrectKeys = 0;
+        errors = 0;
+        redefineDatasetDefinition();
+        setImage();
+        setWordHTML();
+        
+        if(keyboardInstance){
+            keyboardInstance.enableAllKeys();
+            keyboardInstance.disableKey('-');
+        };
+        
+        setColorInWord('black');
+    };
+
+    __init__();
+}
+
+
+gallowsComponent = {
+
+    controller: function (component) {
+        //This implementation permites to create component by url route
+        var instanceID = component.componentID;
+        gallowsComponent.getInitialData(instanceID, function (data) {
+            component.bindData(data, true, function () {
+                /*on finish*/
+
+                var gallowGame = new gallowsClass(instanceID);
+                gallowGame.newRandomGame();
+
+            });
+        });
+
+    },
+
+    getInitialData: function (componentID, callBack) {
+        var dataTemplate = {
+            'gallows': [{
+                id: componentID
+            }]
+        };
+        callBack(dataTemplate);
+
+    },
+
+    getInstance: function (componentID, methodToSendInstance) {
+        //This implementation permites to create reusable component. The property data-auto-create in the component html must be setted to "no".
+        frango.useNestedComponent(componentID, function () {
+            var component = frango.getComponent('gallows');
+            var instanceID = component.componentID;
+
+            gallowsComponent.getInitialData(instanceID, function (data) {
+                component.bindData(data, true, function () {
+                    var instance = new gallowsClass(componentID);
+                    if (methodToSendInstance) {
+                        methodToSendInstance(instance);
+                    };
+                });
+            });
+        });
+    }
+};
+
+
+
+app.components.push(function () {
+    frango.component('games').
+        setPathLocalTemplate('components/games/template/games.html').
+        objectGetData(gamesComponent).
+        controller(gamesComponent.controller).
+        register()
+});
+
+
+gamesComponent = {
+    getData : function(){
+
+    },
+    controller: function(component){
+       component.bindData();
     }
 }

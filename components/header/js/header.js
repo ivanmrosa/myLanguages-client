@@ -4,6 +4,10 @@ headerComponent = {
 
     },
     controller: function(component){
+        var extra = component.extra_data;
+        if(extra){
+           extra = JSON.parse(extra);
+        };
         var config = {"title": "", "url":"", "display": "", "execute": "window.history.back()"};
         var hash = frango.app.getURL();
         if(hash == "#"){
@@ -43,7 +47,8 @@ headerComponent = {
                 break                                     
                 
             default:
-                break;
+                config["title"] = extra["title"];
+                config["display"] = extra["display_icon"] || "block";
         }
         
         
