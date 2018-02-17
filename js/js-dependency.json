@@ -1,8 +1,4 @@
 {
-    "general-js": [
-        "js/app.js",
-        "js/app-routes.js"
-    ],
     "components-js": [
         "js/components.js",
         "components/header/js/header-register.js",
@@ -50,6 +46,12 @@
         "components/gallows/js/gallows-register.js",
         "components/gallows/js/gallows.js",
         "components/games/js/games-register.js",
-        "components/games/js/games.js"
+        "components/games/js/games.js",
+        "components/help/js/help-register.js",
+        "components/help/js/help.js"
+    ],
+    "general-js": [
+        "js/app.js",
+        "js/app-routes.js"
     ]
 }

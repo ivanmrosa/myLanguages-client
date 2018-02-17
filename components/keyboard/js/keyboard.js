@@ -3,58 +3,130 @@ function keyboardClass(instanceId) {
     //use htmlComponent.find() to access the child elements  
     var htmlComponent = frango.find('#' + instanceId);
     var thisObject = this;
-    var keysFirstLine = ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p'];
-    var keysSecondLine = ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l'];
-    var keysThirdLine = ['z', 'x', 'c', 'v', 'b', 'n', 'm']
-    var keysFourthLine = ['-']
+    var keysFirstLine = [];
+    var keysSecondLine = [];
+    var keysThirdLine = [];
+    var keysFourthLine = [];
+    var disabledKeys = []
     var onKeyPress = undefined;
 
     /*write the component functionalites here*/
+
+    var setNormalKeys = function(){
+        keysFirstLine = ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p'];
+        keysSecondLine = ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l'];
+        keysThirdLine = ['z', 'x', 'c', 'v', 'b', 'n', 'm']    
+    };
+
+    var setSpecialCharactersKeys = function(){
+        keysFirstLine = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
+        keysSecondLine = ['@', '#', '$', '_', '&', '-', '+', '(', ')'];
+        keysThirdLine = ['/', '*', '"', "'", ':', ';', '!', '?']      
+    };
+
     var getKeyHtml = function (key) {
         return frango.format('<div class="orange  white-text center-align cur-pointer keyboard-key" data-key="%s">%s</div>', 
           [key, key]);
     };
 
-    var drawKeys = function () {
+    var addFourthLinhe = function(useNormal){
+        var fourthLine = htmlComponent.find('.fourth-line'); 
+        fourthLine.first().innerHTML = "";
+        fourthLine.first().insertAdjacentHTML('beforeend', '<div class="orange white-text center-align cur-pointer caps-lock special keyboard-key data-key=""> '+
+          '<i class="mdi mdi-apple-keyboard-caps"></i></div>');        
+        fourthLine.first().insertAdjacentHTML('beforeend', getKeyHtml(','));
+        fourthLine.first().insertAdjacentHTML('beforeend', getKeyHtml('.'));
+        fourthLine.first().insertAdjacentHTML('beforeend', '<div class="orange white-text center-align cur-pointer keyboard-key special special-character" data-key="">?123</div>');
+        fourthLine.first().insertAdjacentHTML('beforeend', '<div class="orange white-text center-align cur-pointer keyboard-key special space" data-key=" ">&nbsp</div>');
+        fourthLine.first().insertAdjacentHTML('beforeend', '<div class="orange white-text center-align cur-pointer keyboard-key special" data-key="#8"><i class="mdi mdi-keyboard-backspace"></i></div>');
+        fourthLine.first().insertAdjacentHTML('beforeend', '<div class="orange white-text center-align cur-pointer keyboard-key special enter" data-key="#13">Enter</div>');        
+        
+
+        fourthLine.find('.caps-lock').on('click', function(){
+           var caps = frango.find(this);
+           var pressed = caps.attr('data-pressed');
+           htmlComponent.find('.keyboard-key:not(.special)').loop(function(){
+               var key = this; 
+               if (pressed == "yes") {
+                   key.innerHTML = key.innerHTML.toLowerCase();                   
+                   caps.attr('data-pressed', "no");
+               }else{
+                   key.innerHTML = key.innerHTML.toUpperCase();
+                   caps.attr('data-pressed', "yes");
+               };
+               key.attr('data-key', key.innerHTML);
+           });
+        });
+
+        fourthLine.find('.special-character').on('click', function(){
+            if(useNormal){
+                setSpecialCharactersKeys();
+                drawKeys(false);                
+            }else{
+               setNormalKeys();
+               drawKeys(true);               
+            };            
+        });
+    };
+
+    var drawKeys = function (useNormal) {   
+        
+        if(useNormal == undefined || useNormal == null ){
+            useNormal = true;
+        };
         var firstLine = htmlComponent.find('.first-line');
+        firstLine.first().innerHTML = "";
         for (var index = 0; index < keysFirstLine.length; index++) {
             var key = keysFirstLine[index];
             firstLine.first().insertAdjacentHTML('beforeend', getKeyHtml(key));
         };
 
         var secondLine = htmlComponent.find('.second-line');
+        secondLine.first().innerHTML = "";
         for (var index = 0; index < keysSecondLine.length; index++) {
             var key = keysSecondLine[index];
             secondLine.first().insertAdjacentHTML('beforeend', getKeyHtml(key));
         };
         var thirdLine = htmlComponent.find('.third-line');
+        thirdLine.first().innerHTML = "";
         for (var index = 0; index < keysThirdLine.length; index++) {
             var key = keysThirdLine[index];
             thirdLine.first().insertAdjacentHTML('beforeend', getKeyHtml(key));
         };
 
-        var fourthLine = htmlComponent.find('.fourth-line');
+        /*var fourthLine = htmlComponent.find('.fourth-line');
         for (var index = 0; index < keysFourthLine.length; index++) {
             var key = keysFourthLine[index];
             fourthLine.first().insertAdjacentHTML('beforeend', getKeyHtml(key));
-        };
+        };*/
+
+        addFourthLinhe(useNormal);
 
         htmlComponent.find('.keyboard-key').on('click', function () {
             if (onKeyPress) {
-                if(this.getAttribute('data-disabled') != "yes")
-                   onKeyPress(this.innerHTML);
+                if(this.attr('data-disabled') != "yes" && this.attr('data-key')){
+                    onKeyPress(this.attr('data-key'));
+                };                   
             } else {
-                franggetKeyHtmlo.warning('onKeyPress event not provied');
+                frango.warning('onKeyPress event not provied');
             };
         });
 
+        thisObject.disableKeys();
+
     };
 
-    this.disableKey = function(key){
+    this.disableKey = function(key, permanent){
+       if(permanent == undefined || permanent == null){
+           permanent = true;
+       };
        var ele = htmlComponent.find(frango.format('[data-key="%s"]', [key]));
        ele.attr('data-disabled', "yes");
        ele.rmCl('orange');
        ele.adCl('grey');
+       if(permanent){
+           disabledKeys.push(key);
+       };
     };
 
     this.enableKey = function(key){
@@ -62,16 +134,32 @@ function keyboardClass(instanceId) {
         ele.attr('data-disabled', "no");
         ele.rmCl('grey');
         ele.adCl('orange'); 
+        var idx = disabledKeys.indexOf(key);
+        if(idx > -1){
+            disabledKeys.splice(idx, 1);
+        };
     };
 
     this.enableAllKeys = function(){
-
         htmlComponent.find('.keyboard-key').loop(function(){
-            ele = frango.find(this);
-            ele.attr('data-disabled', "no");
-            ele.rmCl('grey');
-            ele.adCl('orange');     
+            thisObject.enableKey(this.attr('data-key'));
         });
+    };
+
+    this.disableAllKeys = function(){
+        htmlComponent.find('.keyboard-key').loop(function(){
+            thisObject.disableKey(this.attr('data-key'));
+        });        
+    };
+
+    this.disableKeys = function(){
+        for (var index = 0; index < disabledKeys.length; index++) {
+            thisObject.disableKey(disabledKeys[index], false);            
+        };
+    };
+
+    this.setDisabledKeys = function(keys){
+       disabledKeys = keys;
     };
      
     this.setOnKeyPress = function (keyPressEvent) {
@@ -79,7 +167,8 @@ function keyboardClass(instanceId) {
     };
 
     var __init__ = function () {
-        drawKeys();
+        setNormalKeys();
+        drawKeys(true);
     };
 
     __init__();

@@ -56,11 +56,41 @@ function dictionary(instanceId) {
             },
             "onFailure": function () {
                 //Materialize.toast("Sorry, that's something wrong! The data was unavailable.", 3000);
-                frango.warning("Sorry, something is wrong! The data was unavailable.");
+                frango.warning("Sorry, something is wrong! The data is unavailable.");
             }
         });
 
     };
+
+    this.getRelatedWords = function(word, type, limit, methodToSendData){
+        var key = wordknikKey()
+        var request_params = { "useCanonical": true, "limit": limit, "api_key": key,
+            "relationshipTypes" : type };
+        var url = "http://api.wordnik.com:80/v4/word.json/" + word + "/relatedWords";
+
+        frango.ajaxGet({
+            url : url,
+            data : request_params,
+            useFrangoHost : false,
+            useAuthorization: false,
+            onSuccess : function(data){
+               data = JSON.parse(data);
+               if(data.length > 0){
+                   methodToSendData(data[0].words);
+               }else{
+                   methodToSendData([]);
+               };
+               
+            },
+
+            onFailure : function(err){
+               console.log(err);
+               frango.warning('Sorry, something is wrong. The data is unavailable.');
+            }
+        })
+       
+    },
+
     this.setWordDefinition = function (word, element) {
 
         if (element.getAttribute('data-defined') != "yes") {
@@ -79,9 +109,22 @@ function dictionary(instanceId) {
                 bindData(preparedData, status, word + "_example");
                 frango.wait.stop(element);
             });
-
+            
+            htmlComponent.find('#' + word + '_synonym').on('click', function(){
+               frango.wait.start(element);
+               thisObject.getRelatedWords(word, 'synonym', 10, function(words){
+                   if(words.length == 0 ){
+                       frango.warning('No synonym found!');
+                   };
+                   var wordObjectsList = [];
+                   for (var index = 0; index < words.length; index++) {
+                       wordObjectsList.push({'text': words[index]});
+                   };
+                   bindData(wordObjectsList, null, word + '_synonym');
+                   frango.wait.stop(element);
+               });
+            });
         };
-
     };
 
     this.getRandomWords = function(limit, minLength, maxLength){
@@ -109,7 +152,7 @@ function dictionary(instanceId) {
             },
             "onFailure": function () {
                 //Materialize.toast("Sorry, that's something wrong! The data was unavailable.", 3000);
-                frango.warning("Sorry, something is wrong! The data was unavailable.");
+                frango.warning("Sorry, something is wrong! The data is unavailable.");
             }
         });
 

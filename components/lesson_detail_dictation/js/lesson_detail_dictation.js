@@ -1,5 +1,8 @@
 
 lesson_detail_dictationComponent = {
+    player: undefined,
+    started: false,
+    dictationDictionary: undefined,    
     getData: function () {
 
     },
@@ -7,32 +10,54 @@ lesson_detail_dictationComponent = {
         lesson_detail_dictationComponent.started = false;
         component.bindData([], true, function () {
             lesson_detail_dictationComponent.dictationDictionary = new dictionary('dictation-player');
-            training_playerComponent.getInstance('dictation-player', function (instance) {                
-                lesson_detail_dictationComponent.player = instance
+            training_playerComponent.getInstance('dictation-player', function (instance) {
+                lesson_detail_dictationComponent.player = instance;
+                var playMethod = lesson_detail_dictationComponent.player.playWord;
+                lesson_detail_dictationComponent.player.playWord = function () {
+                    if (!lesson_detail_dictationComponent.started) {
+                        lesson_detail_dictationComponent.start();
+                    } else {
+                        playMethod();
+                    };
+                };
+
+                lesson_detail_dictationComponent.player.setControlClass(lesson_detail_dictationComponent.player.btnStart, true);
+            });
+
+            keyboardComponent.getInstance('dictation-keyboard', function (instance) {                
+                instance.setOnKeyPress(function (key) {
+                    var edit = frango.find('#word-anwser').first();
+                    switch (key) {
+                        case "#8":
+                            edit.value = edit.value.substr(0, edit.value.length - 1);
+                            break;
+                        case "#13":
+                            lesson_detail_dictationComponent.checkAnswer();
+                            break;
+                        default:
+                            edit.value = edit.value + key;
+                            break;
+                    };
+                });                
             });
 
         });
     },
-    player: undefined,
-    started: false,
-    dictationDictionary : undefined,
     start: function () {
         if (!lesson_detail_dictationComponent.started) {
-
             lesson_detail_dictationComponent.player.autoPlay = false;
+            frango.wait.start();
             lesson_detail_wordsComponent.getLessonWords(function (wordsObject) {
                 wordsList = []
                 for (var index = 0; index < wordsObject.length; index++) {
                     wordsList.push(wordsObject[index].text);
                 };
-                frango.find('#btn-dictation-start').adCl('disabled');
-                frango.find('#btn-dictation-confirm').rmCl('disabled');
                 lesson_detail_dictationComponent.started = true;
                 lesson_detail_dictationComponent.player.setPlaylist(wordsList, false,
                     lesson_detail_dictationComponent.dictationDictionary.getWordAudioURL);
+                frango.wait.stop();
                 lesson_detail_dictationComponent.player.playWord();
-            });
-
+            });            
         };
     },
     checkAnswer: function () {
@@ -58,7 +83,7 @@ lesson_detail_dictationComponent = {
         } else {
             answer_msg.rmCl('green-text');
             answer_msg.adCl('red-text');
-            answer_msg.first().innerHTML = "Wrong! Try again!";            
+            answer_msg.first().innerHTML = "Wrong! Try again!";
         };
         answerEle.value = '';
     },

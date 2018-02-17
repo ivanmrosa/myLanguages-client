@@ -12,7 +12,23 @@
    float: left;
    border: 0.1px solid white;
    width: 10%;   
+   height: 27.8px;
+   box-sizing: border-box;
+   padding-top: 2px;
 }
+
+.keyBoardComponent .keyboard-key.space {
+    width: 30%;
+}
+
+.keyBoardComponent .keyboard-key.special-character{
+    width: 15%;
+}
+
+.keyBoardComponent .keyboard-key.enter {
+    width: 15%;
+}
+
 
 .keyBoardComponent .second-line{
     padding-left: 10%;    
@@ -39,3 +55,21 @@
 
 }
 
+.helpComponent {
+    height: 100%;
+}
+
+.helpComponent .fixed-bottom .btn{
+    width: 48%;   
+    margin-top : 2px;    
+}
+
+.helpComponent .fixed-bottom .btn:first-of-type{
+    margin-left: 1%;
+}
+
+.helpComponent .content{    
+    padding-left: 10px;    
+    padding-right: 10px; 
+    font-size: 14px;   
+}

@@ -71,7 +71,11 @@ function textSelector(instanceId) {
 
     var __init__ = function () {
         document.addEventListener('contextmenu', function(e){
-          e.preventDefault();
+          var nodeName = e.target.nodeName;
+          var ignoredElements =  ['INPUT', 'TEXTAREA'];
+          if(nodeName.indexOf(nodeName) == -1){
+              e.preventDefault();
+          };          
         }, false); 
         document.addEventListener("selectstart", function () {
 

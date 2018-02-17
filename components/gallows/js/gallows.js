@@ -46,12 +46,12 @@ function gallowsClass(instanceId) {
         };
 
         if (countCorrectKeys == actualWord.length) {
-            //frango.warning('You won!');
-            alert('You won!');
+            frango.warning('You won!');
+            //alert('You won!');
             setColorInWord('green');
         } else if (errors == 6) {
-            //frango.warning('You lose!');
-            alert('You lose');
+            frango.warning('You lose!');
+            //alert('You lose');
             setColorInWord('red');
             for (var index = 0; index < actualWord.length; index++) {
                 var letter = actualWord[index];
@@ -60,16 +60,17 @@ function gallowsClass(instanceId) {
         };
     };
 
+    var setDisabledKeys = function() {
+        if(keyboardInstance){
+            keyboardInstance.enableAllKeys();
+            keyboardInstance.setDisabledKeys([' ', '#8', '#13']);        
+            keyboardInstance.disableKeys();
+        };
+    };
 
     var getDefinition = function () {
-        dictionaryInstance.getWordDefinition(actualWord, function (definition) {
-            definition = JSON.parse(definition);
-            if(definition){
-                frango.bindDataOnTemplate('definition', definition);
-            }else{
-                alert('No definition found!');
-            };
-            
+        dictionaryInstance.getWordDefinition(actualWord, function (definition) {                        
+          frango.bindDataOnTemplate('definition', definition);                        
         });
     };
 
@@ -77,12 +78,13 @@ function gallowsClass(instanceId) {
         setHtmlDefinition();
         dictionaryInstance = new dictionary(instanceId + 'Dictionary');
         keyboardComponent.getInstance(instanceId + 'Keyboard', function (instance) {
-            keyboardInstance = instance;
-            instance.setOnKeyPress(checkKeyAswer);            
+            keyboardInstance = instance;            
+            keyboardInstance.setOnKeyPress(checkKeyAswer);
+            setDisabledKeys();
         });
 
         htmlComponent.find('.next-word').on('click', thisObject.newRandomGame)
-        htmlComponent.find('.bn-definition').on('click', getDefinition);
+        //htmlComponent.find('.bn-definition').on('click', getDefinition);
     };
 
     var getHtmlWord = function () {
@@ -123,11 +125,8 @@ function gallowsClass(instanceId) {
         redefineDatasetDefinition();
         setImage();
         setWordHTML();
-        
-        if(keyboardInstance){
-            keyboardInstance.enableAllKeys();
-            keyboardInstance.disableKey('-');
-        };
+        getDefinition();
+        setDisabledKeys();
         
         setColorInWord('black');
     };

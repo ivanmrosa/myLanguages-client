@@ -624,3 +624,246 @@ JavaScript error: http://localhost:8081/cordova.js, line 1: SyntaxError: unexpec
 [Child 3220, Chrome_ChildThread] WARNING: pipe error (35): Conexão fechada pela outra ponta: file /build/firefox-iXzMln/firefox-58.0+build6/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
 [Child 3220, Chrome_ChildThread] WARNING: pipe error (24): Conexão fechada pela outra ponta: file /build/firefox-iXzMln/firefox-58.0+build6/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
 [Child 3220, Chrome_ChildThread] WARNING: pipe error (3): Conexão fechada pela outra ponta: file /build/firefox-iXzMln/firefox-58.0+build6/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+1518291432870	geckodriver	INFO	geckodriver 0.19.1
+1518291432889	geckodriver	INFO	Listening on 127.0.0.1:52769
+1518291434070	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.D6Gd807fg98a"
+1518291441089	Marionette	INFO	Enabled via --marionette
+1518291447825	Marionette	INFO	Listening on port 46836
+1518291447945	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://localhost:8081/cordova.js, line 1: SyntaxError: unexpected token: numeric literal
+[Child 11236, Chrome_ChildThread] WARNING: pipe error (35): Conexão fechada pela outra ponta: file /build/firefox-ox8TnP/firefox-58.0.1+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 11236, Chrome_ChildThread] WARNING: pipe error (24): Conexão fechada pela outra ponta: file /build/firefox-ox8TnP/firefox-58.0.1+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 11236, Chrome_ChildThread] WARNING: pipe error (3): Conexão fechada pela outra ponta: file /build/firefox-ox8TnP/firefox-58.0.1+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+1518291756571	geckodriver	INFO	geckodriver 0.19.1
+1518291756576	geckodriver	INFO	Listening on 127.0.0.1:54702
+1518291757723	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.OVVh89ixUaGF"
+1518291758617	Marionette	INFO	Enabled via --marionette
+1518291761523	Marionette	INFO	Listening on port 33262
+1518291761548	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://localhost:8081/cordova.js, line 1: SyntaxError: unexpected token: numeric literal
+JavaScript error: http://localhost:8081/js/js-centralizer.js, line 2270: SyntaxError: missing } after function body
+JavaScript note: http://localhost:8081/js/js-centralizer.js, line 30: { opened at line 30, column 39
+[Child 11746, Chrome_ChildThread] WARNING: pipe error (19): Conexão fechada pela outra ponta: file /build/firefox-ox8TnP/firefox-58.0.1+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 11746, Chrome_ChildThread] WARNING: pipe error (35): Conexão fechada pela outra ponta: file /build/firefox-ox8TnP/firefox-58.0.1+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 11746, Chrome_ChildThread] WARNING: pipe error (3): Conexão fechada pela outra ponta: file /build/firefox-ox8TnP/firefox-58.0.1+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+1518291936629	geckodriver	INFO	geckodriver 0.19.1
+1518291936634	geckodriver	INFO	Listening on 127.0.0.1:59531
+1518291937764	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.3m1HjHWJZLAf"
+1518291938666	Marionette	INFO	Enabled via --marionette
+1518291941707	Marionette	INFO	Listening on port 46505
+1518291941779	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://localhost:8081/cordova.js, line 1: SyntaxError: unexpected token: numeric literal
+[Child 12309, Chrome_ChildThread] WARNING: pipe error (19): Conexão fechada pela outra ponta: file /build/firefox-ox8TnP/firefox-58.0.1+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 12309, Chrome_ChildThread] WARNING: pipe error (35): Conexão fechada pela outra ponta: file /build/firefox-ox8TnP/firefox-58.0.1+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 12309, Chrome_ChildThread] WARNING: pipe error (3): Conexão fechada pela outra ponta: file /build/firefox-ox8TnP/firefox-58.0.1+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+1518292086404	geckodriver	INFO	geckodriver 0.19.1
+1518292086410	geckodriver	INFO	Listening on 127.0.0.1:60069
+1518292087562	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.AAbQBgaGs6Cp"
+1518292089142	Marionette	INFO	Enabled via --marionette
+1518292091926	Marionette	INFO	Listening on port 43069
+1518292091993	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://localhost:8081/cordova.js, line 1: SyntaxError: unexpected token: numeric literal
+[Child 12736, Chrome_ChildThread] WARNING: pipe error (19): Conexão fechada pela outra ponta: file /build/firefox-ox8TnP/firefox-58.0.1+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 12736, Chrome_ChildThread] WARNING: pipe error (35): Conexão fechada pela outra ponta: file /build/firefox-ox8TnP/firefox-58.0.1+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 12736, Chrome_ChildThread] WARNING: pipe error (3): Conexão fechada pela outra ponta: file /build/firefox-ox8TnP/firefox-58.0.1+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+1518292233745	geckodriver	INFO	geckodriver 0.19.1
+1518292233749	geckodriver	INFO	Listening on 127.0.0.1:52811
+1518292234892	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.d39aElvejbrL"
+1518292235963	Marionette	INFO	Enabled via --marionette
+1518292238715	Marionette	INFO	Listening on port 40795
+1518292238813	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://localhost:8081/cordova.js, line 1: SyntaxError: unexpected token: numeric literal
+[Child 13125, Chrome_ChildThread] WARNING: pipe error (19): Conexão fechada pela outra ponta: file /build/firefox-ox8TnP/firefox-58.0.1+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 13125, Chrome_ChildThread] WARNING: pipe error (35): Conexão fechada pela outra ponta: file /build/firefox-ox8TnP/firefox-58.0.1+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 13125, Chrome_ChildThread] WARNING: pipe error (3): Conexão fechada pela outra ponta: file /build/firefox-ox8TnP/firefox-58.0.1+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+1518292411966	geckodriver	INFO	geckodriver 0.19.1
+1518292411971	geckodriver	INFO	Listening on 127.0.0.1:35957
+1518292413108	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.GSthlXr617Qd"
+1518292414069	Marionette	INFO	Enabled via --marionette
+1518292416989	Marionette	INFO	Listening on port 39442
+1518292417031	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://localhost:8081/cordova.js, line 1: SyntaxError: unexpected token: numeric literal
+[Child 13524, Chrome_ChildThread] WARNING: pipe error (35): Conexão fechada pela outra ponta: file /build/firefox-ox8TnP/firefox-58.0.1+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 13524, Chrome_ChildThread] WARNING: pipe error (19): Conexão fechada pela outra ponta: file /build/firefox-ox8TnP/firefox-58.0.1+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 13524, Chrome_ChildThread] WARNING: pipe error (3): Conexão fechada pela outra ponta: file /build/firefox-ox8TnP/firefox-58.0.1+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+1518293042748	geckodriver	INFO	geckodriver 0.19.1
+1518293042752	geckodriver	INFO	Listening on 127.0.0.1:57035
+1518293043903	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.WQCRLR6wMz6V"
+1518293044908	Marionette	INFO	Enabled via --marionette
+1518293047729	Marionette	INFO	Listening on port 35182
+1518293047825	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://localhost:8081/cordova.js, line 1: SyntaxError: unexpected token: numeric literal
+[Child 14140, Chrome_ChildThread] WARNING: pipe error (19): Conexão fechada pela outra ponta: file /build/firefox-ox8TnP/firefox-58.0.1+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 14140, Chrome_ChildThread] WARNING: pipe error (35): Conexão fechada pela outra ponta: file /build/firefox-ox8TnP/firefox-58.0.1+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 14140, Chrome_ChildThread] WARNING: pipe error (3): Conexão fechada pela outra ponta: file /build/firefox-ox8TnP/firefox-58.0.1+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+1518293222965	geckodriver	INFO	geckodriver 0.19.1
+1518293222969	geckodriver	INFO	Listening on 127.0.0.1:47853
+1518293224109	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.5VPz7Pe8Clx8"
+1518293225031	Marionette	INFO	Enabled via --marionette
+1518293227939	Marionette	INFO	Listening on port 45794
+1518293228025	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://localhost:8081/cordova.js, line 1: SyntaxError: unexpected token: numeric literal
+[Child 14583, Chrome_ChildThread] WARNING: pipe error (19): Conexão fechada pela outra ponta: file /build/firefox-ox8TnP/firefox-58.0.1+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 14583, Chrome_ChildThread] WARNING: pipe error (35): Conexão fechada pela outra ponta: file /build/firefox-ox8TnP/firefox-58.0.1+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 14583, Chrome_ChildThread] WARNING: pipe error (3): Conexão fechada pela outra ponta: file /build/firefox-ox8TnP/firefox-58.0.1+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+1518293606788	geckodriver	INFO	geckodriver 0.19.1
+1518293606793	geckodriver	INFO	Listening on 127.0.0.1:47636
+1518293607937	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.seEg15P9wwrG"
+1518293608855	Marionette	INFO	Enabled via --marionette
+1518293611555	Marionette	INFO	Listening on port 42442
+1518293611664	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://localhost:8081/cordova.js, line 1: SyntaxError: unexpected token: numeric literal
+[Child 15042, Chrome_ChildThread] WARNING: pipe error (19): Conexão fechada pela outra ponta: file /build/firefox-ox8TnP/firefox-58.0.1+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 15042, Chrome_ChildThread] WARNING: pipe error (35): Conexão fechada pela outra ponta: file /build/firefox-ox8TnP/firefox-58.0.1+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 15042, Chrome_ChildThread] WARNING: pipe error (3): Conexão fechada pela outra ponta: file /build/firefox-ox8TnP/firefox-58.0.1+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+1518293894838	geckodriver	INFO	geckodriver 0.19.1
+1518293894841	geckodriver	INFO	Listening on 127.0.0.1:44884
+1518293895982	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.CyLr3wKnIaqd"
+1518293896951	Marionette	INFO	Enabled via --marionette
+1518293899760	Marionette	INFO	Listening on port 38086
+1518293899804	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://localhost:8081/cordova.js, line 1: SyntaxError: unexpected token: numeric literal
+[Child 15488, Chrome_ChildThread] WARNING: pipe error (18): Conexão fechada pela outra ponta: file /build/firefox-ox8TnP/firefox-58.0.1+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 15488, Chrome_ChildThread] WARNING: pipe error (35): Conexão fechada pela outra ponta: file /build/firefox-ox8TnP/firefox-58.0.1+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 15488, Chrome_ChildThread] WARNING: pipe error (3): Conexão fechada pela outra ponta: file /build/firefox-ox8TnP/firefox-58.0.1+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+1518294218555	geckodriver	INFO	geckodriver 0.19.1
+1518294218561	geckodriver	INFO	Listening on 127.0.0.1:35251
+1518294219689	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.zdmYlajJX3Rk"
+1518294220589	Marionette	INFO	Enabled via --marionette
+1518294223372	Marionette	INFO	Listening on port 45311
+1518294223416	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://localhost:8081/cordova.js, line 1: SyntaxError: unexpected token: numeric literal
+[Child 16009, Chrome_ChildThread] WARNING: pipe error (19): Conexão fechada pela outra ponta: file /build/firefox-ox8TnP/firefox-58.0.1+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 16009, Chrome_ChildThread] WARNING: pipe error (35): Conexão fechada pela outra ponta: file /build/firefox-ox8TnP/firefox-58.0.1+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 16009, Chrome_ChildThread] WARNING: pipe error (3): Conexão fechada pela outra ponta: file /build/firefox-ox8TnP/firefox-58.0.1+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+1518294807352	geckodriver	INFO	geckodriver 0.19.1
+1518294807357	geckodriver	INFO	Listening on 127.0.0.1:53082
+1518294808510	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.gjw8koN9XanH"
+1518294809426	Marionette	INFO	Enabled via --marionette
+1518294812218	Marionette	INFO	Listening on port 39495
+1518294812230	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://localhost:8081/cordova.js, line 1: SyntaxError: unexpected token: numeric literal
+[Child 16559, Chrome_ChildThread] WARNING: pipe error (19): Conexão fechada pela outra ponta: file /build/firefox-ox8TnP/firefox-58.0.1+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 16559, Chrome_ChildThread] WARNING: pipe error (35): Conexão fechada pela outra ponta: file /build/firefox-ox8TnP/firefox-58.0.1+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[GFX1-]: Receive IPC close with reason=AbnormalShutdown
+[Child 16559, Chrome_ChildThread] WARNING: pipe error (3): Conexão fechada pela outra ponta: file /build/firefox-ox8TnP/firefox-58.0.1+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+1518313322001	geckodriver	INFO	geckodriver 0.19.1
+1518313322005	geckodriver	INFO	Listening on 127.0.0.1:58821
+1518313323142	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.6HPRAGUZDcae"
+1518313324236	Marionette	INFO	Enabled via --marionette
+1518313327080	Marionette	INFO	Listening on port 41432
+1518313327159	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://localhost:8081/cordova.js, line 1: SyntaxError: unexpected token: numeric literal
+[Child 22837, Chrome_ChildThread] WARNING: pipe error (19): Conexão fechada pela outra ponta: file /build/firefox-ox8TnP/firefox-58.0.1+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 22837, Chrome_ChildThread] WARNING: pipe error (35): Conexão fechada pela outra ponta: file /build/firefox-ox8TnP/firefox-58.0.1+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 22837, Chrome_ChildThread] WARNING: pipe error (3): Conexão fechada pela outra ponta: file /build/firefox-ox8TnP/firefox-58.0.1+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+1518476849635	geckodriver	INFO	geckodriver 0.19.1
+1518476849680	geckodriver	INFO	Listening on 127.0.0.1:49632
+1518476850814	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.5hHKYOSEmnFm"
+1518476860311	Marionette	INFO	Enabled via --marionette
+1518476867760	Marionette	INFO	Listening on port 34958
+1518476868885	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://localhost:8081/cordova.js, line 1: SyntaxError: unexpected token: numeric literal
+[Child 20396, Chrome_ChildThread] WARNING: pipe error (19): Conexão fechada pela outra ponta: file /build/firefox-ox8TnP/firefox-58.0.1+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 20396, Chrome_ChildThread] WARNING: pipe error (35): Conexão fechada pela outra ponta: file /build/firefox-ox8TnP/firefox-58.0.1+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 20396, Chrome_ChildThread] WARNING: pipe error (3): Conexão fechada pela outra ponta: file /build/firefox-ox8TnP/firefox-58.0.1+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+1518477661225	geckodriver	INFO	geckodriver 0.19.1
+1518477661231	geckodriver	INFO	Listening on 127.0.0.1:47819
+1518477662374	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.V8l5B3uHm2yu"
+1518477663381	Marionette	INFO	Enabled via --marionette
+1518477666222	Marionette	INFO	Listening on port 37602
+1518477666291	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://localhost:8081/cordova.js, line 1: SyntaxError: unexpected token: numeric literal
+[Child 21158, Chrome_ChildThread] WARNING: pipe error (19): Conexão fechada pela outra ponta: file /build/firefox-ox8TnP/firefox-58.0.1+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 21158, Chrome_ChildThread] WARNING: pipe error (35): Conexão fechada pela outra ponta: file /build/firefox-ox8TnP/firefox-58.0.1+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 21158, Chrome_ChildThread] WARNING: pipe error (3): Conexão fechada pela outra ponta: file /build/firefox-ox8TnP/firefox-58.0.1+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+1518492600469	geckodriver	INFO	geckodriver 0.19.1
+1518492600478	geckodriver	INFO	Listening on 127.0.0.1:37582
+1518492601604	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.yl2ZINPHQH4T"
+1518492602574	Marionette	INFO	Enabled via --marionette
+1518492605758	Marionette	INFO	Listening on port 33911
+1518492605820	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://localhost:8081/cordova.js, line 1: SyntaxError: unexpected token: numeric literal
+[Child 27309, Chrome_ChildThread] WARNING: pipe error (19): Conexão fechada pela outra ponta: file /build/firefox-ox8TnP/firefox-58.0.1+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 27309, Chrome_ChildThread] WARNING: pipe error (35): Conexão fechada pela outra ponta: file /build/firefox-ox8TnP/firefox-58.0.1+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 27309, Chrome_ChildThread] WARNING: pipe error (3): Conexão fechada pela outra ponta: file /build/firefox-ox8TnP/firefox-58.0.1+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+1518531817838	geckodriver	INFO	geckodriver 0.19.1
+1518531817843	geckodriver	INFO	Listening on 127.0.0.1:36966
+1518531818995	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.RRip2hNf4ipT"
+1518531820836	Marionette	INFO	Enabled via --marionette
+1518531823977	Marionette	INFO	Listening on port 43504
+1518531824021	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://localhost:8081/cordova.js, line 1: SyntaxError: unexpected token: numeric literal
+[Child 6147, Chrome_ChildThread] WARNING: pipe error (21): Conexão fechada pela outra ponta: file /build/firefox-ox8TnP/firefox-58.0.1+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 6147, Chrome_ChildThread] WARNING: pipe error (35): Conexão fechada pela outra ponta: file /build/firefox-ox8TnP/firefox-58.0.1+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 6147, Chrome_ChildThread] WARNING: pipe error (3): Conexão fechada pela outra ponta: file /build/firefox-ox8TnP/firefox-58.0.1+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+1518532108239	geckodriver	INFO	geckodriver 0.19.1
+1518532108244	geckodriver	INFO	Listening on 127.0.0.1:47194
+1518532109389	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.sgcjtIIfzqvC"
+1518532110650	Marionette	INFO	Enabled via --marionette
+1518532113514	Marionette	INFO	Listening on port 33358
+1518532113613	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://localhost:8081/cordova.js, line 1: SyntaxError: unexpected token: numeric literal
+[Child 6646, Chrome_ChildThread] WARNING: pipe error (21): Conexão fechada pela outra ponta: file /build/firefox-ox8TnP/firefox-58.0.1+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 6646, Chrome_ChildThread] WARNING: pipe error (35): Conexão fechada pela outra ponta: file /build/firefox-ox8TnP/firefox-58.0.1+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 6646, Chrome_ChildThread] WARNING: pipe error (3): Conexão fechada pela outra ponta: file /build/firefox-ox8TnP/firefox-58.0.1+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+1518534559482	geckodriver	INFO	geckodriver 0.19.1
+1518534559487	geckodriver	INFO	Listening on 127.0.0.1:45436
+1518534560620	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.xpLinkbdPbTx"
+1518534561591	Marionette	INFO	Enabled via --marionette
+1518534564458	Marionette	INFO	Listening on port 36796
+1518534564535	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://localhost:8081/cordova.js, line 1: SyntaxError: unexpected token: numeric literal
+[Child 8036, Chrome_ChildThread] WARNING: pipe error (19): Conexão fechada pela outra ponta: file /build/firefox-ox8TnP/firefox-58.0.1+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 8036, Chrome_ChildThread] WARNING: pipe error (35): Conexão fechada pela outra ponta: file /build/firefox-ox8TnP/firefox-58.0.1+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 8036, Chrome_ChildThread] WARNING: pipe error (3): Conexão fechada pela outra ponta: file /build/firefox-ox8TnP/firefox-58.0.1+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+1518536440380	geckodriver	INFO	geckodriver 0.19.1
+1518536440384	geckodriver	INFO	Listening on 127.0.0.1:34596
+1518536441530	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.yY7SGm3d5rAj"
+1518536442579	Marionette	INFO	Enabled via --marionette
+1518536445470	Marionette	INFO	Listening on port 40528
+1518536445545	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://localhost:8081/cordova.js, line 1: SyntaxError: unexpected token: numeric literal
+[Child 9671, Chrome_ChildThread] WARNING: pipe error (19): Conexão fechada pela outra ponta: file /build/firefox-ox8TnP/firefox-58.0.1+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 9671, Chrome_ChildThread] WARNING: pipe error (35): Conexão fechada pela outra ponta: file /build/firefox-ox8TnP/firefox-58.0.1+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 9671, Chrome_ChildThread] WARNING: pipe error (3): Conexão fechada pela outra ponta: file /build/firefox-ox8TnP/firefox-58.0.1+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+1518537123368	geckodriver	INFO	geckodriver 0.19.1
+1518537123373	geckodriver	INFO	Listening on 127.0.0.1:42791
+1518537124517	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.PjfYIaOU1yAL"
+1518537125718	Marionette	INFO	Enabled via --marionette
+1518537129090	Marionette	INFO	Listening on port 45457
+1518537129142	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://localhost:8081/cordova.js, line 1: SyntaxError: unexpected token: numeric literal
+[Child 10343, Chrome_ChildThread] WARNING: pipe error (19): Conexão fechada pela outra ponta: file /build/firefox-ox8TnP/firefox-58.0.1+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 10343, Chrome_ChildThread] WARNING: pipe error (35): Conexão fechada pela outra ponta: file /build/firefox-ox8TnP/firefox-58.0.1+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 10343, Chrome_ChildThread] WARNING: pipe error (3): Conexão fechada pela outra ponta: file /build/firefox-ox8TnP/firefox-58.0.1+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+1518540199906	geckodriver	INFO	geckodriver 0.19.1
+1518540199911	geckodriver	INFO	Listening on 127.0.0.1:47831
+1518540201051	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.LeFmzSybdrMw"
+1518540202283	Marionette	INFO	Enabled via --marionette
+1518540205226	Marionette	INFO	Listening on port 38972
+1518540205266	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://localhost:8081/cordova.js, line 1: SyntaxError: unexpected token: numeric literal
+[Child 12414, Chrome_ChildThread] WARNING: pipe error (19): Conexão fechada pela outra ponta: file /build/firefox-ox8TnP/firefox-58.0.1+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 12414, Chrome_ChildThread] WARNING: pipe error (35): Conexão fechada pela outra ponta: file /build/firefox-ox8TnP/firefox-58.0.1+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 12414, Chrome_ChildThread] WARNING: pipe error (3): Conexão fechada pela outra ponta: file /build/firefox-ox8TnP/firefox-58.0.1+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+1518554839253	geckodriver	INFO	geckodriver 0.19.1
+1518554839258	geckodriver	INFO	Listening on 127.0.0.1:44989
+1518554840405	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.EumKbruzZum9"
+1518554841384	Marionette	INFO	Enabled via --marionette
+1518554845193	Marionette	INFO	Listening on port 38746
+1518554845240	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://localhost:8081/cordova.js, line 1: SyntaxError: unexpected token: numeric literal
+[Child 17655, Chrome_ChildThread] WARNING: pipe error (19): Conexão fechada pela outra ponta: file /build/firefox-ox8TnP/firefox-58.0.1+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 17655, Chrome_ChildThread] WARNING: pipe error (35): Conexão fechada pela outra ponta: file /build/firefox-ox8TnP/firefox-58.0.1+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 17655, Chrome_ChildThread] WARNING: pipe error (3): Conexão fechada pela outra ponta: file /build/firefox-ox8TnP/firefox-58.0.1+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+1518559024299	geckodriver	INFO	geckodriver 0.19.1
+1518559024331	geckodriver	INFO	Listening on 127.0.0.1:52017
+1518559025557	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.s3BXEc4bfzxi"
+1518559033700	Marionette	INFO	Enabled via --marionette
+1518559040505	Marionette	INFO	Listening on port 43361
+1518559040630	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://localhost:8081/cordova.js, line 1: SyntaxError: unexpected token: numeric literal
+[Child 21198, Chrome_ChildThread] WARNING: pipe error (35): Conexão fechada pela outra ponta: file /build/firefox-ox8TnP/firefox-58.0.1+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 21198, Chrome_ChildThread] WARNING: pipe error (24): Conexão fechada pela outra ponta: file /build/firefox-ox8TnP/firefox-58.0.1+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+[Child 21198, Chrome_ChildThread] WARNING: pipe error (3): Conexão fechada pela outra ponta: file /build/firefox-ox8TnP/firefox-58.0.1+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353

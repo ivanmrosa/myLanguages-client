@@ -10,6 +10,9 @@ function TrainingPlayer(instanceId) {
     var stopped = false;
     var repeateActive = false;
     var methodToGetURLAudio = undefined;
+    var activeColor = 'teal-text darken-4 darken-4';
+    var inactiveColor = 'grey-text';
+
     this.autoPlay = false;
 
 
@@ -20,9 +23,7 @@ function TrainingPlayer(instanceId) {
     this.btnStop = thisComponent.find('.stop-word');
     this.btnRepeat = thisComponent.find('.repeat-word');
 
-    var setControlClass = function (btn, active) {
-        var activeColor = 'blue-text';
-        var inactiveColor = 'grey-text';
+    this.setControlClass = function (btn, active) {
         if (active == true) {
             btn.rmCl(inactiveColor);
             btn.adCl(activeColor);
@@ -36,23 +37,23 @@ function TrainingPlayer(instanceId) {
 
         if (!enabled) {
 
-            setControlClass(thisObject.btnStart, false);
-            setControlClass(thisObject.btnNext, false);
-            setControlClass(thisObject.btnPrior, false);
-            setControlClass(thisObject.btnPause, false);
-            setControlClass(thisObject.btnStop), false;
-            setControlClass(thisObject.btnRepeat, false);
+            thisObject.setControlClass(thisObject.btnStart, false);
+            thisObject.setControlClass(thisObject.btnNext, false);
+            thisObject.setControlClass(thisObject.btnPrior, false);
+            thisObject.setControlClass(thisObject.btnPause, false);
+            thisObject.setControlClass(thisObject.btnStop), false;
+            thisObject.setControlClass(thisObject.btnRepeat, false);
         } else {
-            setControlClass(thisObject.btnStart, true);
-            setControlClass(thisObject.btnNext, true);
-            setControlClass(thisObject.btnPrior, true);
-            setControlClass(thisObject.btnPause, false);
-            setControlClass(thisObject.btnStop, false);
+            thisObject.setControlClass(thisObject.btnStart, true);
+            thisObject.setControlClass(thisObject.btnNext, true);
+            thisObject.setControlClass(thisObject.btnPrior, true);
+            thisObject.setControlClass(thisObject.btnPause, false);
+            thisObject.setControlClass(thisObject.btnStop, false);
 
             if (thisObject.autoPlay) {
-                setControlClass(thisObject.btnRepeat, true);
+                thisObject.setControlClass(thisObject.btnRepeat, true);
             } else {
-                setControlClass(thisObject.btnRepeat, false);
+                thisObject.setControlClass(thisObject.btnRepeat, false);
             };
         };
     };
@@ -66,19 +67,19 @@ function TrainingPlayer(instanceId) {
 
             switch (action) {
                 case 'play':
-                    setControlClass(thisObject.btnStart, false);
-                    setControlClass(thisObject.btnPause, true);
-                    setControlClass(thisObject.btnStop, true);
+                    thisObject.setControlClass(thisObject.btnStart, false);
+                    thisObject.setControlClass(thisObject.btnPause, true);
+                    thisObject.setControlClass(thisObject.btnStop, true);
                     break;
                 case 'stop':
-                    setControlClass(thisObject.btnStart, true);
-                    setControlClass(thisObject.btnPause, false);
-                    setControlClass(thisObject.btnStop, false);
+                    thisObject.setControlClass(thisObject.btnStart, true);
+                    thisObject.setControlClass(thisObject.btnPause, false);
+                    thisObject.setControlClass(thisObject.btnStop, false);
                     break;
                 case 'pause':
-                    setControlClass(thisObject.btnStart, true);
-                    setControlClass(thisObject.btnPause, false);
-                    setControlClass(thisObject.btnStop, true);
+                    thisObject.setControlClass(thisObject.btnStart, true);
+                    thisObject.setControlClass(thisObject.btnPause, false);
+                    thisObject.setControlClass(thisObject.btnStop, true);
                 default:
                     break;
             };
@@ -86,7 +87,7 @@ function TrainingPlayer(instanceId) {
 
     };
     var isBtnEnabled = function (btn) {
-        return frango.hasClass('blue-text', btn.first());
+        return frango.hasClass(activeColor, btn.first());
     };
 
     var nextWordOnEndPlay = function(){

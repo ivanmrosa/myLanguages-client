@@ -11,6 +11,10 @@
 }
 
 
+.align-justify{
+  text-align: justify;
+}
+
 .errorlist{
     color: white;
     width: 100%;
@@ -300,8 +304,8 @@
 }
 
 .popup-body{
-    position:absolute;
- 	/*background-color: ghostwhite; */
+  position:absolute;
+ 	background-color: white;
 	height:auto;
   overflow: auto;
 	box-shadow: gray 0px 10px 10px 0px ;
@@ -309,7 +313,8 @@
 	padding: 5px;
 	width:auto;
 	margin: 12% auto;
-	opacity:1;
+  opacity:1;
+  border-radius: 5px;
 }
 
 .popup.full > .popup-body{
@@ -323,9 +328,9 @@
 }
 
 .popup-dlg{
-   width: 30%;
+   width: 80%;
    height: 80%;
-   margin: 6% 35% 6% 35%;
+   margin: 6% 10% 6% 10%;
 }
 
 .popup-filter{
@@ -341,6 +346,22 @@
    width: 50%;
    text-align: center;
    margin: 0px 40% 0px;
+}
+
+.popup .content {
+  position: absolute; 
+  width: 100%;  
+  height: 85%;
+  overflow-y: auto;
+  left: 0;   
+}
+
+.popup .fixed-bottom {
+  position: absolute; 
+  width: 100%;  
+  height: 15%;
+  top: 85%;
+  left: 0;
 }
 
 .tree-view ul li{
@@ -442,6 +463,10 @@
 
 }
 
+.page-control div {
+  box-sizing: border-box;
+}
+
 /*
 .tab-group{
   margin-top: 8.5px;
@@ -506,16 +531,17 @@
   float: left;
   margin-top: 5px;
   height: calc(100% - 5px);  
-  overflow-x: hidden;    
+  overflow: hidden;    
       
 }
 
 .tab-body{
   position: absolute;    
-  /*height: 100%;  
+  height: 100%;  /*  
   overflow-x:hidden;  
   overflow-y: auto;*/   
-  overflow: hidden;
+  overflow-x: hidden;
+  width: 100%;  
   padding: 5px;
 }
 
@@ -716,17 +742,18 @@
    }
 
    .wait{
-     margin: 50% auto;
-    width: 60px;
-    height: 60px;
+      margin: 50% auto;
+      width: 60px;
+      height: 60px;
 
    }
 
    .popup-dlg{
-    width: 30%;
+    width: 80%;
     height: 80%;
-    margin: 6% 35% 6% 35%;
+    margin: 6% 10% 6% 10%;
   }
+    
 
 }
 
@@ -734,7 +761,15 @@
     .fixed-header.no-fixed-mobile ~ .after-header{
        margin-top: 0px !important;
     }
+
 }
+
+
+@media screen and (max-height: 640px) {
+
+}
+
+
 
 @media screen and (max-width: 414px) {
     .fixed-header.no-fixed-mobile ~ .after-header{
@@ -743,13 +778,21 @@
 
 }
 
+@media screen and (max-height: 570px) {
+
+
+  
+}
+
+
 @media screen and (max-width: 600px) {
 
-   .popup-dlg{
+  .popup-dlg{
     width: 80%;
     height: 80%;
     margin: 6% 10% 6% 10%;
-    }
+  }
+  
 }
 
 
@@ -760,5 +803,7 @@
 
 	.menu{
 	  overflow: auto;
-	}
+  }
+  
+
 }

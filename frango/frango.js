@@ -370,7 +370,7 @@ frango.find = function (selector, parent) {
 
 /*popus e dialogos*/
 frango.popup = {}
-frango.popup.open = false;
+frango.popup.opened = false;
 
 
 frango.popup.openPopup = function (select, executeAfter) {
@@ -381,7 +381,8 @@ frango.popup.openPopup = function (select, executeAfter) {
     };
 
     if (ele) {
-        if (frango.find(ele).attr('data-popup-configured') != 'yes') {
+        if (frango.find(ele).attr('data-popup-configured') != 'yes' &&
+            frango.find(ele).attr("data-automaticly-close") != "no") {
             frango.find(ele).attr('data-popup-configured', 'yes');
             frango.find(ele).on('click', function (event) {
                 e = event || window.event;
@@ -397,7 +398,7 @@ frango.popup.openPopup = function (select, executeAfter) {
         frango.removeClass('popup-hide', ele);
         frango.addClass('popup-show', ele);
     }
-    frango.popup.open = true;
+    frango.popup.opened = true;
 
 }
 
@@ -415,7 +416,7 @@ frango.popup.closePopup = function (id_filter, fnToExecuteAfter) {
         frango.addClass('popup-hide', ele);
     }
 
-    frango.popup.open = false;
+    frango.popup.opened = false;
 
     if (fnToExecuteAfter) {
         fnToExecuteAfter.call();
@@ -2418,8 +2419,10 @@ frango.component = function (componentName) {
             "selector_to_bind": "#app",
             "extra_data": "",
             "bindData": function (Data, replaceContent, onFinish) {
-                var replace = replaceContent || true;
-                frango.useConfigComponent(this.componentName, this.selector_to_bind, Data, replace).onFinish(function () {
+                if(replaceContent == undefined || replaceContent == null){
+                    replaceContent = true;
+                };
+                frango.useConfigComponent(this.componentName, this.selector_to_bind, Data, replaceContent).onFinish(function () {
                     frango.getComponent(componentName).occupied = false;
                     if (onFinish) {
                         onFinish.call();

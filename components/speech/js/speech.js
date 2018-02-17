@@ -14,6 +14,17 @@ speechComponent = {
         component.bindData([], true, function () {      
             training_playerComponent.getInstance('speech-player', function (instance) {                          
                 speechComponent.speechPlayer = instance;
+                var playMethod = speechComponent.speechPlayer.playWord;
+                speechComponent.speechPlayer.playWord = function(){
+                   if(!speechComponent.started){
+                    speechComponent.start();
+                   }else{
+                     playMethod();
+                   };
+                };
+
+                speechComponent.speechPlayer.setControlClass(speechComponent.speechPlayer.btnStart, true);
+                
             });
 
         });
@@ -24,6 +35,7 @@ speechComponent = {
     start: function () {
         if (!speechComponent.started) {
             speechComponent.speechPlayer.autoPlay = false;
+            frango.wait.start();
             lesson_detail_wordsComponent.getLessonWords(function (wordsObject) {
                 wordsList = []
                 for (var index = 0; index < wordsObject.length; index++) {
@@ -34,6 +46,7 @@ speechComponent = {
                 speechComponent.started = true;
                 speechComponent.speechPlayer.setPlaylist(wordsList, true,
                     speechComponent.speechDictionary.getWordAudioURL);
+                frango.wait.stop();    
                 speechComponent.speechPlayer.playWord();
             });
         };

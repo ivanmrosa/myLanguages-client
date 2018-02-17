@@ -18,7 +18,7 @@ function list_imagesClass(instanceId) {
 
     var getData = function (word, methodToSendData) {
         params = { "key": getKey(), "image_type": "all", "q": word,
-          "safesearch": true, "lang":"en"};
+          "safesearch": true, "lang":"en", "per_page": 5};
         frango.ajaxGet({
             "url": getBaseURL(),
             "data": params,
@@ -33,19 +33,24 @@ function list_imagesClass(instanceId) {
         modalContainer.find('.popup-body').first().innerHTML =  
             '<h4 data-datasetname="metadata" data-self="true">[{ (metadata) word }]</h4> ' +
             ' <img class="responsive-img" data-datasetname="images"  data-self="true" ' +
-            '     src="[{ (images) webformatURL }]"> ';
+            '     src="[{ (images) webformatURL }]"> '+            
+            '<div data-datasetname-empty="metadata" class="hide" > '+
+            '   <div>No images found</div> '+
+            '   <i class="mdi mdi-emoticon-sad mdi-48px"></i> '+
+            '</div>  ';          
     };
 
     this.openListImage = function (word) {
+        frango.wait.start();
         var modalContainer = frango.find('#' + instanceId + 'modal_list_images');
         resetImages(modalContainer);
         getData(word, function (imagesObject) {            
             imagesObject = JSON.parse(imagesObject);
             frango.bindDataOnTemplate('metadata', [{ "word": word }], htmlComponent.first());
             frango.bindDataOnTemplate('images', imagesObject['hits'], htmlComponent.first());
-            //$('#' + modalContainer.attr('id')).modal('open');
-            frango.popup.openPopup('#' + modalContainer.attr('id'));
-
+            //$('#' + modalContainer.attr('id')).modal('open');            
+            frango.popup.openPopup('#' + modalContainer.attr('id'));            
+            frango.wait.stop();
         });
     };
     

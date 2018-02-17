@@ -5,38 +5,62 @@ app = {}
 app.components = []
 
 
-frango.app.handleChangingRoute(function(){
-   var url =  frango.app.getURL();
-   if ( url != 'login' && url != 'signup'){
-      return loginComponent.checkUserIsLogged();
-   }   
+frango.app.handleChangingRoute(function () {
+    var url = frango.app.getURL();
+    if (url != 'login' && url != 'signup') {
+        return loginComponent.checkUserIsLogged();
+    }
 });
 
 frango.app.initialize(function () {
     /*do things on initialize application*/
     var warning = frango.warning.clone();
-    frango.warning = function(msg, callback, toast){
-        if(toast == undefined || toast == null){
+    frango.warning = function (msg, callback, toast) {
+        if (toast == undefined || toast == null) {
             toast = true;
         };
-        if(toast){
+        if (toast) {
             Materialize.toast(msg, 3000, '', callback);
-        }else{
-           warning(msg, callback);
-        };        
+        } else {
+            warning(msg, callback);
+        };
     };
 });
 
 frango.app.afterInitialize(function () {
     /*do things after initialize application*/
-    textSelectorComponent.getInstance('mainTextSelector', function(instance){
-        
+    textSelectorComponent.getInstance('mainTextSelector', function (instance) {
+
     });
+
+    frango.find(document).on('backbutton', function () {
+        var modalOpened = false;
+        var matModal = $('.modal.open');
+        if (matModal.length > 0) {
+            modalOpened = true;
+            matModal.each(function () {
+                $(this).modal('close');
+            });
+        };
+        if (frango.find('.popup.popup-show').elements.length > 0) {
+            modalOpened = true;
+            frango.popup.closePopup('.popup.popup-show');
+        };
+        if (!modalOpened) {
+            if (frango.app.getURL() == "") {
+                navigator.app.exitApp();
+            } else {
+                window.history.back();
+            };
+        };
+    });
+
+
 });
 
 function onDeviceReady() {
     // Now safe to use device APIs
-    if(cordova){
+    if (cordova) {
         window.open = cordova.InAppBrowser.open;
     };
 }
@@ -48,14 +72,14 @@ frango.app.configureRote(function () {
 
     frango.app.routes = 
         {
-    "/": "home",
-    "/signup": "signup",
-    "/search-dictionary": "searchDictionary",
-    "/login": "login",
     "/gallows": "gallows",
+    "/login": "login",
     "/lesson/": "lesson",
-    "/games": "games",
-    "/lesson/detail/": "lesson_detail"
+    "/search-dictionary": "searchDictionary",
+    "/lesson/detail/": "lesson_detail",
+    "/signup": "signup",
+    "/": "home",
+    "/games": "games"
 }
     
 });
@@ -470,6 +494,71 @@ homeComponent = {
     controller: function(component){       
        component.bindData([], true, function(){
            $('.collapsible').collapsible();
+           var firstAccess = frango.getCookie('first-access');
+           if(!firstAccess){              
+              frango.setCookie('first-access', false);
+              homeComponent.showHelp();
+           };
+       });
+    },
+
+    getHelpStepOne : function(){
+        var html = '<h5 class="center-align blue-text">Bem vindo !</h5>';
+        html += '<div class="align-justify">';        
+        html += 'Aprenda a usar aqui o vocplus. Este tutorial pode ser visto a qualquer ';
+        html += 'momento acessando a opção "Ajuda" entrando em "more". ';
+        html += '</div>';        
+        return html;
+    },
+    getHelpStepTwo : function(){
+        var html = '<h5 class="center-align blue-text">Lições</h5>';
+        html += '<div class="align-justify">';
+        html += 'O vocplus possui várias lições para aprendizagem de vocabulário. ';
+        html += 'A lição pode ser acessada através do ícone play na tela inicial no menu "Your Actual Lesson". ';
+        html += 'O painel no menu apresenta algumas informações como a pontuação mínima e a pontuação alcançada.';
+        html += '</div>';
+        return html;
+    },
+    getHelpStepThree : function(){
+        var html = '<h5 class="center-align blue-text">Lições - palavras</h5>';
+        html += '<div class="align-justify">';        
+        html += 'Ao acessar uma lição, serão mostradas uma lista de palavras. ';
+        html += 'Elas devem ser lidas e escutadas várias vezes, assim como é importante ler as definições ';
+        html += 'e acessar as imagens relacionadas, pois podem ajudar no entendimento. ';
+        html += 'Ao selecionar uma palavra ou uma frase, opções extras são apresentadas, como por exemplo: ';
+        html += 'definição, audio, e tradução. Em qualquer lugar do aplicativo pode-se utilizar esta ferramenta.';
+        html += '</div>';        
+        return html;
+    },
+    getHelpStepFour : function(){
+        var html = '<h5 class="center-align blue-text">Lições - pronúncia e ditado</h5>';
+        html += '<div class="align-justify">';        
+        html += 'As lições também apresentam ditado e treinamento de pronúncia. ';
+        html += 'Para poder acessar a próxima lição é necessário realizar estas tarefas atingindo no mínimo 70 pontos. ';
+        html += 'Cada acerto garante dois pontos, seja no ditado ou no treino de prónuncia. ';
+        html += 'Quando os 70 pontos forem atingindos, um novo botão será apresentado na tela inicial para que a próxima lição seja iniciada.';        
+        html += '</div>';        
+        return html;
+    },
+    getHelpStepFive : function(){
+        var html = '<h5 class="center-align blue-text">Resumo</h5>';        
+        html += '<ul class="collection">';
+        html += '<li class="collection-item">Ouça, leia e pronunicie as palavras várias vezes.</li>';
+        html += '<li class="collection-item">Selecione palavras e frases em qualquer lugar para obter novas opções.</li>';
+        html += '<li class="collection-item">Utilize os dicionários para sanar dúvidas. Várias palavras podem digitadas em uma mesma pesquisa.</li>';        
+        html += '<li class="collection-item">Utilize os jogos para complementar o aprendizado.</li>';                
+        html += '</ul>';        
+        return html;
+    },
+
+    showHelp : function(){
+       helpComponent.getInstance('homeHelp',function(help){
+           help.addItem(homeComponent.getHelpStepOne());
+           help.addItem(homeComponent.getHelpStepTwo());
+           help.addItem(homeComponent.getHelpStepThree());
+           help.addItem(homeComponent.getHelpStepFour());
+           help.addItem(homeComponent.getHelpStepFive());           
+           help.start();
        });
     }
 }
@@ -644,6 +733,9 @@ app.components.push(function () {
 
 
 lesson_detail_dictationComponent = {
+    player: undefined,
+    started: false,
+    dictationDictionary: undefined,    
     getData: function () {
 
     },
@@ -651,32 +743,54 @@ lesson_detail_dictationComponent = {
         lesson_detail_dictationComponent.started = false;
         component.bindData([], true, function () {
             lesson_detail_dictationComponent.dictationDictionary = new dictionary('dictation-player');
-            training_playerComponent.getInstance('dictation-player', function (instance) {                
-                lesson_detail_dictationComponent.player = instance
+            training_playerComponent.getInstance('dictation-player', function (instance) {
+                lesson_detail_dictationComponent.player = instance;
+                var playMethod = lesson_detail_dictationComponent.player.playWord;
+                lesson_detail_dictationComponent.player.playWord = function () {
+                    if (!lesson_detail_dictationComponent.started) {
+                        lesson_detail_dictationComponent.start();
+                    } else {
+                        playMethod();
+                    };
+                };
+
+                lesson_detail_dictationComponent.player.setControlClass(lesson_detail_dictationComponent.player.btnStart, true);
+            });
+
+            keyboardComponent.getInstance('dictation-keyboard', function (instance) {                
+                instance.setOnKeyPress(function (key) {
+                    var edit = frango.find('#word-anwser').first();
+                    switch (key) {
+                        case "#8":
+                            edit.value = edit.value.substr(0, edit.value.length - 1);
+                            break;
+                        case "#13":
+                            lesson_detail_dictationComponent.checkAnswer();
+                            break;
+                        default:
+                            edit.value = edit.value + key;
+                            break;
+                    };
+                });                
             });
 
         });
     },
-    player: undefined,
-    started: false,
-    dictationDictionary : undefined,
     start: function () {
         if (!lesson_detail_dictationComponent.started) {
-
             lesson_detail_dictationComponent.player.autoPlay = false;
+            frango.wait.start();
             lesson_detail_wordsComponent.getLessonWords(function (wordsObject) {
                 wordsList = []
                 for (var index = 0; index < wordsObject.length; index++) {
                     wordsList.push(wordsObject[index].text);
                 };
-                frango.find('#btn-dictation-start').adCl('disabled');
-                frango.find('#btn-dictation-confirm').rmCl('disabled');
                 lesson_detail_dictationComponent.started = true;
                 lesson_detail_dictationComponent.player.setPlaylist(wordsList, false,
                     lesson_detail_dictationComponent.dictationDictionary.getWordAudioURL);
+                frango.wait.stop();
                 lesson_detail_dictationComponent.player.playWord();
-            });
-
+            });            
         };
     },
     checkAnswer: function () {
@@ -702,7 +816,7 @@ lesson_detail_dictationComponent = {
         } else {
             answer_msg.rmCl('green-text');
             answer_msg.adCl('red-text');
-            answer_msg.first().innerHTML = "Wrong! Try again!";            
+            answer_msg.first().innerHTML = "Wrong! Try again!";
         };
         answerEle.value = '';
     },
@@ -734,6 +848,17 @@ speechComponent = {
         component.bindData([], true, function () {      
             training_playerComponent.getInstance('speech-player', function (instance) {                          
                 speechComponent.speechPlayer = instance;
+                var playMethod = speechComponent.speechPlayer.playWord;
+                speechComponent.speechPlayer.playWord = function(){
+                   if(!speechComponent.started){
+                    speechComponent.start();
+                   }else{
+                     playMethod();
+                   };
+                };
+
+                speechComponent.speechPlayer.setControlClass(speechComponent.speechPlayer.btnStart, true);
+                
             });
 
         });
@@ -744,6 +869,7 @@ speechComponent = {
     start: function () {
         if (!speechComponent.started) {
             speechComponent.speechPlayer.autoPlay = false;
+            frango.wait.start();
             lesson_detail_wordsComponent.getLessonWords(function (wordsObject) {
                 wordsList = []
                 for (var index = 0; index < wordsObject.length; index++) {
@@ -754,6 +880,7 @@ speechComponent = {
                 speechComponent.started = true;
                 speechComponent.speechPlayer.setPlaylist(wordsList, true,
                     speechComponent.speechDictionary.getWordAudioURL);
+                frango.wait.stop();    
                 speechComponent.speechPlayer.playWord();
             });
         };
@@ -809,6 +936,9 @@ function TrainingPlayer(instanceId) {
     var stopped = false;
     var repeateActive = false;
     var methodToGetURLAudio = undefined;
+    var activeColor = 'teal-text darken-4 darken-4';
+    var inactiveColor = 'grey-text';
+
     this.autoPlay = false;
 
 
@@ -819,9 +949,7 @@ function TrainingPlayer(instanceId) {
     this.btnStop = thisComponent.find('.stop-word');
     this.btnRepeat = thisComponent.find('.repeat-word');
 
-    var setControlClass = function (btn, active) {
-        var activeColor = 'blue-text';
-        var inactiveColor = 'grey-text';
+    this.setControlClass = function (btn, active) {
         if (active == true) {
             btn.rmCl(inactiveColor);
             btn.adCl(activeColor);
@@ -835,23 +963,23 @@ function TrainingPlayer(instanceId) {
 
         if (!enabled) {
 
-            setControlClass(thisObject.btnStart, false);
-            setControlClass(thisObject.btnNext, false);
-            setControlClass(thisObject.btnPrior, false);
-            setControlClass(thisObject.btnPause, false);
-            setControlClass(thisObject.btnStop), false;
-            setControlClass(thisObject.btnRepeat, false);
+            thisObject.setControlClass(thisObject.btnStart, false);
+            thisObject.setControlClass(thisObject.btnNext, false);
+            thisObject.setControlClass(thisObject.btnPrior, false);
+            thisObject.setControlClass(thisObject.btnPause, false);
+            thisObject.setControlClass(thisObject.btnStop), false;
+            thisObject.setControlClass(thisObject.btnRepeat, false);
         } else {
-            setControlClass(thisObject.btnStart, true);
-            setControlClass(thisObject.btnNext, true);
-            setControlClass(thisObject.btnPrior, true);
-            setControlClass(thisObject.btnPause, false);
-            setControlClass(thisObject.btnStop, false);
+            thisObject.setControlClass(thisObject.btnStart, true);
+            thisObject.setControlClass(thisObject.btnNext, true);
+            thisObject.setControlClass(thisObject.btnPrior, true);
+            thisObject.setControlClass(thisObject.btnPause, false);
+            thisObject.setControlClass(thisObject.btnStop, false);
 
             if (thisObject.autoPlay) {
-                setControlClass(thisObject.btnRepeat, true);
+                thisObject.setControlClass(thisObject.btnRepeat, true);
             } else {
-                setControlClass(thisObject.btnRepeat, false);
+                thisObject.setControlClass(thisObject.btnRepeat, false);
             };
         };
     };
@@ -865,19 +993,19 @@ function TrainingPlayer(instanceId) {
 
             switch (action) {
                 case 'play':
-                    setControlClass(thisObject.btnStart, false);
-                    setControlClass(thisObject.btnPause, true);
-                    setControlClass(thisObject.btnStop, true);
+                    thisObject.setControlClass(thisObject.btnStart, false);
+                    thisObject.setControlClass(thisObject.btnPause, true);
+                    thisObject.setControlClass(thisObject.btnStop, true);
                     break;
                 case 'stop':
-                    setControlClass(thisObject.btnStart, true);
-                    setControlClass(thisObject.btnPause, false);
-                    setControlClass(thisObject.btnStop, false);
+                    thisObject.setControlClass(thisObject.btnStart, true);
+                    thisObject.setControlClass(thisObject.btnPause, false);
+                    thisObject.setControlClass(thisObject.btnStop, false);
                     break;
                 case 'pause':
-                    setControlClass(thisObject.btnStart, true);
-                    setControlClass(thisObject.btnPause, false);
-                    setControlClass(thisObject.btnStop, true);
+                    thisObject.setControlClass(thisObject.btnStart, true);
+                    thisObject.setControlClass(thisObject.btnPause, false);
+                    thisObject.setControlClass(thisObject.btnStop, true);
                 default:
                     break;
             };
@@ -885,7 +1013,7 @@ function TrainingPlayer(instanceId) {
 
     };
     var isBtnEnabled = function (btn) {
-        return frango.hasClass('blue-text', btn.first());
+        return frango.hasClass(activeColor, btn.first());
     };
 
     var nextWordOnEndPlay = function(){
@@ -1409,7 +1537,11 @@ function textSelector(instanceId) {
 
     var __init__ = function () {
         document.addEventListener('contextmenu', function(e){
-          e.preventDefault();
+          var nodeName = e.target.nodeName;
+          var ignoredElements =  ['INPUT', 'TEXTAREA'];
+          if(nodeName.indexOf(nodeName) == -1){
+              e.preventDefault();
+          };          
         }, false); 
         document.addEventListener("selectstart", function () {
 
@@ -1547,11 +1679,41 @@ function dictionary(instanceId) {
             },
             "onFailure": function () {
                 //Materialize.toast("Sorry, that's something wrong! The data was unavailable.", 3000);
-                frango.warning("Sorry, something is wrong! The data was unavailable.");
+                frango.warning("Sorry, something is wrong! The data is unavailable.");
             }
         });
 
     };
+
+    this.getRelatedWords = function(word, type, limit, methodToSendData){
+        var key = wordknikKey()
+        var request_params = { "useCanonical": true, "limit": limit, "api_key": key,
+            "relationshipTypes" : type };
+        var url = "http://api.wordnik.com:80/v4/word.json/" + word + "/relatedWords";
+
+        frango.ajaxGet({
+            url : url,
+            data : request_params,
+            useFrangoHost : false,
+            useAuthorization: false,
+            onSuccess : function(data){
+               data = JSON.parse(data);
+               if(data.length > 0){
+                   methodToSendData(data[0].words);
+               }else{
+                   methodToSendData([]);
+               };
+               
+            },
+
+            onFailure : function(err){
+               console.log(err);
+               frango.warning('Sorry, something is wrong. The data is unavailable.');
+            }
+        })
+       
+    },
+
     this.setWordDefinition = function (word, element) {
 
         if (element.getAttribute('data-defined') != "yes") {
@@ -1570,9 +1732,22 @@ function dictionary(instanceId) {
                 bindData(preparedData, status, word + "_example");
                 frango.wait.stop(element);
             });
-
+            
+            htmlComponent.find('#' + word + '_synonym').on('click', function(){
+               frango.wait.start(element);
+               thisObject.getRelatedWords(word, 'synonym', 10, function(words){
+                   if(words.length == 0 ){
+                       frango.warning('No synonym found!');
+                   };
+                   var wordObjectsList = [];
+                   for (var index = 0; index < words.length; index++) {
+                       wordObjectsList.push({'text': words[index]});
+                   };
+                   bindData(wordObjectsList, null, word + '_synonym');
+                   frango.wait.stop(element);
+               });
+            });
         };
-
     };
 
     this.getRandomWords = function(limit, minLength, maxLength){
@@ -1600,7 +1775,7 @@ function dictionary(instanceId) {
             },
             "onFailure": function () {
                 //Materialize.toast("Sorry, that's something wrong! The data was unavailable.", 3000);
-                frango.warning("Sorry, something is wrong! The data was unavailable.");
+                frango.warning("Sorry, something is wrong! The data is unavailable.");
             }
         });
 
@@ -1814,7 +1989,7 @@ function list_imagesClass(instanceId) {
 
     var getData = function (word, methodToSendData) {
         params = { "key": getKey(), "image_type": "all", "q": word,
-          "safesearch": true, "lang":"en"};
+          "safesearch": true, "lang":"en", "per_page": 5};
         frango.ajaxGet({
             "url": getBaseURL(),
             "data": params,
@@ -1829,19 +2004,24 @@ function list_imagesClass(instanceId) {
         modalContainer.find('.popup-body').first().innerHTML =  
             '<h4 data-datasetname="metadata" data-self="true">[{ (metadata) word }]</h4> ' +
             ' <img class="responsive-img" data-datasetname="images"  data-self="true" ' +
-            '     src="[{ (images) webformatURL }]"> ';
+            '     src="[{ (images) webformatURL }]"> '+            
+            '<div data-datasetname-empty="metadata" class="hide" > '+
+            '   <div>No images found</div> '+
+            '   <i class="mdi mdi-emoticon-sad mdi-48px"></i> '+
+            '</div>  ';          
     };
 
     this.openListImage = function (word) {
+        frango.wait.start();
         var modalContainer = frango.find('#' + instanceId + 'modal_list_images');
         resetImages(modalContainer);
         getData(word, function (imagesObject) {            
             imagesObject = JSON.parse(imagesObject);
             frango.bindDataOnTemplate('metadata', [{ "word": word }], htmlComponent.first());
             frango.bindDataOnTemplate('images', imagesObject['hits'], htmlComponent.first());
-            //$('#' + modalContainer.attr('id')).modal('open');
-            frango.popup.openPopup('#' + modalContainer.attr('id'));
-
+            //$('#' + modalContainer.attr('id')).modal('open');            
+            frango.popup.openPopup('#' + modalContainer.attr('id'));            
+            frango.wait.stop();
         });
     };
     
@@ -1932,58 +2112,130 @@ function keyboardClass(instanceId) {
     //use htmlComponent.find() to access the child elements  
     var htmlComponent = frango.find('#' + instanceId);
     var thisObject = this;
-    var keysFirstLine = ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p'];
-    var keysSecondLine = ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l'];
-    var keysThirdLine = ['z', 'x', 'c', 'v', 'b', 'n', 'm']
-    var keysFourthLine = ['-']
+    var keysFirstLine = [];
+    var keysSecondLine = [];
+    var keysThirdLine = [];
+    var keysFourthLine = [];
+    var disabledKeys = []
     var onKeyPress = undefined;
 
     /*write the component functionalites here*/
+
+    var setNormalKeys = function(){
+        keysFirstLine = ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p'];
+        keysSecondLine = ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l'];
+        keysThirdLine = ['z', 'x', 'c', 'v', 'b', 'n', 'm']    
+    };
+
+    var setSpecialCharactersKeys = function(){
+        keysFirstLine = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
+        keysSecondLine = ['@', '#', '$', '_', '&', '-', '+', '(', ')'];
+        keysThirdLine = ['/', '*', '"', "'", ':', ';', '!', '?']      
+    };
+
     var getKeyHtml = function (key) {
         return frango.format('<div class="orange  white-text center-align cur-pointer keyboard-key" data-key="%s">%s</div>', 
           [key, key]);
     };
 
-    var drawKeys = function () {
+    var addFourthLinhe = function(useNormal){
+        var fourthLine = htmlComponent.find('.fourth-line'); 
+        fourthLine.first().innerHTML = "";
+        fourthLine.first().insertAdjacentHTML('beforeend', '<div class="orange white-text center-align cur-pointer caps-lock special keyboard-key data-key=""> '+
+          '<i class="mdi mdi-apple-keyboard-caps"></i></div>');        
+        fourthLine.first().insertAdjacentHTML('beforeend', getKeyHtml(','));
+        fourthLine.first().insertAdjacentHTML('beforeend', getKeyHtml('.'));
+        fourthLine.first().insertAdjacentHTML('beforeend', '<div class="orange white-text center-align cur-pointer keyboard-key special special-character" data-key="">?123</div>');
+        fourthLine.first().insertAdjacentHTML('beforeend', '<div class="orange white-text center-align cur-pointer keyboard-key special space" data-key=" ">&nbsp</div>');
+        fourthLine.first().insertAdjacentHTML('beforeend', '<div class="orange white-text center-align cur-pointer keyboard-key special" data-key="#8"><i class="mdi mdi-keyboard-backspace"></i></div>');
+        fourthLine.first().insertAdjacentHTML('beforeend', '<div class="orange white-text center-align cur-pointer keyboard-key special enter" data-key="#13">Enter</div>');        
+        
+
+        fourthLine.find('.caps-lock').on('click', function(){
+           var caps = frango.find(this);
+           var pressed = caps.attr('data-pressed');
+           htmlComponent.find('.keyboard-key:not(.special)').loop(function(){
+               var key = this; 
+               if (pressed == "yes") {
+                   key.innerHTML = key.innerHTML.toLowerCase();                   
+                   caps.attr('data-pressed', "no");
+               }else{
+                   key.innerHTML = key.innerHTML.toUpperCase();
+                   caps.attr('data-pressed', "yes");
+               };
+               key.attr('data-key', key.innerHTML);
+           });
+        });
+
+        fourthLine.find('.special-character').on('click', function(){
+            if(useNormal){
+                setSpecialCharactersKeys();
+                drawKeys(false);                
+            }else{
+               setNormalKeys();
+               drawKeys(true);               
+            };            
+        });
+    };
+
+    var drawKeys = function (useNormal) {   
+        
+        if(useNormal == undefined || useNormal == null ){
+            useNormal = true;
+        };
         var firstLine = htmlComponent.find('.first-line');
+        firstLine.first().innerHTML = "";
         for (var index = 0; index < keysFirstLine.length; index++) {
             var key = keysFirstLine[index];
             firstLine.first().insertAdjacentHTML('beforeend', getKeyHtml(key));
         };
 
         var secondLine = htmlComponent.find('.second-line');
+        secondLine.first().innerHTML = "";
         for (var index = 0; index < keysSecondLine.length; index++) {
             var key = keysSecondLine[index];
             secondLine.first().insertAdjacentHTML('beforeend', getKeyHtml(key));
         };
         var thirdLine = htmlComponent.find('.third-line');
+        thirdLine.first().innerHTML = "";
         for (var index = 0; index < keysThirdLine.length; index++) {
             var key = keysThirdLine[index];
             thirdLine.first().insertAdjacentHTML('beforeend', getKeyHtml(key));
         };
 
-        var fourthLine = htmlComponent.find('.fourth-line');
+        /*var fourthLine = htmlComponent.find('.fourth-line');
         for (var index = 0; index < keysFourthLine.length; index++) {
             var key = keysFourthLine[index];
             fourthLine.first().insertAdjacentHTML('beforeend', getKeyHtml(key));
-        };
+        };*/
+
+        addFourthLinhe(useNormal);
 
         htmlComponent.find('.keyboard-key').on('click', function () {
             if (onKeyPress) {
-                if(this.getAttribute('data-disabled') != "yes")
-                   onKeyPress(this.innerHTML);
+                if(this.attr('data-disabled') != "yes" && this.attr('data-key')){
+                    onKeyPress(this.attr('data-key'));
+                };                   
             } else {
-                franggetKeyHtmlo.warning('onKeyPress event not provied');
+                frango.warning('onKeyPress event not provied');
             };
         });
 
+        thisObject.disableKeys();
+
     };
 
-    this.disableKey = function(key){
+    this.disableKey = function(key, permanent){
+       if(permanent == undefined || permanent == null){
+           permanent = true;
+       };
        var ele = htmlComponent.find(frango.format('[data-key="%s"]', [key]));
        ele.attr('data-disabled', "yes");
        ele.rmCl('orange');
        ele.adCl('grey');
+       if(permanent){
+           disabledKeys.push(key);
+       };
     };
 
     this.enableKey = function(key){
@@ -1991,16 +2243,32 @@ function keyboardClass(instanceId) {
         ele.attr('data-disabled', "no");
         ele.rmCl('grey');
         ele.adCl('orange'); 
+        var idx = disabledKeys.indexOf(key);
+        if(idx > -1){
+            disabledKeys.splice(idx, 1);
+        };
     };
 
     this.enableAllKeys = function(){
-
         htmlComponent.find('.keyboard-key').loop(function(){
-            ele = frango.find(this);
-            ele.attr('data-disabled', "no");
-            ele.rmCl('grey');
-            ele.adCl('orange');     
+            thisObject.enableKey(this.attr('data-key'));
         });
+    };
+
+    this.disableAllKeys = function(){
+        htmlComponent.find('.keyboard-key').loop(function(){
+            thisObject.disableKey(this.attr('data-key'));
+        });        
+    };
+
+    this.disableKeys = function(){
+        for (var index = 0; index < disabledKeys.length; index++) {
+            thisObject.disableKey(disabledKeys[index], false);            
+        };
+    };
+
+    this.setDisabledKeys = function(keys){
+       disabledKeys = keys;
     };
      
     this.setOnKeyPress = function (keyPressEvent) {
@@ -2008,7 +2276,8 @@ function keyboardClass(instanceId) {
     };
 
     var __init__ = function () {
-        drawKeys();
+        setNormalKeys();
+        drawKeys(true);
     };
 
     __init__();
@@ -2108,12 +2377,12 @@ function gallowsClass(instanceId) {
         };
 
         if (countCorrectKeys == actualWord.length) {
-            //frango.warning('You won!');
-            alert('You won!');
+            frango.warning('You won!');
+            //alert('You won!');
             setColorInWord('green');
         } else if (errors == 6) {
-            //frango.warning('You lose!');
-            alert('You lose');
+            frango.warning('You lose!');
+            //alert('You lose');
             setColorInWord('red');
             for (var index = 0; index < actualWord.length; index++) {
                 var letter = actualWord[index];
@@ -2122,16 +2391,17 @@ function gallowsClass(instanceId) {
         };
     };
 
+    var setDisabledKeys = function() {
+        if(keyboardInstance){
+            keyboardInstance.enableAllKeys();
+            keyboardInstance.setDisabledKeys([' ', '#8', '#13']);        
+            keyboardInstance.disableKeys();
+        };
+    };
 
     var getDefinition = function () {
-        dictionaryInstance.getWordDefinition(actualWord, function (definition) {
-            definition = JSON.parse(definition);
-            if(definition){
-                frango.bindDataOnTemplate('definition', definition);
-            }else{
-                alert('No definition found!');
-            };
-            
+        dictionaryInstance.getWordDefinition(actualWord, function (definition) {                        
+          frango.bindDataOnTemplate('definition', definition);                        
         });
     };
 
@@ -2139,12 +2409,13 @@ function gallowsClass(instanceId) {
         setHtmlDefinition();
         dictionaryInstance = new dictionary(instanceId + 'Dictionary');
         keyboardComponent.getInstance(instanceId + 'Keyboard', function (instance) {
-            keyboardInstance = instance;
-            instance.setOnKeyPress(checkKeyAswer);            
+            keyboardInstance = instance;            
+            keyboardInstance.setOnKeyPress(checkKeyAswer);
+            setDisabledKeys();
         });
 
         htmlComponent.find('.next-word').on('click', thisObject.newRandomGame)
-        htmlComponent.find('.bn-definition').on('click', getDefinition);
+        //htmlComponent.find('.bn-definition').on('click', getDefinition);
     };
 
     var getHtmlWord = function () {
@@ -2185,11 +2456,8 @@ function gallowsClass(instanceId) {
         redefineDatasetDefinition();
         setImage();
         setWordHTML();
-        
-        if(keyboardInstance){
-            keyboardInstance.enableAllKeys();
-            keyboardInstance.disableKey('-');
-        };
+        getDefinition();
+        setDisabledKeys();
         
         setColorInWord('black');
     };
@@ -2262,3 +2530,112 @@ gamesComponent = {
        component.bindData();
     }
 }
+
+
+app.components.push(function () {
+    frango.component('help').
+        setPathLocalTemplate('components/help/template/help.html').
+        objectGetData(helpComponent).
+        controller(helpComponent.controller).
+        register()
+});
+
+
+function helpClass(instanceId) {
+   //use htmlComponent.find() to access the child elements  
+   var htmlComponent = frango.find('#' + instanceId);
+   var thisObject = this;
+   var helpItens = [];
+   var selectedItem = -1;
+   
+   /*write the component functionalites here*/
+   this.addItem = function(message){
+       helpItens.push(message);
+   };
+
+   this.clear = function(){
+       helpItens.clear();
+   };
+   
+   this.showActual = function(){
+       if(!helpItens[selectedItem]){
+          frango.popup.closePopup(instanceId + ' .popup');          
+       }else{
+          htmlComponent.find('.content').first().innerHTML = helpItens[selectedItem];    
+       };              
+   };
+
+   this.showNext = function(){
+       selectedItem += 1;
+       thisObject.showActual();
+     
+   };
+
+   this.showPrior = function(){
+       if(selectedItem == 0){
+           frango.warning('Nothing before!');
+           return;
+       };
+       selectedItem = selectedItem - 1;
+       thisObject.showActual();
+   };
+
+   this.start = function(){
+     frango.popup.openPopup('#' + htmlComponent.attr('id') + ' .popup');
+     thisObject.showNext();
+   };
+
+   var __init__ = function(){
+       htmlComponent.find('.btn.next').on('click', thisObject.showNext);
+       htmlComponent.find('.btn.prior').on('click', thisObject.showPrior);
+   };
+
+   __init__();
+
+}
+
+
+helpComponent = {
+
+    controller: function (component) {
+        //This implementation permites to create component by url route
+        var instanceID = component.componentID;
+        helpComponent.getInitialData(instanceID, function(data){
+           component.bindData(data, true, function () {
+               /*on finish*/ 
+               var help = new helpClass(instanceID);
+               help.addItem('<h1>TESTE</h1> <div>Este é um teste com html</div>')
+               help.addItem('<h1>TESTE 2</h1> <div>Este é um teste com html 2</div>')
+               help.start();
+           });
+        });    
+
+    },
+    
+    getInitialData : function(componentID, callBack){
+        var dataTemplate = {
+           'help': [{
+                id: componentID
+            }]
+         };
+         callBack(dataTemplate);
+       
+    },
+    
+    getInstance : function(componentID, methodToSendInstance){
+        /*allowed to use many times without put a component in html*/
+        var component = frango.getComponent('help');
+        component.componentID = componentID;
+        var instanceID = componentID;
+        helpComponent.getInitialData(instanceID, function(data){
+            frango.find('#' + instanceID).remove();
+            component.bindData(data, false, function () {
+                var instance = new helpClass(componentID);
+                if(methodToSendInstance){
+                   methodToSendInstance(instance);    
+                };		            
+            });    
+        });     
+    }
+};
+

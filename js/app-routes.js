@@ -4,14 +4,14 @@ frango.app.configureRote(function () {
 
     frango.app.routes = 
         {
-    "/": "home",
-    "/signup": "signup",
-    "/search-dictionary": "searchDictionary",
-    "/login": "login",
     "/gallows": "gallows",
+    "/login": "login",
     "/lesson/": "lesson",
-    "/games": "games",
-    "/lesson/detail/": "lesson_detail"
+    "/search-dictionary": "searchDictionary",
+    "/lesson/detail/": "lesson_detail",
+    "/signup": "signup",
+    "/": "home",
+    "/games": "games"
 }
     
 });

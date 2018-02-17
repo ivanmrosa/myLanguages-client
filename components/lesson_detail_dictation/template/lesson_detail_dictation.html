@@ -1,18 +1,15 @@
-
-
 <div data-component="yes" data-component-name="training_player" data-component-id="dictation-player" data-auto-create="no">
 </div>
 
 
 
 <div class="row">
-        <div class="input-field col s12">
-          <input  id="word-anwser" type="text" class="validate">
-          <label for="word-anwser">type the word here</label>
-        </div>
-        <span id="answer-msg"></span>           
-</div>     
+  <div class="col s12">
+    <input id="word-anwser" type="text" disabled class="black-text">
+    <span id="answer-msg"></span>
+    <div><span>Press enter to confirm</span></div>    
+  </div>
+</div>
 
-
-<button class="waves-effect waves-light btn" onclick="lesson_detail_dictationComponent.start()" id="btn-dictation-start">Start lesson</button>
-<a class="waves-effect waves-light btn disabled" id="btn-dictation-confirm" onclick="lesson_detail_dictationComponent.checkAnswer()">Confirm</a>
+<div data-component="yes" data-component-name="keyboard" data-component-id="dictation-keyboard" data-auto-create="no">
+</div>
