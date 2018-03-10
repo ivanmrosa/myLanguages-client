@@ -73,3 +73,19 @@
     padding-right: 10px; 
     font-size: 14px;   
 }
+
+
+#memoryGame .memory-game {
+   height: 55px !important;   
+   width: 55px !important; 
+   float: left;   
+   border: 1px solid deepskyblue;
+   margin: 2px;
+   
+}
+
+#memoryGame .img-card {
+    height: 50px !important;   
+    width: 50px !important;
+    float: left;
+}

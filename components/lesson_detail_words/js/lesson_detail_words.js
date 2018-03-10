@@ -1,9 +1,20 @@
 
 lesson_detail_wordsComponent = {
     getLessonWords: function (methodSendTo, componentElement) {
-        var params = frango.app.getURLParameters()
+        var params = frango.app.getURLParameters();
+        var actualWords = frango.getCookie('mylanguage-actual-words');
+
+        if(actualWords != "" ){
+            actualWords = JSON.parse(actualWords);
+            if(actualWords[0].lesson_id == params.lesson_id){
+                methodSendTo(actualWords);
+                return;
+            };
+        };
+
         frango.server.get('lesson-word/', params).
             onSuccess(function (data) {
+                frango.setCookie('mylanguage-actual-words', data);
                 methodSendTo(JSON.parse(data));
             }).
             onFailure(function (msg) {
@@ -11,7 +22,7 @@ lesson_detail_wordsComponent = {
                     frango.wait.stop(componentElement);
                 };                
                 var erro = JSON.parse(msg);
-                alert(erro["error_description"]);                
+                frango.warning(erro["error_description"]);                
             });
     },
         

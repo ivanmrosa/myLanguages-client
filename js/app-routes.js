@@ -5,13 +5,16 @@ frango.app.configureRote(function () {
     frango.app.routes = 
         {
     "/gallows": "gallows",
-    "/login": "login",
-    "/lesson/": "lesson",
-    "/search-dictionary": "searchDictionary",
-    "/lesson/detail/": "lesson_detail",
-    "/signup": "signup",
+    "/games": "games",
     "/": "home",
-    "/games": "games"
+    "/image-to-word": "imageLibrary",
+    "/lesson/": "lesson",
+    "/lesson/detail/": "lesson_detail",
+    "/login": "login",
+    "/memory-game": "memoryGame",
+    "/search-dictionary": "searchDictionary",
+    "/signup": "signup",
+    "/topics": "topics"
 }
     
 });

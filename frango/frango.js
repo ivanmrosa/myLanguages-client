@@ -588,8 +588,7 @@ frango.contextMenu = function (executeOnInitialize, idContext) {
 
             var all_context = frango.find(".contextmenu");
             all_context.offset({ left: 0, top: 0 });
-            all_context.adSty("display", "none");
-            alert(window.getSelection())
+            all_context.adSty("display", "none");            
             //var ele = this;
 
             //var context = frango.find("[data-container='" + ele.attr("context-data-container") + "']");
@@ -657,11 +656,15 @@ frango.wait.start = function (parent) {
     parent.appendChild(main);
 }
 
-frango.wait.stop = function (parent) {
-    var parent = parent || frango.find('body').first();
-    var wait = frango.find('.wait-body', parent).first()
-    if (wait) {
-        parent.removeChild(wait);
+frango.wait.stop = function (parent, clearAll) {
+    if(clearAll === true){
+       frango.find('.wait-body').remove();
+    }else{
+        var parent = parent || frango.find('body').first();
+        var wait = frango.find('.wait-body', parent).first()
+        if (wait) {
+            parent.removeChild(wait);
+        };    
     };
 }
 
@@ -844,17 +847,14 @@ frango.touch.tab.config = function (tabBodyGroup) {
     
     var checkScrolling = function(){
         var idIntervalScrolling = setInterval(function(){
-            if(frango.touch.tab.scrolling == false){
-                clearInterval(checkScrolling);
-            }else{
-                frango.touch.tab.scrolling = false;
-            };
+            clearInterval(checkScrolling);
+            frango.touch.tab.scrolling = false;
         }, 1000);
-    }
+    };
 
-    frango.find(window).on('scroll', function(){
+    frango.find('.tab-body').on('scroll', function(){
        frango.touch.tab.scrolling = true;
-       checkScrolling();
+       checkScrolling();       
     });
 }
 
@@ -1074,173 +1074,7 @@ frango.server.authorization = undefined;
 
 frango.server.host_url = undefined;
 
-
-
-frango.server.put = function (url, data, async, objectHeader, useFrangoHost, useAuthorization) {
-    var result = {};
-    var routineOk;
-    var routineNotOk;
-    var finalData = "";
-    if (useFrangoHost === undefined || useFrangoHost == null) {
-        useFrangoHost = true;
-    };
-    if (useAuthorization == undefined || useAuthorization == null) {
-        useAuthorization = true;
-    };
-
-    result.onSuccess = function (method) {
-        if (method) {
-            routineOk = method;
-        };
-        return this;
-    };
-    result.onFailure = function (method) {
-        if (method) {
-            routineNotOk = method;
-        };
-        return this;
-    };
-
-    if (async === undefined || async === null || async === '')
-        async = true;
-    var xhttp = new XMLHttpRequest();
-    var csrftoken = getCookie('csrftoken');
-
-
-    xhttp.onreadystatechange = function () {
-        if (xhttp.readyState == 4) {
-            if (xhttp.status == 200 || xhttp.status == 201 || xhttp.status == 204) {
-                if (routineOk)
-                    routineOk(xhttp.responseText, xhttp.status);
-            } else {
-                if (routineNotOk)
-                    routineNotOk(xhttp.responseText, xhttp.status);
-            };
-        };
-    };
-    if (frango.server.host_url && useFrangoHost === true) {
-        xhttp.open("PUT", frango.server.host_url + url, async);
-    } else {
-        xhttp.open("PUT", url, async);
-    };
-
-    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    if (objectHeader) {
-        for (var obj in objectHeader) {
-            xhttp.setRequestHeader(obj, objectHeader[obj]);
-        };
-    };
-
-    if (frango.server.authorization && useAuthorization) {
-        xhttp.setRequestHeader('Authorization', frango.server.authorization);
-    };
-
-    if (!csrfSafeMethod('PUT') && !this.crossDomain) {
-        xhttp.setRequestHeader("X-CSRFToken", csrftoken);
-    };
-
-    if (typeof data === 'object') {
-        for (var key in data) {
-            if (data.hasOwnProperty(key)) {
-                finalData += key + "=" + data[key] + "&";
-            };
-        };
-        finalData = finalData.substr(0, finalData.length - 1);
-    } else {
-        finalData = data;
-    };
-
-    xhttp.send(finalData);
-
-    return result;
-};
-
-
-
-
-frango.server.post = function (url, data, async, objectHeader, useFrangoHost, useAuthorization) {
-    var result = {};
-    var routineOk;
-    var routineNotOk;
-    var finalData = "";
-    if (useFrangoHost === undefined || useFrangoHost == null) {
-        useFrangoHost = true;
-    };
-    if (useAuthorization == undefined || useAuthorization == null) {
-        useAuthorization = true;
-    };
-
-    result.onSuccess = function (method) {
-        if (method) {
-            routineOk = method;
-        };
-        return this;
-    };
-    result.onFailure = function (method) {
-        if (method) {
-            routineNotOk = method;
-        };
-        return this;
-    };
-
-    if (async === undefined || async === null || async === '')
-        async = true;
-    var xhttp = new XMLHttpRequest();
-    var csrftoken = getCookie('csrftoken');
-
-
-    xhttp.onreadystatechange = function () {
-
-        if (xhttp.readyState == 4) {
-            if (xhttp.status == 200 || xhttp.status == 201 || xhttp.status == 204) {
-                if (routineOk)
-                    routineOk(xhttp.responseText, xhttp.status);
-            } else {
-                if (routineNotOk)
-                    routineNotOk(xhttp.responseText, xhttp.status);
-            };
-        };
-    };
-    if (frango.server.host_url && useFrangoHost === true) {
-        xhttp.open("POST", frango.server.host_url + url, async);
-    } else {
-        xhttp.open("POST", url, async);
-    };
-
-    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    if (objectHeader) {
-        for (var obj in objectHeader) {
-            xhttp.setRequestHeader(obj, objectHeader[obj]);
-        };
-    };
-
-    if (frango.server.authorization && useAuthorization) {
-        xhttp.setRequestHeader('Authorization', frango.server.authorization);
-    };
-
-    if (!csrfSafeMethod('POST') && !this.crossDomain) {
-        xhttp.setRequestHeader("X-CSRFToken", csrftoken);
-    };
-
-    if (typeof data === 'object') {
-        for (var key in data) {
-            if (data.hasOwnProperty(key)) {
-                finalData += key + "=" + data[key] + "&";
-            };
-        };
-        finalData = finalData.substr(0, finalData.length - 1);
-    } else {
-        finalData = data;
-    };
-
-    xhttp.send(finalData);
-
-    return result;
-};
-
-
-
-frango.server.get = function (url, data, async, objectHeader, useFrangoHost, useAuthorization) {
+frango.server.ajax = function(url, data, async, objectHeader, useFrangoHost, useAuthorization, requestMethod){
     var newUrl = url;
     var result = {};
     var routineOk;
@@ -1252,8 +1086,6 @@ frango.server.get = function (url, data, async, objectHeader, useFrangoHost, use
     if (useAuthorization == undefined || useAuthorization == null) {
         useAuthorization = true;
     };
-
-
 
     result.onSuccess = function (method) {
         if (method) {
@@ -1275,21 +1107,23 @@ frango.server.get = function (url, data, async, objectHeader, useFrangoHost, use
     if (frango.server.host_url && useFrangoHost === true) {
         newUrl = frango.server.host_url + url;
     };
-
-
+    
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
-
-        if (xhttp.readyState == 4) {
-            if (xhttp.status == 200) {
-                routineOk(xhttp.responseText, xhttp.status);
-            } else {
-                routineNotOk(xhttp.responseText, xhttp.status);
-            };
+        try{
+            if (xhttp.readyState == 4) {
+                if (xhttp.status == 200 || xhttp.status == 201 || xhttp.status == 204) {
+                    routineOk(xhttp.responseText, xhttp.status);
+                } else {
+                    routineNotOk(xhttp.responseText, xhttp.status);
+                };
+            };                
+        }catch(e){
+          frango.wait.stop(undefined, true);
+          frango.warning('An error has ocurred. </br>' + e);
         };
-
-
     };
+
     if (data) {
         if (typeof data === 'object') {
             for (var key in data) {
@@ -1300,11 +1134,15 @@ frango.server.get = function (url, data, async, objectHeader, useFrangoHost, use
             finalData = finalData.substr(0, finalData.length - 1);
         } else {
             finalData = data;
-        };
+        };        
+    };
 
-        xhttp.open("GET", newUrl + '?' + finalData, async);
-    } else {
-        xhttp.open("GET", newUrl, async);
+
+    if(finalData != "" && requestMethod == 'GET'){
+        xhttp.open(requestMethod, newUrl + '?' + finalData, async);
+    }else{
+        
+        xhttp.open(requestMethod, newUrl, async);
     };
 
     if (objectHeader) {
@@ -1312,16 +1150,50 @@ frango.server.get = function (url, data, async, objectHeader, useFrangoHost, use
             xhttp.setRequestHeader(obj, objectHeader[obj]);
         };
     };
-
+    
+    if(requestMethod != 'GET'){
+        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        if (!csrfSafeMethod(requestMethod) && !this.crossDomain) {
+            xhttp.setRequestHeader("X-CSRFToken", getCookie('csrftoken'));
+        };            
+    };
+    
     if (frango.server.authorization && useAuthorization) {
         xhttp.setRequestHeader('Authorization', frango.server.authorization);
     };
-
-    xhttp.send();
-    return result;
+    
+    try{
+        if(requestMethod != 'GET' && finalData != ""){
+            xhttp.send(finalData);
+        }else{
+            xhttp.send();
+        };        
+    }catch(e){
+        frango.wait.stop(undefined, true);
+        frango.warning(e.description);
+    };
+    
+    return result;  
 };
 
-frango.ajaxGet = function (objectParams) {
+
+frango.server.put = function (url, data, async, objectHeader, useFrangoHost, useAuthorization) {
+    return frango.server.ajax(url, data, async, objectHeader, useFrangoHost, useAuthorization, 'PUT');
+};
+
+frango.server.post = function (url, data, async, objectHeader, useFrangoHost, useAuthorization) {
+    return frango.server.ajax(url, data, async, objectHeader, useFrangoHost, useAuthorization, 'POST');
+};
+
+frango.server.get = function (url, data, async, objectHeader, useFrangoHost, useAuthorization) {
+   return frango.server.ajax(url, data, async, objectHeader, useFrangoHost, useAuthorization, 'GET');
+};
+
+frango.server.delete = function (url, data, async, objectHeader, useFrangoHost, useAuthorization) {
+    return frango.server.ajax(url, data, async, objectHeader, useFrangoHost, useAuthorization, 'DELETE');
+ };
+ 
+frango.ajax = function(objectParams, requestMethod){
     var url = objectParams["url"];
     var data = objectParams["data"];
     var async = objectParams["async"];
@@ -1330,7 +1202,7 @@ frango.ajaxGet = function (objectParams) {
     var useAuthorization = objectParams["useAuthorization"];
     var onSuccess = objectParams["onSuccess"];
     var onFailure = objectParams["onFailure"]
-    frango.server.get(url, data, async, objectHeader, useFrangoHost, useAuthorization).onSuccess(function (data) {
+    frango.server.ajax(url, data, async, objectHeader, useFrangoHost, useAuthorization, requestMethod).onSuccess(function (data) {
         if (onSuccess) {
             onSuccess(data);
         };
@@ -1338,51 +1210,24 @@ frango.ajaxGet = function (objectParams) {
         if (onFailure) {
             onFailure(data);
         };
-    });
+    });    
+}
+
+frango.ajaxGet = function (objectParams) {
+    frango.ajax(objectParams, 'GET');
 };
 
 frango.ajaxPost = function (objectParams) {
-
-    var url = objectParams["url"];
-    var data = objectParams["data"];
-    var async = objectParams["async"];
-    var objectHeader = objectParams["header"];
-    var useFrangoHost = objectParams["useFrangoHost"];
-    var useAuthorization = objectParams["useAuthorization"];
-    var onSuccess = objectParams["onSuccess"];
-    var onFailure = objectParams["onFailure"]
-    frango.server.post(url, data, async, objectHeader, useFrangoHost, useAuthorization).onSuccess(function (data) {
-        if (onSuccess) {
-            onSuccess(data);
-        };
-    }).onFailure(function (data) {
-        if (onFailure) {
-            onFailure(data);
-        };
-    });
+    frango.ajax(objectParams, 'POST');
 };
 
 frango.ajaxPut = function (objectParams) {
-
-    var url = objectParams["url"];
-    var data = objectParams["data"];
-    var async = objectParams["async"];
-    var objectHeader = objectParams["header"];
-    var useFrangoHost = objectParams["useFrangoHost"];
-    var useAuthorization = objectParams["useAuthorization"];
-    var onSuccess = objectParams["onSuccess"];
-    var onFailure = objectParams["onFailure"]
-    frango.server.put(url, data, async, objectHeader, useFrangoHost, useAuthorization).onSuccess(function (data) {
-        if (onSuccess) {
-            onSuccess(data);
-        };
-    }).onFailure(function (data) {
-        if (onFailure) {
-            onFailure(data);
-        };
-    });
+    frango.ajax(objectParams, 'PUT');
 };
 
+frango.ajaxDelete = function(objectParams){
+    frango.ajax(objectParams, 'DELETE');    
+}
 
 
 frango.templatesFunctions = {};
@@ -1394,6 +1239,13 @@ frango.templatesFunctions.upper = function (value) {
 frango.templatesFunctions.lower = function (value) {
     return value.toLowerCase();
 };
+
+frango.templatesFunctions.replace = function (value, params) {
+    to_be_replaced = params[0];
+    replace_to = params[1];
+    return value.replace(to_be_replaced, replace_to);
+};
+
 
 frango.templatesFunctions.default = function (value, defa, field) {
 

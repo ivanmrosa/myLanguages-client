@@ -274,7 +274,7 @@ function TrainingPlayer(instanceId) {
             frango.warning('This option is not available. Try to update your browse');
         };
 
-        if ('plugins' in window) {
+        if (window.plugins) {
 
             try {
                 var recognition = window.plugins.speechRecognition;
@@ -288,10 +288,9 @@ function TrainingPlayer(instanceId) {
                     recognition.startListening(function (matches) {
                         methodReceiveText(matches);
                     }, function (err) {
-                        frango.alert(err);
+                        frango.warning(err);
                     }, options)
                 };
-
 
                 recognition.isRecognitionAvailable(function (available) {
                     if (available) {

@@ -21,16 +21,16 @@ function textSelector(instanceId) {
         if (thisObject.isSelecting == false && isOpened == false) {
             clearInterval(idInterval);
             var text = window.getSelection().toString();
-            if (text) {                
+            if (text) {
                 openPopup(text);
             };
         };
     };
     var openPopup = function (text) {
         isOpened = true;
-        thisObject.selectedText = text;                        
+        thisObject.selectedText = text;
         htmlComponent.find('.text-selected').first().innerHTML = thisObject.selectedText;
-        $('#' + instanceId + 'Modal').modal({complete:closePopup});                
+        $('#' + instanceId + 'Modal').modal({ complete: closePopup });
         htmlComponent.find('.open').first().click();
     };
     var closePopup = function () {
@@ -45,38 +45,40 @@ function textSelector(instanceId) {
         var learningLanguage = 'en';
         var url = frango.format('https://translate.google.com/translate?hl=%s#%s/%s/%s',
             [userLanguage, learningLanguage, userLanguageSufix, thisObject.selectedText]);
-        window.open(url, '_blank', 'location=yes');                
-            
+        window.open(url, '_blank', 'location=yes');
+
     };
 
-    var copySelectedText = function(){
+    var copySelectedText = function () {
         document.execCommand('copy');
         frango.warning('Copied!');
     };
 
-    var audio = function(){
-       dictionaryInstance.playPhrases(thisObject.selectedText);
+    var audio = function () {
+        dictionaryInstance.playPhrases(thisObject.selectedText);
     };
 
-    var openDictionary = function(){        
+    var openDictionary = function () {
         dictionaryInstance.showDictionary(thisObject.selectedText.split(" "));
-        $('#' + instanceId + 'Dictionary').modal({complete:closeDictionary});
+        $('#' + instanceId + 'Dictionary').modal({ complete: closeDictionary });
         //htmlComponent.find('#' + instanceId + 'Dictionary').first().click();
         $('#' + instanceId + 'Dictionary').modal('open');
     };
-    
-    var closeDictionary = function(){
+
+    var closeDictionary = function () {
         dictionaryInstance.removeDictionary();
     };
 
     var __init__ = function () {
-        document.addEventListener('contextmenu', function(e){
-          var nodeName = e.target.nodeName;
-          var ignoredElements =  ['INPUT', 'TEXTAREA'];
-          if(nodeName.indexOf(nodeName) == -1){
-              e.preventDefault();
-          };          
-        }, false); 
+        document.addEventListener('contextmenu', function (e) {
+            if (frango.isMobileDevice()) {
+                var nodeName = e.target.nodeName;
+                var ignoredElements = ['INPUT', 'TEXTAREA'];
+                if (ignoredElements.indexOf(nodeName) == -1) {
+                    e.preventDefault();
+                };
+            };
+        }, false);
         document.addEventListener("selectstart", function () {
 
             var idResetSelecting = setInterval(function () {

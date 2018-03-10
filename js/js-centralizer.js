@@ -73,13 +73,16 @@ frango.app.configureRote(function () {
     frango.app.routes = 
         {
     "/gallows": "gallows",
-    "/login": "login",
-    "/lesson/": "lesson",
-    "/search-dictionary": "searchDictionary",
-    "/lesson/detail/": "lesson_detail",
-    "/signup": "signup",
+    "/games": "games",
     "/": "home",
-    "/games": "games"
+    "/image-to-word": "imageLibrary",
+    "/lesson/": "lesson",
+    "/lesson/detail/": "lesson_detail",
+    "/login": "login",
+    "/memory-game": "memoryGame",
+    "/search-dictionary": "searchDictionary",
+    "/signup": "signup",
+    "/topics": "topics"
 }
     
 });
@@ -230,8 +233,7 @@ loginComponent = {
         };
     },
 
-    checkUserIsLogged : function(){
-      if(!loginComponent.UserNameLogged){
+    checkUserIsLogged : function(){      
         var app_cookie = frango.getCookie('mylanguage-username');
         if(app_cookie){
             app_cookie = JSON.parse(app_cookie);
@@ -241,13 +243,13 @@ loginComponent = {
         }else{            
             frango.app.navigate('/login');
             return false
-        };        
-      };
+        };              
     },
 
     handleLogin: function (user, password) {
 
             var onSuccess = function (data) {
+                frango.wait.stop();
                 data = JSON.parse(data);
                 token = data["access_token"];
                 frango.setCookie("mylanguage-username", '{"username":"' + user + '", "tk":"' + token + '"}', 364);
@@ -256,6 +258,7 @@ loginComponent = {
             };
 
             var onFailure = function (data) {
+                frango.wait.stop();
                 try{
                     var erro = JSON.parse(data)
                 }catch(e) {
@@ -266,6 +269,7 @@ loginComponent = {
                 
                 frango.warning(erro["error_description"]);
             };
+            frango.wait.start();
             frango.ajaxPost(
                 {
                     "url": 'get-token/',
@@ -277,8 +281,12 @@ loginComponent = {
     },
     logout : function(){
         frango.setCookie('mylanguage-username', '', -1);
+        frango.setCookie('mylanguage-user-learning', '', -1);
+        frango.setCookie('mylanguage-actual-lesson', '', -1);
+        frango.setCookie('mylanguage-actual-words', '', -1);        
         frango.app.navigate('/login');
-    }
+        $('.button-collapse').sideNav('destroy');
+    }    
 }
 
 
@@ -363,21 +371,28 @@ common_lessonComponent = {
     },
 
     getUserLearning: function (methodToSendData) {
-        frango.ajaxGet({
-            url: 'user-learning-language/',
-            data: { "user__username": common_lessonComponent.getUsername() },
-            onSuccess: function (userLearnig) {
-                userLearnig = JSON.parse(userLearnig)[0];
-                /*save the new score*/
-                methodToSendData(userLearnig);
-            },
-            onFailure(error) {
-                alert(error);
-            }
+        var localUserLearning = frango.getCookie('mylanguage-user-learning');
+        if(localUserLearning == "" || localUserLearning == undefined || localUserLearning == null){ 
+            frango.ajaxGet({
+                url: 'user-learning-language/',
+                data: { "user__username": common_lessonComponent.getUsername() },
+                onSuccess: function (userLearnig) {
+                    
+                    userLearnig = JSON.parse(userLearnig)[0];
+                    frango.setCookie('mylanguage-user-learning', JSON.stringify(userLearnig));
+                    /*save the new score*/                    
+                    methodToSendData(userLearnig);
 
-        });
+                },
+                onFailure(error) {
+                    frango.warning(error);
+                }
+            });
+    
+        }else{
+          methodToSendData(JSON.parse(localUserLearning)); 
+        };
     },
-
 
     incrementUserScore: function (newScore) {
         ///user-learning-language/
@@ -388,6 +403,9 @@ common_lessonComponent = {
             frango.ajaxPut({
                 url: 'user-learning-language/' + id.toString() + '/',
                 data: updatedData,
+                onSuccess: function(){
+                   frango.setCookie('mylanguage-user-learning', JSON.stringify(updatedData));
+                },
                 onFailure: function (error) {
                     //alert(error);
                     document.write(error);
@@ -407,7 +425,7 @@ common_lessonComponent = {
             frango.ajaxGet({
                 url: 'lesson/',
                 data: { 'sequence': newSequence },
-                onSuccess: function (lesson) {
+                onSuccess: function (lesson) {                    
                     lesson = JSON.parse(lesson)[0];
                     var lesson_id = lesson.id;
 
@@ -416,8 +434,11 @@ common_lessonComponent = {
                     frango.ajaxPut({
                         url: 'user-learning-language/' + id.toString() + '/',
                         data: updatedData,
-                        onSuccess: function(){                            
-                          frango.app.navigate('#lesson/detail/?lesson_id=' + lesson_id);
+                        onSuccess: function(){                                                    
+                           frango.setCookie('mylanguage-user-learning', '', -1);
+                           frango.setCookie('mylanguage-actual-lesson', '', -1);
+                           frango.setCookie('mylanguage-actual-words', '', -1);
+                           frango.app.navigate('#lesson/detail/?lesson_id=' + lesson_id);
                         },
                         onFailure: function (error) {
                             //alert(error);
@@ -427,11 +448,68 @@ common_lessonComponent = {
                     });                    
                 }
             });
-
-
-        };
+        };   
 
         common_lessonComponent.getUserLearning(doPost);
+    },
+
+    getActualLesson : function(methodToSendData){
+        frango.wait.start();
+        
+        common_lessonComponent.getUserLearning(function(userLearnig){
+            var lesson_id = userLearnig['actual_lesson_id'];
+            var score = userLearnig['score'];
+            var language_name = userLearnig['language_name'];
+            
+            var getLesson = function(lesson){
+                frango.wait.stop();
+                lesson["score"] = score;
+                lesson["language_name"] = language_name;
+    
+                if (score >= 70) {
+                    lesson["aproved"] = "true";
+                } else {
+                    lesson["aproved"] = "false";
+                };
+
+                methodToSendData(lesson);                             
+            };
+
+            var actualLesson = frango.getCookie('mylanguage-actual-lesson');
+
+            if(actualLesson != ""){
+                actualLesson = JSON.parse(actualLesson);
+                getLesson(actualLesson);
+            }else{
+                frango.ajaxGet({
+                    url: 'lesson/',
+                    data: { "id": lesson_id },
+                    onSuccess: function (lesson) {  
+                        lesson = JSON.parse(lesson)[0];
+                                              
+                      /*  frango.wait.stop();
+                        lesson = JSON.parse(lesson)[0];
+                        lesson["score"] = score;
+                        lesson["language_name"] = language_name;
+            
+                        if (score >= 70) {
+                            lesson["aproved"] = "true";
+                        } else {
+                            lesson["aproved"] = "false";
+                        };
+        
+                        methodToSendData(lesson);   */
+                        frango.setCookie('mylanguage-actual-lesson', JSON.stringify(lesson));
+                        getLesson(lesson);
+                    },
+                    onFailure: function (erro) {
+                        frango.wait.stop();
+                        frango.warning(erro);
+                    }
+                });                
+            };            
+        });
+
     }
 
 }
@@ -448,9 +526,20 @@ app.components.push(function () {
 
 lesson_detail_wordsComponent = {
     getLessonWords: function (methodSendTo, componentElement) {
-        var params = frango.app.getURLParameters()
+        var params = frango.app.getURLParameters();
+        var actualWords = frango.getCookie('mylanguage-actual-words');
+
+        if(actualWords != "" ){
+            actualWords = JSON.parse(actualWords);
+            if(actualWords[0].lesson_id == params.lesson_id){
+                methodSendTo(actualWords);
+                return;
+            };
+        };
+
         frango.server.get('lesson-word/', params).
             onSuccess(function (data) {
+                frango.setCookie('mylanguage-actual-words', data);
                 methodSendTo(JSON.parse(data));
             }).
             onFailure(function (msg) {
@@ -458,7 +547,7 @@ lesson_detail_wordsComponent = {
                     frango.wait.stop(componentElement);
                 };                
                 var erro = JSON.parse(msg);
-                alert(erro["error_description"]);                
+                frango.warning(erro["error_description"]);                
             });
     },
         
@@ -503,7 +592,7 @@ homeComponent = {
     },
 
     getHelpStepOne : function(){
-        var html = '<h5 class="center-align blue-text">Bem vindo !</h5>';
+        var html = '<h5 class="center-align white-text blue">Bem vindo !</h5>';
         html += '<div class="align-justify">';        
         html += 'Aprenda a usar aqui o vocplus. Este tutorial pode ser visto a qualquer ';
         html += 'momento acessando a opção "Ajuda" entrando em "more". ';
@@ -511,7 +600,7 @@ homeComponent = {
         return html;
     },
     getHelpStepTwo : function(){
-        var html = '<h5 class="center-align blue-text">Lições</h5>';
+        var html = '<h5 class="center-align white-text blue">Lições</h5>';
         html += '<div class="align-justify">';
         html += 'O vocplus possui várias lições para aprendizagem de vocabulário. ';
         html += 'A lição pode ser acessada através do ícone play na tela inicial no menu "Your Actual Lesson". ';
@@ -520,9 +609,9 @@ homeComponent = {
         return html;
     },
     getHelpStepThree : function(){
-        var html = '<h5 class="center-align blue-text">Lições - palavras</h5>';
+        var html = '<h5 class="center-align white-text blue">Lições - palavras</h5>';
         html += '<div class="align-justify">';        
-        html += 'Ao acessar uma lição, serão mostradas uma lista de palavras. ';
+        html += 'Ao acessar uma lição, será mostrada uma lista de palavras. ';
         html += 'Elas devem ser lidas e escutadas várias vezes, assim como é importante ler as definições ';
         html += 'e acessar as imagens relacionadas, pois podem ajudar no entendimento. ';
         html += 'Ao selecionar uma palavra ou uma frase, opções extras são apresentadas, como por exemplo: ';
@@ -531,7 +620,7 @@ homeComponent = {
         return html;
     },
     getHelpStepFour : function(){
-        var html = '<h5 class="center-align blue-text">Lições - pronúncia e ditado</h5>';
+        var html = '<h5 class="center-align white-text blue">Lições - pronúncia e ditado</h5>';
         html += '<div class="align-justify">';        
         html += 'As lições também apresentam ditado e treinamento de pronúncia. ';
         html += 'Para poder acessar a próxima lição é necessário realizar estas tarefas atingindo no mínimo 70 pontos. ';
@@ -541,7 +630,7 @@ homeComponent = {
         return html;
     },
     getHelpStepFive : function(){
-        var html = '<h5 class="center-align blue-text">Resumo</h5>';        
+        var html = '<h5 class="center-align white-text blue">Resumo</h5>';        
         html += '<ul class="collection">';
         html += '<li class="collection-item">Ouça, leia e pronunicie as palavras várias vezes.</li>';
         html += '<li class="collection-item">Selecione palavras e frases em qualquer lugar para obter novas opções.</li>';
@@ -604,17 +693,19 @@ signupComponent = {
     },
 
     registerUser: function(){
+        frango.wait.start();
         var data =  frango.formParserJson('#form-signup');
         frango.ajaxPost({
             url : 'create-user/',
             data : data,
-            onSuccess : function(data){                                
-                
+            onSuccess : function(data){                                                
                 frango.warning('User created!' , function(){
+                   frango.wait.stop();                   
                    frango.app.navigate('/login');
                 });
             },
             onFailure : function(erro){
+               frango.wait.stop();
                erro = JSON.parse(erro);
                frango.bindValidations('#form-signup', erro);              
             }
@@ -657,9 +748,9 @@ resumed_lessonComponent = {
 
     },
     controller: function (component) {
-        frango.wait.start();
+        
         /*get user's actual lesson*/
-        var username = common_lessonComponent.getUsername();
+        /*var username = common_lessonComponent.getUsername();
         frango.ajaxGet({
             url: 'user-learning-language/',
             data: { "user__username": username },
@@ -671,14 +762,34 @@ resumed_lessonComponent = {
                 var language_name = data['language_name']
                 resumed_lessonComponent.bindLesson(lesson_id, score, language_name, component);
             },
-        });
+        });*/
+        //frango.wait.start();
+        /*common_lessonComponent.getUserLearning(function(data){
+            frango.wait.stop();
+            var lesson_id = data['actual_lesson_id']
+            var score = data['score']
+            var language_name = data['language_name']
+            resumed_lessonComponent.bindLesson(lesson_id, score, language_name, component);
+        });*/
+        resumed_lessonComponent.bindLesson(component);
 
     },
 
-    bindLesson: function (lesson_id, score, language_name, component) {
-        componentEle = frango.find(component.selector_to_bind).first();
-        frango.wait.start(componentEle);
-        frango.ajaxGet({
+    bindLesson: function (component) {        
+        //frango.wait.start();
+        common_lessonComponent.getActualLesson(function(lesson){
+            /*lesson["score"] = score;
+            lesson["language_name"] = language_name;
+
+            if (score >= 70) {
+                lesson["aproved"] = "true";
+            } else {
+                lesson["aproved"] = "false";
+            };
+            frango.wait.stop();*/
+            component.bindData({ "lesson": [lesson]});
+        });
+        /*frango.ajaxGet({
             'url': 'lesson/',
             data: { "id": lesson_id },
             onSuccess: function (lesson) {
@@ -691,14 +802,16 @@ resumed_lessonComponent = {
                 } else {
                     lesson["aproved"] = "false";
                 };
-                frango.wait.stop(componentEle);
+                frango.wait.stop();
                 component.bindData({ "lesson": [lesson] });
             },
             onFailure: function (erro) {
-                frango.wait.stop(componentEle);
-                alert(erro)
+                frango.wait.stop();
+                frango.warning(erro);
             }
-        });
+        });*/
+
+
 
     }
 }
@@ -893,7 +1006,7 @@ speechComponent = {
                 var correct = false;
                 var index = 0;
                 for (index = 0; index < listText.length; index++) {                    
-                    if(listText[index] == selectedText){
+                    if(listText[index].toUpperCase() == selectedText.toUpperCase()){
                        correct = true;
                        break;
                     };
@@ -1200,7 +1313,7 @@ function TrainingPlayer(instanceId) {
             frango.warning('This option is not available. Try to update your browse');
         };
 
-        if ('plugins' in window) {
+        if (window.plugins) {
 
             try {
                 var recognition = window.plugins.speechRecognition;
@@ -1214,10 +1327,9 @@ function TrainingPlayer(instanceId) {
                     recognition.startListening(function (matches) {
                         methodReceiveText(matches);
                     }, function (err) {
-                        frango.alert(err);
+                        frango.warning(err);
                     }, options)
                 };
-
 
                 recognition.isRecognitionAvailable(function (available) {
                     if (available) {
@@ -1487,16 +1599,16 @@ function textSelector(instanceId) {
         if (thisObject.isSelecting == false && isOpened == false) {
             clearInterval(idInterval);
             var text = window.getSelection().toString();
-            if (text) {                
+            if (text) {
                 openPopup(text);
             };
         };
     };
     var openPopup = function (text) {
         isOpened = true;
-        thisObject.selectedText = text;                        
+        thisObject.selectedText = text;
         htmlComponent.find('.text-selected').first().innerHTML = thisObject.selectedText;
-        $('#' + instanceId + 'Modal').modal({complete:closePopup});                
+        $('#' + instanceId + 'Modal').modal({ complete: closePopup });
         htmlComponent.find('.open').first().click();
     };
     var closePopup = function () {
@@ -1511,38 +1623,40 @@ function textSelector(instanceId) {
         var learningLanguage = 'en';
         var url = frango.format('https://translate.google.com/translate?hl=%s#%s/%s/%s',
             [userLanguage, learningLanguage, userLanguageSufix, thisObject.selectedText]);
-        window.open(url, '_blank', 'location=yes');                
-            
+        window.open(url, '_blank', 'location=yes');
+
     };
 
-    var copySelectedText = function(){
+    var copySelectedText = function () {
         document.execCommand('copy');
         frango.warning('Copied!');
     };
 
-    var audio = function(){
-       dictionaryInstance.playPhrases(thisObject.selectedText);
+    var audio = function () {
+        dictionaryInstance.playPhrases(thisObject.selectedText);
     };
 
-    var openDictionary = function(){        
+    var openDictionary = function () {
         dictionaryInstance.showDictionary(thisObject.selectedText.split(" "));
-        $('#' + instanceId + 'Dictionary').modal({complete:closeDictionary});
+        $('#' + instanceId + 'Dictionary').modal({ complete: closeDictionary });
         //htmlComponent.find('#' + instanceId + 'Dictionary').first().click();
         $('#' + instanceId + 'Dictionary').modal('open');
     };
-    
-    var closeDictionary = function(){
+
+    var closeDictionary = function () {
         dictionaryInstance.removeDictionary();
     };
 
     var __init__ = function () {
-        document.addEventListener('contextmenu', function(e){
-          var nodeName = e.target.nodeName;
-          var ignoredElements =  ['INPUT', 'TEXTAREA'];
-          if(nodeName.indexOf(nodeName) == -1){
-              e.preventDefault();
-          };          
-        }, false); 
+        document.addEventListener('contextmenu', function (e) {
+            if (frango.isMobileDevice()) {
+                var nodeName = e.target.nodeName;
+                var ignoredElements = ['INPUT', 'TEXTAREA'];
+                if (ignoredElements.indexOf(nodeName) == -1) {
+                    e.preventDefault();
+                };
+            };
+        }, false);
         document.addEventListener("selectstart", function () {
 
             var idResetSelecting = setInterval(function () {
@@ -2639,3 +2753,278 @@ helpComponent = {
     }
 };
 
+
+
+app.components.push(function () {
+    frango.component('crossWords').
+        setPathLocalTemplate('components/crossWords/template/crossWords.html').
+        objectGetData(crossWordsComponent).
+        controller(crossWordsComponent.controller).
+        register()
+});
+
+
+function crossWordsClass(instanceId) {
+   //use htmlComponent.find() to access the child elements  
+   var htmlComponent = frango.find('#' + instanceId);
+
+   /*write the component functionalites here*/
+}
+
+
+crossWordsComponent = {
+
+    controller: function (component) {
+        //This implementation permites to create component by url route
+        var instanceID = component.componentID;
+        crossWordsComponent.getInitialData(instanceID, function(data){
+           component.bindData(data, true, function () {
+               /*on finish*/ 
+           });
+        });    
+
+    },
+    
+    getInitialData : function(componentID, callBack){
+        var dataTemplate = {
+           'crossWords': [{
+                id: componentID
+            }]
+         };
+         callBack(dataTemplate);
+       
+    },
+    
+    getInstance : function(componentID, methodToSendInstance){
+        //This implementation permites to create reusable component. The property data-auto-create in the component html must be setted to "no".
+        frango.useNestedComponent(componentID, function(){            
+            var component = frango.getComponent('crossWords');
+            var instanceID = component.componentID;
+            
+            crossWordsComponent.getInitialData(instanceID, function(data){
+                component.bindData(data, true, function () {
+		            var instance = new crossWordsClass(componentID);
+                    if(methodToSendInstance){
+                       methodToSendInstance(instance);    
+                    };		            
+                });    
+            }); 
+        });
+    }
+};
+
+
+
+app.components.push(function () {
+    frango.component('imageLibrary').
+        setPathLocalTemplate('components/imageLibrary/template/imageLibrary.html').
+        objectGetData(imageLibraryComponent).
+        controller(imageLibraryComponent.controller).
+        register()
+});
+
+
+imageLibraryComponent = {
+    getData : function(){
+
+    }, 
+    getImagesData : function(methodToSend){
+        var dbimages = frango.getCookie('mylanguage-images-db');
+        if(dbimages == ""){
+            frango.wait.start();
+            frango.ajaxGet({
+                url: 'get-file/',
+                data : {"file": 'english/images/things-db.json'},
+                onSuccess : function(data){  
+                    frango.wait.stop();
+                    frango.setCookie('mylanguage-images-db', data, 5);
+                    data = JSON.parse(data);                
+                    methodToSend(data);              
+                },
+     
+                onFailure : function(data){
+                   frango.wait.stop();
+                   frango.warning(data);
+                }
+            });    
+        }else{
+            methodToSend(JSON.parse(dbimages));
+        }
+    },
+    controller: function(component){
+        imageLibraryComponent.getImagesData(function(data){
+            component.bindData({"images":data});
+        });               
+    }
+}
+
+
+app.components.push(function () {
+    frango.component('topics').
+        setPathLocalTemplate('components/topics/template/topics.html').
+        objectGetData(topicsComponent).
+        controller(topicsComponent.controller).
+        register()
+});
+
+
+topicsComponent = {
+    getData : function(){
+
+    },
+    controller: function(component){
+       component.bindData();
+    }
+}
+
+
+app.components.push(function () {
+    frango.component('memoryGame').
+        setPathLocalTemplate('components/memoryGame/template/memoryGame.html').
+        objectGetData(memoryGameComponent).
+        controller(memoryGameComponent.controller).
+        register()
+});
+
+var memoryGameClass = function (component) {
+    var htmlComponent = frango.find("#memoryGame");
+    var howManyImagesInGame = 20;
+    var template = "";
+    var howManyCardsAreClicked = 0;
+    var interrogationImagePath = "img/interrogation.png";
+    var memoryDictionary = null;
+
+    var cardClick = function () {
+        var card = frango.find(this);
+        var clicked = card.attr("data-clicked");
+        if (clicked == 'clicked' || clicked == "locked") {
+            return;
+        };
+
+        
+
+        if (howManyCardsAreClicked < 2) {            
+            howManyCardsAreClicked += 1;
+            var img = card.find('img');
+            var src = img.attr('data-src');
+            var description = img.attr('alt')
+            card.attr('data-clicked', 'clicked');
+            card.find('img').attr('src', src);
+            htmlComponent.find('.selected-item-title').first().innerHTML = description;
+
+            
+            //card.find('.card-description').first().innerHTML = card.find('figcaption').attr('data-title');
+            if (howManyCardsAreClicked == 2) {                
+                var clickeds = []
+                htmlComponent.find('[data-clicked="clicked"]').loop(function () {
+                    clickeds.push(this.find('img').attr("alt"));                    
+                });
+
+                if (clickeds[0] != clickeds[1]) {                    
+                    var timeout = setTimeout(function () {
+                        htmlComponent.find('.selected-item-title').first().innerHTML = "Selected item";
+                        htmlComponent.find('[data-clicked="clicked"]').loop(function () {                                                        
+                            this.find('img').attr('src', interrogationImagePath);
+                            //this.find('.card-description').first().innerHTML = "";
+                            this.attr('data-clicked', "unclicked");
+                            howManyCardsAreClicked = 0;                            
+                        });                                            
+                        clearTimeout(timeout);
+                    }, 2000);
+                }else{
+                    memoryDictionary.playPhrases(description, false);
+                    htmlComponent.find('[data-clicked="clicked"]').attr("data-clicked", "locked");
+                    howManyCardsAreClicked = 0;
+                    if(frango.find('.memory-game:not([data-clicked="locked"])').elements.length == 0){
+                        frango.warning('You won!'); 
+                    };
+                };
+                
+            };
+        };
+    };
+    
+    var getRandomArbitrary  = function(min, max){
+        return Math.floor(Math.random() * (max - min) + min);
+    };
+
+    var randomizeArray = function(array){
+        var maxIndex = array.length;
+        var newArray = [];
+        var randomIndexes = []
+        var random = 0;
+        for (var index = 0; index < array.length; index++) {
+            random = getRandomArbitrary(0, maxIndex);
+            while (randomIndexes.indexOf(random) != -1) {
+                random = getRandomArbitrary(0, maxIndex);
+            };
+            randomIndexes.push(random);
+            newArray.push(array[random]);
+        };
+        return newArray;
+    }
+
+    var newGame = function () {
+        imageLibraryComponent.getImagesData(function (images) {
+            howManyCardsAreClicked = 0;
+            htmlComponent.find('.template').first().innerHTML = template;
+            var randomIndexes = []
+            var random = 0;
+            var maxIndex = images.length;
+            var imagesToGame = [];
+
+            if (maxIndex <= howManyImagesInGame) {
+                howManyImagesInGame = maxIndex;
+                frango.warning('The limit for pairs is ' + maxIndex);
+            };
+
+            for (var index = 0; index < howManyImagesInGame; index++) {
+                random = getRandomArbitrary(0, maxIndex);
+                while (randomIndexes.indexOf(random) != -1) {
+                    random = getRandomArbitrary(0, maxIndex);
+                };
+                randomIndexes.push(random);
+                imagesToGame.push(images[random]);
+                imagesToGame.push(images[random]);
+            };
+
+            imagesToGame = randomizeArray(imagesToGame);
+
+            frango.bindDataOnTemplate('memorycards', imagesToGame, htmlComponent.find('.template').first());
+            htmlComponent.find('.memory-game').on('click', cardClick);
+            
+        });
+    };
+
+    var __init__ = function () {
+        template = htmlComponent.find('.template').first().innerHTML;
+        htmlComponent.find('.refresh').on('click', function(){
+            howManyImagesInGame = parseInt(htmlComponent.find('.pairs').first().value);
+            newGame();
+            frango.warning('Refreshed');
+        });
+        htmlComponent.find('.pairs').loop(function(){            
+           this.value = howManyImagesInGame; 
+        });
+
+        memoryDictionary = new dictionary('memoryGameDictionary');
+    
+        newGame();
+        
+    };
+
+    __init__();
+
+}
+
+
+memoryGameComponent = {
+    getData: function () {
+
+    },
+    controller: function (component) {
+        component.bindData([], true, function () {
+            var game = new memoryGameClass(component);
+        });
+    }
+}

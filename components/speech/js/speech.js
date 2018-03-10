@@ -59,7 +59,7 @@ speechComponent = {
                 var correct = false;
                 var index = 0;
                 for (index = 0; index < listText.length; index++) {                    
-                    if(listText[index] == selectedText){
+                    if(listText[index].toUpperCase() == selectedText.toUpperCase()){
                        correct = true;
                        break;
                     };

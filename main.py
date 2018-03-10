@@ -207,6 +207,15 @@ class testHTTPServer_RequestHandler(SimpleHTTPRequestHandler):
             result = mime[key]
         
         return result
+    
+    def do_OPTIONS(self):           
+        self.send_response(200)       
+        self.send_header('Access-Control-Allow-Origin', '*')                
+        self.send_header("Access-Control-Allow-Headers", '*')
+        self.send_header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE')
+        self.end_headers()
+        
+        return
 
     def do_GET(self):
         # Send response status code
@@ -228,6 +237,8 @@ class testHTTPServer_RequestHandler(SimpleHTTPRequestHandler):
             # Send headers
             self.send_response(200)
             self.send_header('Access-Control-Allow-Origin', '*')
+            self.send_header("Access-Control-Allow-Headers", '*')
+            self.send_header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE')
             self.send_header('Content-type', mimetype)
             self.end_headers()
 

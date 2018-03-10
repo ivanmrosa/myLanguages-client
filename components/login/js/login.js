@@ -52,8 +52,7 @@ loginComponent = {
         };
     },
 
-    checkUserIsLogged : function(){
-      if(!loginComponent.UserNameLogged){
+    checkUserIsLogged : function(){      
         var app_cookie = frango.getCookie('mylanguage-username');
         if(app_cookie){
             app_cookie = JSON.parse(app_cookie);
@@ -63,13 +62,13 @@ loginComponent = {
         }else{            
             frango.app.navigate('/login');
             return false
-        };        
-      };
+        };              
     },
 
     handleLogin: function (user, password) {
 
             var onSuccess = function (data) {
+                frango.wait.stop();
                 data = JSON.parse(data);
                 token = data["access_token"];
                 frango.setCookie("mylanguage-username", '{"username":"' + user + '", "tk":"' + token + '"}', 364);
@@ -78,6 +77,7 @@ loginComponent = {
             };
 
             var onFailure = function (data) {
+                frango.wait.stop();
                 try{
                     var erro = JSON.parse(data)
                 }catch(e) {
@@ -88,6 +88,7 @@ loginComponent = {
                 
                 frango.warning(erro["error_description"]);
             };
+            frango.wait.start();
             frango.ajaxPost(
                 {
                     "url": 'get-token/',
@@ -99,6 +100,10 @@ loginComponent = {
     },
     logout : function(){
         frango.setCookie('mylanguage-username', '', -1);
+        frango.setCookie('mylanguage-user-learning', '', -1);
+        frango.setCookie('mylanguage-actual-lesson', '', -1);
+        frango.setCookie('mylanguage-actual-words', '', -1);        
         frango.app.navigate('/login');
-    }
+        $('.button-collapse').sideNav('destroy');
+    }    
 }

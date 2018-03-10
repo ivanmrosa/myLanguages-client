@@ -1,0 +1,48 @@
+<span data-component="yes" data-component-name="header" data-component-container="#header" data-component-id="memory-game"
+    data-component-extra-data='{"title":"Memory game"}'></span>
+
+
+<div id="memoryGame">
+    <div class="popup popup-pairs">
+        <div class="popup-body popup-dlg">
+            <div>Pairs number:
+                <input type="number" class="pairs">
+                <a href="javascript:void(0)"  class="btn"
+                   onclick="frango.find('.refresh').first().click();frango.popup.closePopup('.popup-pairs')">
+                    confirm
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+    <ul class="collection">
+        <li class="collection-item">
+            <a href="javascript:void(0)" class="refresh">New game</a> |
+            <a href="javascript:void(0)" onclick="frango.popup.openPopup('.popup-pairs')" >Pairs number</a>
+        </li>
+    </ul>
+
+    <ul class="collection">
+        <li class="collection-item-">
+             <h5 class="selected-item-title center-align">Selected item</h5>
+        </li>
+     </ul>
+
+    <div class="template">
+        <div class="memory-game" data-datasetname="memorycards" data-self="true">
+            <!-- <figure>
+                <img data-src="img/[{(memorycards) category:replace@ @_}]/[{(memorycards) name}]" src="img/interrogation.png" 
+                      alt="[{(memorycards) description}]"  />
+                <figcaption data-title="[{(memorycards) description}]">
+                    <b class="card-description"></b>
+                </figcaption>
+            </figure> -->
+            <img data-src="img/[{(memorycards) category:replace@ @_}]/[{(memorycards) name}]" src="img/interrogation.png" alt="[{(memorycards) description}]"
+             class="img-card" />
+
+        </div>
+
+    </div>
+
+</div>

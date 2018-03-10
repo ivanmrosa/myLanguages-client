@@ -48,7 +48,15 @@
         "components/games/js/games-register.js",
         "components/games/js/games.js",
         "components/help/js/help-register.js",
-        "components/help/js/help.js"
+        "components/help/js/help.js",
+        "components/crossWords/js/crossWords-register.js",
+        "components/crossWords/js/crossWords.js",
+        "components/imageLibrary/js/imageLibrary-register.js",
+        "components/imageLibrary/js/imageLibrary.js",
+        "components/topics/js/topics-register.js",
+        "components/topics/js/topics.js",
+        "components/memoryGame/js/memoryGame-register.js",
+        "components/memoryGame/js/memoryGame.js"
     ],
     "general-js": [
         "js/app.js",

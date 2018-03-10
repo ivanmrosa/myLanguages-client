@@ -15,7 +15,7 @@ homeComponent = {
     },
 
     getHelpStepOne : function(){
-        var html = '<h5 class="center-align blue-text">Bem vindo !</h5>';
+        var html = '<h5 class="center-align white-text blue">Bem vindo !</h5>';
         html += '<div class="align-justify">';        
         html += 'Aprenda a usar aqui o vocplus. Este tutorial pode ser visto a qualquer ';
         html += 'momento acessando a opção "Ajuda" entrando em "more". ';
@@ -23,7 +23,7 @@ homeComponent = {
         return html;
     },
     getHelpStepTwo : function(){
-        var html = '<h5 class="center-align blue-text">Lições</h5>';
+        var html = '<h5 class="center-align white-text blue">Lições</h5>';
         html += '<div class="align-justify">';
         html += 'O vocplus possui várias lições para aprendizagem de vocabulário. ';
         html += 'A lição pode ser acessada através do ícone play na tela inicial no menu "Your Actual Lesson". ';
@@ -32,9 +32,9 @@ homeComponent = {
         return html;
     },
     getHelpStepThree : function(){
-        var html = '<h5 class="center-align blue-text">Lições - palavras</h5>';
+        var html = '<h5 class="center-align white-text blue">Lições - palavras</h5>';
         html += '<div class="align-justify">';        
-        html += 'Ao acessar uma lição, serão mostradas uma lista de palavras. ';
+        html += 'Ao acessar uma lição, será mostrada uma lista de palavras. ';
         html += 'Elas devem ser lidas e escutadas várias vezes, assim como é importante ler as definições ';
         html += 'e acessar as imagens relacionadas, pois podem ajudar no entendimento. ';
         html += 'Ao selecionar uma palavra ou uma frase, opções extras são apresentadas, como por exemplo: ';
@@ -43,7 +43,7 @@ homeComponent = {
         return html;
     },
     getHelpStepFour : function(){
-        var html = '<h5 class="center-align blue-text">Lições - pronúncia e ditado</h5>';
+        var html = '<h5 class="center-align white-text blue">Lições - pronúncia e ditado</h5>';
         html += '<div class="align-justify">';        
         html += 'As lições também apresentam ditado e treinamento de pronúncia. ';
         html += 'Para poder acessar a próxima lição é necessário realizar estas tarefas atingindo no mínimo 70 pontos. ';
@@ -53,7 +53,7 @@ homeComponent = {
         return html;
     },
     getHelpStepFive : function(){
-        var html = '<h5 class="center-align blue-text">Resumo</h5>';        
+        var html = '<h5 class="center-align white-text blue">Resumo</h5>';        
         html += '<ul class="collection">';
         html += '<li class="collection-item">Ouça, leia e pronunicie as palavras várias vezes.</li>';
         html += '<li class="collection-item">Selecione palavras e frases em qualquer lugar para obter novas opções.</li>';
