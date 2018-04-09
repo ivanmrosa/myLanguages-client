@@ -22,7 +22,7 @@ var memoryGameClass = function (component) {
             var description = img.attr('alt')
             card.attr('data-clicked', 'clicked');
             card.find('img').attr('src', src);
-            htmlComponent.find('.selected-item-title').first().innerHTML = description;
+            frango.find('#header .brand-logo').first().innerHTML = description;
 
             
             //card.find('.card-description').first().innerHTML = card.find('figcaption').attr('data-title');
@@ -34,7 +34,7 @@ var memoryGameClass = function (component) {
 
                 if (clickeds[0] != clickeds[1]) {                    
                     var timeout = setTimeout(function () {
-                        htmlComponent.find('.selected-item-title').first().innerHTML = "Selected item";
+                        frango.find('#header .brand-logo').first().innerHTML = "Memory game";
                         htmlComponent.find('[data-clicked="clicked"]').loop(function () {                                                        
                             this.find('img').attr('src', interrogationImagePath);
                             //this.find('.card-description').first().innerHTML = "";

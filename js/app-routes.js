@@ -4,17 +4,18 @@ frango.app.configureRote(function () {
 
     frango.app.routes = 
         {
+    "/login": "login",
+    "/lesson/detail/": "lesson_detail",
+    "/": "home",
+    "/signup": "signup",
+    "/lesson/": "lesson",
+    "/search-dictionary": "searchDictionary",
     "/gallows": "gallows",
     "/games": "games",
-    "/": "home",
+    "/cross-words": "crossWords",
     "/image-to-word": "imageLibrary",
-    "/lesson/": "lesson",
-    "/lesson/detail/": "lesson_detail",
-    "/login": "login",
-    "/memory-game": "memoryGame",
-    "/search-dictionary": "searchDictionary",
-    "/signup": "signup",
-    "/topics": "topics"
+    "/topics": "topics",
+    "/memory-game": "memoryGame"
 }
     
 });

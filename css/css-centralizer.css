@@ -1,0 +1,146 @@
+
+.keyBoardComponent{
+    float: left;
+    width: 100%;    
+}
+
+.keyBoardComponent .line{
+    float: left;
+    width: 100%;
+}
+
+.keyBoardComponent .keyboard-key{
+   float: left;
+   border: 0.1px solid white;
+   width: 10%;   
+   height: 27.8px;
+   box-sizing: border-box;
+   padding-top: 2px;
+}
+
+.keyBoardComponent .keyboard-key.space {
+    width: 30%;
+}
+
+.keyBoardComponent .keyboard-key.special-character{
+    width: 15%;
+}
+
+.keyBoardComponent .keyboard-key.enter {
+    width: 15%;
+}
+
+
+.keyBoardComponent .second-line{
+    padding-left: 10%;    
+}
+
+.keyBoardComponent .third-line{
+    padding-left: 20%;
+}
+
+.gallowsComponent .gallows-letter{
+  float: left;
+  margin-left: 10px;
+  font-size: 20px !important;
+}
+
+.gallowsComponent .definition{
+   float: left;
+   width: 100%;
+   padding-top: 5px;
+}
+
+.tab-body-group{
+   height: calc(100% - 121px) !important;    
+
+}
+
+.helpComponent {
+    height: 100%;
+}
+
+.helpComponent .fixed-bottom .btn{
+    width: 48%;   
+    margin-top : 2px;    
+}
+
+.helpComponent .fixed-bottom .btn:first-of-type{
+    margin-left: 1%;
+}
+
+.helpComponent .content{    
+    padding-left: 10px;    
+    padding-right: 10px; 
+    font-size: 14px;   
+}
+
+
+#memoryGame .memory-game {
+   height: 55px !important;   
+   width: 55px !important; 
+   float: left;   
+   border: 1px solid deepskyblue;
+   margin: 2px;
+   
+}
+
+#memoryGame .img-card {
+    height: 50px !important;   
+    width: 50px !important;
+    float: left;
+}
+
+.crossWord {
+    width: 100%;
+}
+
+.crossWord .cross-main-box, .crossWord .cross-definitions{
+  float: left;  
+}
+
+.crossWord .selected{
+    border-color: blue !important;
+}
+
+.crossWord li.selected{
+    color: blue !important;
+}
+
+.crossWord .wrong{
+    color: red !important;
+}
+
+.crossWord .correct{
+    color: green !important;
+}
+
+
+.crossWord .cross-col{    
+  float: left;
+  border: 1px solid black;
+  background-color: white;
+  text-align: center;
+}
+
+.crossWord .cross-col input{
+    text-align: center;
+}
+
+.crossWord .sequence{
+  position: absolute;
+  font-size: 9px;
+}
+
+.crossWord .sequence h {
+  position: relative;
+  float: left;
+  width: 50%;
+
+}
+
+.crossWord .sequence v {
+    position: relative;
+    float: right;
+    width: 50%;
+}

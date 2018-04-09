@@ -204,6 +204,15 @@ frango.setOffset = function (element, params) {
     };
 };
 
+frango.setHTML = function (element, html) {
+    element.innerHTML = html;
+};
+
+frango.addHTML = function (element, position, html) {
+    element.insertAdjacentHTML(position, html);
+};
+
+
 frango.loopElements = function (listOfElements, routine) {
 
     if (listOfElements) {
@@ -253,6 +262,25 @@ frango.loopElements = function (listOfElements, routine) {
             listOfElements[i].offset = function (params) {
                 frango.setOffset(listOfElements[i], params)
             };
+
+            listOfElements.html = function (html) {
+                frango.setHTML(listOfElements[i], html);
+            };
+
+            listOfElements.addHTMLBeforeBegin = function (html) {
+                frango.addHTML(listOfElements[i], 'beforebegin', html);
+            };
+
+            listOfElements.addHTMLAfterBegin = function (html) {
+                frango.addHTML(listOfElements[i], 'afterbegin', html);
+            };
+            listOfElements.addHTMLBeforeEnd = function (html) {
+                frango.addHTML(listOfElements[i], 'beforeend', html);
+            };
+            listOfElements.addHTMLAfterEnd = function (html) {
+                frango.addHTML(listOfElements[i], 'afterend', html);
+            };
+
 
             routine.call(listOfElements[i]);
         };
@@ -360,6 +388,34 @@ frango.find = function (selector, parent) {
             return frango.attr(this.elements[0], attribute, value);
         };
     };
+
+    this.result.html = function (html) {
+        for (var i = 0; i < this.elements.length; i++) {
+            frango.setHTML(this.elements[i], html);
+        };
+    };
+    this.result.addHTMLBeforeBegin = function (html) {
+        for (var i = 0; i < this.elements.length; i++) {
+            frango.addHTML(this.elements[i], 'beforebegin', html);
+        };
+    };
+
+    this.result.addHTMLAfterBegin = function (html) {
+        for (var i = 0; i < this.elements.length; i++) {
+            frango.addHTML(this.elements[i], 'afterbegin', html);
+        };
+    };
+    this.result.addHTMLBeforeEnd = function (html) {
+        for (var i = 0; i < this.elements.length; i++) {
+            frango.addHTML(this.elements[i], 'beforeend', html);
+        };
+    };
+    this.result.addHTMLAfterEnd = function (html) {
+        for (var i = 0; i < this.elements.length; i++) {
+            frango.addHTML(this.elements[i], 'afterend', html);
+        };
+    };
+
 
     this.result.elements = this.foundElements;
 
@@ -588,7 +644,7 @@ frango.contextMenu = function (executeOnInitialize, idContext) {
 
             var all_context = frango.find(".contextmenu");
             all_context.offset({ left: 0, top: 0 });
-            all_context.adSty("display", "none");            
+            all_context.adSty("display", "none");
             //var ele = this;
 
             //var context = frango.find("[data-container='" + ele.attr("context-data-container") + "']");
@@ -635,10 +691,10 @@ frango.canUploadFile = function () {
     return !elem.disabled;
 }
 
-frango.isMobileDevice = function(){
-    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+frango.isMobileDevice = function () {
+    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
         return true;
-    }else{
+    } else {
         return false;
     }
 }
@@ -657,14 +713,14 @@ frango.wait.start = function (parent) {
 }
 
 frango.wait.stop = function (parent, clearAll) {
-    if(clearAll === true){
-       frango.find('.wait-body').remove();
-    }else{
+    if (clearAll === true) {
+        frango.find('.wait-body').remove();
+    } else {
         var parent = parent || frango.find('body').first();
         var wait = frango.find('.wait-body', parent).first()
         if (wait) {
             parent.removeChild(wait);
-        };    
+        };
     };
 }
 
@@ -701,7 +757,7 @@ frango.touch.tab.moveX = function (elementTouched, posX, locked, slowMove) {
 
     bodies.loop(function () {
         if (posX < frango.touch.tab.oldX) {
-            
+
             //puxar para esquerda
             if (locked != 'left') {
                 movied = true;
@@ -720,7 +776,7 @@ frango.touch.tab.moveX = function (elementTouched, posX, locked, slowMove) {
                 };
             };
         } else if (posX > frango.touch.tab.oldX) {
-            
+
             //puxar para a direita
             if (locked != 'right') {
                 movied = true;
@@ -752,17 +808,17 @@ frango.touch.moveY = function (elementTouched, posY, locked, slowMove) {
 
 
 frango.touch.tab.handleMoviment = function (event) {
-    
+
     var elementTouched = this;
     var touches = event.changedTouches;
 
-    if(frango.touch.tab.scrolling == false){
-        
+    if (frango.touch.tab.scrolling == false) {
+
         var locked = elementTouched.getAttribute('data-locked');
-        frango.touch.tab.moveX(elementTouched, touches[0].pageX, locked, false);        
+        frango.touch.tab.moveX(elementTouched, touches[0].pageX, locked, false);
     };
     frango.touch.tab.oldX = touches[0].pageX;
-    frango.touch.tab.oldy = touches[0].pageY;     
+    frango.touch.tab.oldy = touches[0].pageY;
 
 
 }
@@ -838,23 +894,23 @@ frango.touch.tab.endTouch = function (event) {
 };
 
 frango.touch.tab.config = function (tabBodyGroup) {
-    if(!frango.isMobileDevice()){        
+    if (!frango.isMobileDevice()) {
         return;
     };
     tabBodyGroup.on("touchmove", frango.touch.tab.handleMoviment);
     tabBodyGroup.on("touchstart", frango.touch.tab.startTouch);
     tabBodyGroup.on("touchend", frango.touch.tab.endTouch);
-    
-    var checkScrolling = function(){
-        var idIntervalScrolling = setInterval(function(){
+
+    var checkScrolling = function () {
+        var idIntervalScrolling = setInterval(function () {
             clearInterval(checkScrolling);
             frango.touch.tab.scrolling = false;
         }, 1000);
     };
 
-    frango.find('.tab-body').on('scroll', function(){
-       frango.touch.tab.scrolling = true;
-       checkScrolling();       
+    frango.find('.tab-body').on('scroll', function () {
+        frango.touch.tab.scrolling = true;
+        checkScrolling();
     });
 }
 
@@ -938,10 +994,10 @@ frango.tab = function (selector, touchEnabled) {
 
             if (!resizing) {
                 configureClick(pageControl, tabBodies, tabs);
-                if(touchEnabled == true){
-                  frango.touch.tab.config(pageControl.find('.tab-body-group'));
+                if (touchEnabled == true) {
+                    frango.touch.tab.config(pageControl.find('.tab-body-group'));
                 };
-                
+
             };
         });
     };
@@ -1072,9 +1128,11 @@ frango.server = {}
 
 frango.server.authorization = undefined;
 
+frango.server.persistentHeaders = undefined;
+
 frango.server.host_url = undefined;
 
-frango.server.ajax = function(url, data, async, objectHeader, useFrangoHost, useAuthorization, requestMethod){
+frango.server.ajax = function (url, data, async, objectHeader, useFrangoHost, useAuthorization, requestMethod) {
     var newUrl = url;
     var result = {};
     var routineOk;
@@ -1107,20 +1165,20 @@ frango.server.ajax = function(url, data, async, objectHeader, useFrangoHost, use
     if (frango.server.host_url && useFrangoHost === true) {
         newUrl = frango.server.host_url + url;
     };
-    
+
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
-        try{
+        try {
             if (xhttp.readyState == 4) {
                 if (xhttp.status == 200 || xhttp.status == 201 || xhttp.status == 204) {
-                    routineOk(xhttp.responseText, xhttp.status);
+                    routineOk.call(null, xhttp.responseText, xhttp.status);
                 } else {
-                    routineNotOk(xhttp.responseText, xhttp.status);
+                    routineNotOk.call(null, xhttp.responseText, xhttp.status);
                 };
-            };                
-        }catch(e){
-          frango.wait.stop(undefined, true);
-          frango.warning('An error has ocurred. </br>' + e);
+            };
+        } catch (e) {
+            frango.wait.stop(undefined, true);
+            frango.warning('An error has ocurred. </br>' + e);
         };
     };
 
@@ -1134,46 +1192,56 @@ frango.server.ajax = function(url, data, async, objectHeader, useFrangoHost, use
             finalData = finalData.substr(0, finalData.length - 1);
         } else {
             finalData = data;
-        };        
+        };
     };
 
 
-    if(finalData != "" && requestMethod == 'GET'){
+    if (finalData != "" && requestMethod == 'GET') {
         xhttp.open(requestMethod, newUrl + '?' + finalData, async);
-    }else{
-        
+    } else {
+
         xhttp.open(requestMethod, newUrl, async);
     };
 
     if (objectHeader) {
-        for (var obj in objectHeader) {
-            xhttp.setRequestHeader(obj, objectHeader[obj]);
+        for (var obj in objectHeader) {            
+            if(objectHeader.hasOwnProperty(obj)){
+                xhttp.setRequestHeader(obj, objectHeader[obj]);
+            };            
         };
     };
-    
-    if(requestMethod != 'GET'){
+
+    if(frango.server.persistentHeaders){
+        for (var obj in frango.server.persistentHeaders) {
+            if (frango.server.persistentHeaders.hasOwnProperty(obj)){
+                xhttp.setRequestHeader(obj, frango.server.persistentHeaders[obj]);
+            };            
+        };        
+    };
+
+    if (requestMethod != 'GET') {
         xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         if (!csrfSafeMethod(requestMethod) && !this.crossDomain) {
             xhttp.setRequestHeader("X-CSRFToken", getCookie('csrftoken'));
-        };            
+        };
     };
-    
+
     if (frango.server.authorization && useAuthorization) {
         xhttp.setRequestHeader('Authorization', frango.server.authorization);
     };
-    
-    try{
-        if(requestMethod != 'GET' && finalData != ""){
+
+    try {
+        if (requestMethod != 'GET' && finalData != "") {
             xhttp.send(finalData);
-        }else{
+        } else {
             xhttp.send();
-        };        
-    }catch(e){
+        };
+    } catch (e) {
         frango.wait.stop(undefined, true);
         frango.warning(e.description);
     };
-    
-    return result;  
+
+    return result;
 };
 
 
@@ -1186,14 +1254,14 @@ frango.server.post = function (url, data, async, objectHeader, useFrangoHost, us
 };
 
 frango.server.get = function (url, data, async, objectHeader, useFrangoHost, useAuthorization) {
-   return frango.server.ajax(url, data, async, objectHeader, useFrangoHost, useAuthorization, 'GET');
+    return frango.server.ajax(url, data, async, objectHeader, useFrangoHost, useAuthorization, 'GET');
 };
 
 frango.server.delete = function (url, data, async, objectHeader, useFrangoHost, useAuthorization) {
     return frango.server.ajax(url, data, async, objectHeader, useFrangoHost, useAuthorization, 'DELETE');
- };
- 
-frango.ajax = function(objectParams, requestMethod){
+};
+
+frango.ajax = function (objectParams, requestMethod) {
     var url = objectParams["url"];
     var data = objectParams["data"];
     var async = objectParams["async"];
@@ -1210,7 +1278,7 @@ frango.ajax = function(objectParams, requestMethod){
         if (onFailure) {
             onFailure(data);
         };
-    });    
+    });
 }
 
 frango.ajaxGet = function (objectParams) {
@@ -1225,8 +1293,8 @@ frango.ajaxPut = function (objectParams) {
     frango.ajax(objectParams, 'PUT');
 };
 
-frango.ajaxDelete = function(objectParams){
-    frango.ajax(objectParams, 'DELETE');    
+frango.ajaxDelete = function (objectParams) {
+    frango.ajax(objectParams, 'DELETE');
 }
 
 
@@ -1577,7 +1645,7 @@ frango.getTemplate = function (templateName) {
 
                         clearInterval(frango.templatesToGet[templateName].timeout);
                         delete frango.templatesToGet[templateName];
-                        frango.freeToGetTemplate = true;
+                        frango.freeToGetTemplate = true;                        
 
                     }).
                     onFailure(function (data) {
@@ -1918,7 +1986,7 @@ function lookup(selector) {
             };
 
             var element = this;
-            frango.server.get(url, data, false).
+            frango.server.get(url, data, true).
                 onSuccess(function (data) {
 
                     dataJS = JSON.parse(data);
@@ -2271,7 +2339,7 @@ frango.component = function (componentName) {
             "selector_to_bind": "#app",
             "extra_data": "",
             "bindData": function (Data, replaceContent, onFinish) {
-                if(replaceContent == undefined || replaceContent == null){
+                if (replaceContent == undefined || replaceContent == null) {
                     replaceContent = true;
                 };
                 frango.useConfigComponent(this.componentName, this.selector_to_bind, Data, replaceContent).onFinish(function () {
@@ -2370,6 +2438,7 @@ frango.config.component = function (templateName, component) {
             frango.getTemplate(templateName).onSuccess(function () {
                 if (executeOnFinish) {
                     executeOnFinish();
+                    frango.removeTemplateFromBag(templateName);                    
                 };
             });
         };
@@ -2603,7 +2672,7 @@ frango.app.navigate = function (path) {
 frango.app.buildOfflineApp = function () {
     frango.config.isBuildingOfflineApp = true;
     runLoadApp();
-    frango.app.saveApp();
+    //frango.app.saveApp();
 }
 
 frango.app.saveApp = function () {
@@ -2654,6 +2723,8 @@ function runLoadApp() {
     };
 
 
+
+
     if (frango.app.afterInitialize) {
         var idTimeout = setInterval(function () {
             if (Object.keys(frango.templatesToGet).length === 0) {
@@ -2661,10 +2732,18 @@ function runLoadApp() {
                 frango.app.afterInitialize.call();
             };
         }, 300);
-
     };
 
-}
+    if (frango.config.isBuildingOfflineApp === true){
+        var idTimeoutBuild = setInterval(function () {            
+            if (Object.keys(frango.templatesToGet).length === 0) {
+                clearInterval(idTimeoutBuild);      
+                frango.find('body').adCl('frango-built');
+            };
+        }, 400);            
+    };
+
+};
 
 window.addEventListener('load', function () {
     if (window.location.pathname == '/frango-framework-build-app') {
@@ -2674,6 +2753,7 @@ window.addEventListener('load', function () {
         runLoadApp()
     };
 });
+
 window.onhashchange = function () {
     frango.app.intercceptRoute();
 };

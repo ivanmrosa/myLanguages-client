@@ -89,3 +89,57 @@
     width: 50px !important;
     float: left;
 }
+
+.crossWord {
+    width: 100%;
+}
+
+.crossWord .cross-main-box, .crossWord .cross-definitions{
+  float: left;  
+}
+
+.crossWord .selected{
+    border-color: blue !important;
+}
+
+.crossWord li.selected{
+    color: blue !important;
+}
+
+.crossWord .wrong{
+    color: red !important;
+}
+
+.crossWord .correct{
+    color: green !important;
+}
+
+
+.crossWord .cross-col{    
+  float: left;
+  border: 1px solid black;
+  background-color: white;
+  text-align: center;
+}
+
+.crossWord .cross-col input{
+    text-align: center;
+}
+
+.crossWord .sequence{
+  position: absolute;
+  font-size: 9px;
+}
+
+.crossWord .sequence h {
+  position: relative;
+  float: left;
+  width: 50%;
+
+}
+
+.crossWord .sequence v {
+    position: relative;
+    float: right;
+    width: 50%;
+}
