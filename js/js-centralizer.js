@@ -54,6 +54,13 @@ frango.app.afterInitialize(function () {
             };
         };
     });
+    /*set access data */
+    try {
+        common_lessonComponent.setLastAccess();    
+    } catch (error) {
+        alert(error);
+    }
+    
 
 
 });
@@ -62,6 +69,16 @@ function onDeviceReady() {
     // Now safe to use device APIs
     if (cordova) {
         window.open = cordova.InAppBrowser.open;
+        /* adsense */
+        try {
+            admob.banner.config({
+                id: 'ca-app-pub-9005016662261468/5625086764',
+            });   
+            admob.banner.prepare()
+            admob.banner.show()            
+        } catch (error) {
+           alert(error);
+        };
     };
 }
 
@@ -307,45 +324,41 @@ lesson_detailComponent = {
 
     controller: function (component) {
         var loadMedia = function () {
-            /*frango.find('#tab-media').on('click', function () {
-                var element = frango.find(this).first();
-                var loaded = element.attr('data-loaded');
-                if (loaded == "true") {
-                    return;
-                };*/
-                var params = frango.app.getURLParameters();
-                params["media_type"] = 'V';
-                //frango.wait.start();
-                frango.ajaxGet({
-                    url: 'lesson-media/',
-                    data : params,
-                    onSuccess: function (videos) {
-                        videos = JSON.parse(videos);
-                        videoPlaylistComponent.getInstance('videoPlaylistLesson',
-                            videos,
-                            function (instance) {
-                                var playListVideo = instance;
-                                //element.attr('data-loaded', "true");
-                                //frango.wait.stop();
-                            });
-                    },
-                    onFailure: function (err) {
-                        //frango.wait.stop();
-                        frango.warnig(err);
-                    }
-                });            
-            //});
+            var params = frango.app.getURLParameters();
+            params["media_type"] = 'V';
+            //frango.wait.start();
+            frango.ajaxGet({
+                url: 'lesson-media/',
+                data: params,
+                onSuccess: function (videos) {
+                    videos = JSON.parse(videos);
+                    videoPlaylistComponent.getInstance('videoPlaylistLesson',
+                        videos,
+                        function (instance) {
+                            var playListVideo = instance;
+                        });
+                },
+                onFailure: function (err) {
+                    frango.warnig(err);
+                }
+            });
+
         };
 
         component.bindData([], true, function () {
             frango.tab('.page-control-lesson', true);
-            //$('ul.tabs').tabs();                
-            /*$(document).ready(function () {
-                
-            });*/
+            lesson_detail_dictationComponent.hideKeyBoard() ;
+            frango.find('.page-control-lesson').on('changeTab', function(){
+                var ele = frango.find('[data-body="dictation"]').first();
+                if(ele){
+                    if (frango.hasClass('active', ele)){
+                        lesson_detail_dictationComponent.showKeyBoard() ;
+                    }else{
+                        lesson_detail_dictationComponent.hideKeyBoard() ;
+                    };    
+                }
+            });
             loadMedia();
-
-
         });
     }
 }
@@ -363,6 +376,11 @@ app.components.push(function () {
 common_lessonComponent = {
     getData: function () {
 
+    },
+    checkErrorStatus : function(status){
+       if(status == 401){
+           loginComponent.logout();
+       };
     },
     controller: function (component) {
         //component.bindData();
@@ -385,14 +403,42 @@ common_lessonComponent = {
                     methodToSendData(userLearnig);
 
                 },
-                onFailure(error) {
+                onFailure(error, status) {                                     
                     frango.warning(error);
+                    frango.wait.stop();
+                    common_lessonComponent.checkErrorStatus(status);
                 }
             });
     
         }else{
           methodToSendData(JSON.parse(localUserLearning)); 
         };
+    },
+
+    setLastAccess : function(){
+        var doPost = function (updatedData) {
+            var id = updatedData["id"];
+            
+            updatedData.last_access = frango.currentDate(false);
+
+            frango.ajaxPut({
+                url: 'user-learning-language/' + id.toString() + '/',
+                data: updatedData,
+                onSuccess: function(){
+                   frango.setCookie('mylanguage-user-learning', JSON.stringify(updatedData));
+                },
+                onFailure: function (error, status) {
+                    frango.wait.stop();                                    
+                    console.log(error);
+                    common_lessonComponent.checkErrorStatus(status);
+                }
+            });
+        };
+        try {
+            common_lessonComponent.getUserLearning(doPost);
+        } catch (error) {
+            console.log(error);
+        };        
     },
 
     incrementUserScore: function (newScore) {
@@ -407,10 +453,10 @@ common_lessonComponent = {
                 onSuccess: function(){
                    frango.setCookie('mylanguage-user-learning', JSON.stringify(updatedData));
                 },
-                onFailure: function (error) {
-                    //alert(error);
-                    document.write(error);
-                    document.close();
+                onFailure: function (error, status) {
+                    frango.wait.stop();                                    
+                    console.log(error);  
+                    common_lessonComponent.checkErrorStatus(status);
                 }
             });
         };
@@ -418,11 +464,16 @@ common_lessonComponent = {
         common_lessonComponent.getUserLearning(doPost)
     },
 
-    goToNextLesson: function () {
+    goToLesson: function (lessonSequence) {
+        frango.wait.start();
         var doPost = function (updatedData) {
             var id = updatedData["id"];
-            var newSequence = updatedData["lesson_sequence"] + 1;
-
+            if (lessonSequence){
+                var newSequence = lessonSequence;
+            }else{
+                var newSequence = updatedData["lesson_sequence"] + 1;
+            };
+            
             frango.ajaxGet({
                 url: 'lesson/',
                 data: { 'sequence': newSequence },
@@ -439,12 +490,14 @@ common_lessonComponent = {
                            frango.setCookie('mylanguage-user-learning', '', -1);
                            frango.setCookie('mylanguage-actual-lesson', '', -1);
                            frango.setCookie('mylanguage-actual-words', '', -1);
-                           frango.app.navigate('#lesson/detail/?lesson_id=' + lesson_id);
+                           frango.wait.stop();
+                           frango.app.navigate('#lesson/detail/?lesson_id=' + lesson_id);                           
                         },
-                        onFailure: function (error) {
-                            //alert(error);
-                            document.write(error);
-                            document.close();
+                        onFailure: function (error, status) {                            
+                            frango.wait.stop();                                    
+                            console.log(error);
+                            alert(error)
+                            common_lessonComponent.checkErrorStatus(status);                            
                         }
                     });                    
                 }
@@ -486,26 +539,14 @@ common_lessonComponent = {
                     url: 'lesson/',
                     data: { "id": lesson_id },
                     onSuccess: function (lesson) {  
-                        lesson = JSON.parse(lesson)[0];
-                                              
-                      /*  frango.wait.stop();
-                        lesson = JSON.parse(lesson)[0];
-                        lesson["score"] = score;
-                        lesson["language_name"] = language_name;
-            
-                        if (score >= 70) {
-                            lesson["aproved"] = "true";
-                        } else {
-                            lesson["aproved"] = "false";
-                        };
-        
-                        methodToSendData(lesson);   */
+                        lesson = JSON.parse(lesson)[0];                                              
                         frango.setCookie('mylanguage-actual-lesson', JSON.stringify(lesson));
                         getLesson(lesson);
                     },
-                    onFailure: function (erro) {
+                    onFailure: function (erro, status) {
                         frango.wait.stop();
                         frango.warning(erro);
+                        common_lessonComponent.checkErrorStatus(status);
                     }
                 });                
             };            
@@ -750,28 +791,6 @@ resumed_lessonComponent = {
     },
     controller: function (component) {
         
-        /*get user's actual lesson*/
-        /*var username = common_lessonComponent.getUsername();
-        frango.ajaxGet({
-            url: 'user-learning-language/',
-            data: { "user__username": username },
-            onSuccess: function (data) {
-                frango.wait.stop();
-                data = JSON.parse(data)[0];
-                var lesson_id = data['actual_lesson_id']
-                var score = data['score']
-                var language_name = data['language_name']
-                resumed_lessonComponent.bindLesson(lesson_id, score, language_name, component);
-            },
-        });*/
-        //frango.wait.start();
-        /*common_lessonComponent.getUserLearning(function(data){
-            frango.wait.stop();
-            var lesson_id = data['actual_lesson_id']
-            var score = data['score']
-            var language_name = data['language_name']
-            resumed_lessonComponent.bindLesson(lesson_id, score, language_name, component);
-        });*/
         resumed_lessonComponent.bindLesson(component);
 
     },
@@ -779,41 +798,8 @@ resumed_lessonComponent = {
     bindLesson: function (component) {        
         //frango.wait.start();
         common_lessonComponent.getActualLesson(function(lesson){
-            /*lesson["score"] = score;
-            lesson["language_name"] = language_name;
-
-            if (score >= 70) {
-                lesson["aproved"] = "true";
-            } else {
-                lesson["aproved"] = "false";
-            };
-            frango.wait.stop();*/
-            component.bindData({ "lesson": [lesson]});
+            component.bindData({ "lesson": [lesson]});            
         });
-        /*frango.ajaxGet({
-            'url': 'lesson/',
-            data: { "id": lesson_id },
-            onSuccess: function (lesson) {
-                lesson = JSON.parse(lesson)[0];
-                lesson["score"] = score;
-                lesson["language_name"] = language_name;
-
-                if (score >= 70) {
-                    lesson["aproved"] = "true";
-                } else {
-                    lesson["aproved"] = "false";
-                };
-                frango.wait.stop();
-                component.bindData({ "lesson": [lesson] });
-            },
-            onFailure: function (erro) {
-                frango.wait.stop();
-                frango.warning(erro);
-            }
-        });*/
-
-
-
     }
 }
 
@@ -849,7 +835,8 @@ app.components.push(function () {
 lesson_detail_dictationComponent = {
     player: undefined,
     started: false,
-    dictationDictionary: undefined,    
+    dictationDictionary: undefined,
+    dictationKeyboard: undefined,
     getData: function () {
 
     },
@@ -871,7 +858,8 @@ lesson_detail_dictationComponent = {
                 lesson_detail_dictationComponent.player.setControlClass(lesson_detail_dictationComponent.player.btnStart, true);
             });
 
-            keyboardComponent.getInstance('dictation-keyboard', function (instance) {                
+            keyboardComponent.getInstance('dictation-keyboard', function (instance) {
+                lesson_detail_dictationComponent.dictationKeyboard = instance;
                 instance.setOnKeyPress(function (key) {
                     var edit = frango.find('#word-anwser').first();
                     switch (key) {
@@ -885,11 +873,29 @@ lesson_detail_dictationComponent = {
                             edit.value = edit.value + key;
                             break;
                     };
-                });                
+                });
             });
 
         });
     },
+
+    hideKeyBoard : function () {
+        var inter = setInterval(function () {
+            if (lesson_detail_dictationComponent.dictationKeyboard) {
+                lesson_detail_dictationComponent.dictationKeyboard.hide();
+                clearInterval(inter);
+            };
+        }, 1000);
+    },
+    showKeyBoard : function () {
+        var inter = setInterval(function () {
+            if (lesson_detail_dictationComponent.dictationKeyboard) {
+                lesson_detail_dictationComponent.dictationKeyboard.show();
+                clearInterval(inter);
+            };
+        }, 1000);
+    },
+
     start: function () {
         if (!lesson_detail_dictationComponent.started) {
             lesson_detail_dictationComponent.player.autoPlay = false;
@@ -904,7 +910,7 @@ lesson_detail_dictationComponent = {
                     lesson_detail_dictationComponent.dictationDictionary.getWordAudioURL);
                 frango.wait.stop();
                 lesson_detail_dictationComponent.player.playWord();
-            });            
+            });
         };
     },
     checkAnswer: function () {
@@ -1599,9 +1605,11 @@ function textSelector(instanceId) {
     var openTextSelectedOption = function (idInterval) {
         if (thisObject.isSelecting == false && isOpened == false) {
             clearInterval(idInterval);
-            var text = window.getSelection().toString();
-            if (text) {
-                openPopup(text);
+            if (!document.activeElement.hasAttribute('data-disableSelector')){
+                var text = window.getSelection().toString();
+                if (text) {
+                    openPopup(text);
+                };    
             };
         };
     };
@@ -2045,11 +2053,15 @@ dictionaryComponent = {
 
     controller: function (component) {
         //This implementation permites to create component by url route
-        var instanceID = component.componentID;
+        /*var instanceID = component.componentID; 
+        
         dictionaryComponent.getInitialData(instanceID, function (data) {
             component.bindData(data, true, function () {
-                /*on finish*/
+
             });
+        }); */
+        dictionaryComponent.getInstance(component.componentID, function(instance){
+
         });
 
     },
@@ -2198,13 +2210,17 @@ app.components.push(function () {
 searchDictionaryComponent = {
 
     controller: function(component){
-       component.bindData([], true, function(){
-           dictionaryComponent.getInstance('dictionary-search-dictionary', function(dictInstance){
+       var idComponent = component.componentID + '-searchDictionary';
+       var data = {"searchDictionary":[
+           {"id":idComponent}
+       ]};
+       component.bindData(data, true, function(){
+           dictionaryComponent.getInstance(idComponent + '-dictionary', function(dictInstance){
                //dictInstance 
-               var search = frango.find('.search-dictionay');
+               var search = frango.find('#' + idComponent);
                /*btn search */
                search.find('.dict-search-btn').on('click', function(){
-                   var words = frango.find('#search-dictionary-words').first().value.trim().split(" ");
+                   var words = search.find('[name="search-dictionary-words"]').first().value.trim().split(" ");
                    
                    dictInstance.showDictionary(words, false);
                });
@@ -2244,26 +2260,26 @@ function keyboardClass(instanceId) {
 
     var setSpecialCharactersKeys = function(){
         keysFirstLine = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
-        keysSecondLine = ['@', '#', '$', '_', '&', '-', '+', '(', ')'];
-        keysThirdLine = ['/', '*', '"', "'", ':', ';', '!', '?']      
+        keysSecondLine = ['@', '#', '$', '_', '&', '-', '+', '(', ')', '/'];
+        keysThirdLine = [ '*', '"', "'", ':', ';', '!', '?', '\\']      
     };
 
     var getKeyHtml = function (key) {
-        return frango.format('<div class="orange  white-text center-align cur-pointer keyboard-key" data-key="%s">%s</div>', 
+        return frango.format('<div class="center-align cur-pointer keyboard-key" data-key="%s">%s</div>', 
           [key, key]);
     };
 
     var addFourthLinhe = function(useNormal){
         var fourthLine = htmlComponent.find('.fourth-line'); 
         fourthLine.first().innerHTML = "";
-        fourthLine.first().insertAdjacentHTML('beforeend', '<div class="orange white-text center-align cur-pointer caps-lock special keyboard-key data-key=""> '+
+        fourthLine.first().insertAdjacentHTML('beforeend', '<div class="center-align cur-pointer caps-lock special keyboard-key data-key=""> '+
           '<i class="mdi mdi-apple-keyboard-caps"></i></div>');        
         fourthLine.first().insertAdjacentHTML('beforeend', getKeyHtml(','));
         fourthLine.first().insertAdjacentHTML('beforeend', getKeyHtml('.'));
-        fourthLine.first().insertAdjacentHTML('beforeend', '<div class="orange white-text center-align cur-pointer keyboard-key special special-character" data-key="">?123</div>');
-        fourthLine.first().insertAdjacentHTML('beforeend', '<div class="orange white-text center-align cur-pointer keyboard-key special space" data-key=" ">&nbsp</div>');
-        fourthLine.first().insertAdjacentHTML('beforeend', '<div class="orange white-text center-align cur-pointer keyboard-key special" data-key="#8"><i class="mdi mdi-keyboard-backspace"></i></div>');
-        fourthLine.first().insertAdjacentHTML('beforeend', '<div class="orange white-text center-align cur-pointer keyboard-key special enter" data-key="#13">Enter</div>');        
+        fourthLine.first().insertAdjacentHTML('beforeend', '<div class="center-align cur-pointer keyboard-key special special-character" data-key="">?123</div>');
+        fourthLine.first().insertAdjacentHTML('beforeend', '<div class="center-align cur-pointer keyboard-key special space" data-key=" ">&nbsp</div>');
+        //fourthLine.first().insertAdjacentHTML('beforeend', '<div class="center-align cur-pointer keyboard-key special" data-key="#8"><i class="mdi mdi-keyboard-backspace"></i></div>');
+        fourthLine.first().insertAdjacentHTML('beforeend', '<div class="center-align cur-pointer keyboard-key special enter" data-key="#13">Enter</div>');        
         
 
         fourthLine.find('.caps-lock').on('click', function(){
@@ -2298,6 +2314,8 @@ function keyboardClass(instanceId) {
         if(useNormal == undefined || useNormal == null ){
             useNormal = true;
         };
+        useNormal?htmlComponent.rmCl('special-character-active'):htmlComponent.adCl('special-character-active');  
+
         var firstLine = htmlComponent.find('.first-line');
         firstLine.first().innerHTML = "";
         for (var index = 0; index < keysFirstLine.length; index++) {
@@ -2318,11 +2336,8 @@ function keyboardClass(instanceId) {
             thirdLine.first().insertAdjacentHTML('beforeend', getKeyHtml(key));
         };
 
-        /*var fourthLine = htmlComponent.find('.fourth-line');
-        for (var index = 0; index < keysFourthLine.length; index++) {
-            var key = keysFourthLine[index];
-            fourthLine.first().insertAdjacentHTML('beforeend', getKeyHtml(key));
-        };*/
+        /*backspace */
+        thirdLine.first().insertAdjacentHTML('beforeend', '<div class="center-align backspace cur-pointer keyboard-key special" data-key="#8"><i class="mdi mdi-keyboard-backspace"></i></div>');
 
         addFourthLinhe(useNormal);
 
@@ -2335,10 +2350,15 @@ function keyboardClass(instanceId) {
                 frango.warning('onKeyPress event not provied');
             };
         });
-
+        thisObject.enableAllKeys();
         thisObject.disableKeys();
 
     };
+
+    this.setTextOnPainel  = function(text){
+       htmlComponent.find('.top-bar .aditional-content').html(text);
+    };
+
 
     this.disableKey = function(key, permanent){
        if(permanent == undefined || permanent == null){
@@ -2346,8 +2366,8 @@ function keyboardClass(instanceId) {
        };
        var ele = htmlComponent.find(frango.format('[data-key="%s"]', [key]));
        ele.attr('data-disabled', "yes");
-       ele.rmCl('orange');
-       ele.adCl('grey');
+       ele.rmCl('enabled');
+       ele.adCl('disabled');
        if(permanent){
            disabledKeys.push(key);
        };
@@ -2356,8 +2376,8 @@ function keyboardClass(instanceId) {
     this.enableKey = function(key){
         var ele = htmlComponent.find(frango.format('[data-key="%s"]', [key]));
         ele.attr('data-disabled', "no");
-        ele.rmCl('grey');
-        ele.adCl('orange'); 
+        ele.rmCl('disabled');
+        ele.adCl('enabled'); 
         var idx = disabledKeys.indexOf(key);
         if(idx > -1){
             disabledKeys.splice(idx, 1);
@@ -2390,9 +2410,60 @@ function keyboardClass(instanceId) {
         onKeyPress = keyPressEvent;
     };
 
+    this.hide = function(){
+      htmlComponent.adCl('hide');
+    };
+ 
+    this.show = function(){
+        htmlComponent.rmCl('hide');
+    };
+    
+    this.minimizeOrMaximize = function(){
+        var body = htmlComponent.find('.body-keyboard');
+        var minimizeEle = htmlComponent.find('.minimize-keyboard');
+        if (frango.hasClass('hide', body.first())){
+           body.rmCl('hide')
+           minimizeEle.adCl('mdi-keyboard-close');
+           minimizeEle.rmCl('mdi-keyboard');
+        }else{
+           body.adCl('hide');
+           minimizeEle.rmCl('mdi-keyboard-close');
+           minimizeEle.adCl('mdi-keyboard');
+        };
+    };
+    var configureMinimizeKeyboard = function() {
+       htmlComponent.find('.minimize-keyboard').on('click', thisObject.minimizeOrMaximize);
+    };
+    
+    var configurePaddingBody = function(){
+        var interval = setInterval(function(){
+            var body = frango.find('.keyboard-padding');
+            if(body.elements.length ==0){
+               frango.find('#app').addHTMLBeforeEnd('<div class="keyboard-padding"></div>');
+               body = frango.find('.keyboard-padding');
+            };
+            if (frango.find('.keyBoardComponent').elements.length > 0){
+                if (frango.find('.body-keyboard').hasClass('hide')){
+                   body.adCl('keyboard-bottom-panel');
+                   body.rmCl('keyboard-body-padding');
+                }else{
+                    body.rmCl('keyboard-bottom-panel');
+                    body.adCl('keyboard-body-padding'); 
+                };
+            }else{
+                body.rmCl('keyboard-bottom-panel');
+                body.rmCl('keyboard-body-padding');
+                clearInterval(interval);
+            };
+        });
+    };
+
     var __init__ = function () {
+        thisObject.hide();
         setNormalKeys();
         drawKeys(true);
+        configureMinimizeKeyboard();
+        configurePaddingBody();
     };
 
     __init__();
@@ -2516,6 +2587,7 @@ function gallowsClass(instanceId) {
 
     var getDefinition = function () {
         dictionaryInstance.getWordDefinition(actualWord, function (definition) {                        
+          frango.bindDataOnTemplate('actualword', [{"actualWord":actualWord}]);            
           frango.bindDataOnTemplate('definition', definition);                        
         });
     };
@@ -2527,6 +2599,7 @@ function gallowsClass(instanceId) {
             keyboardInstance = instance;            
             keyboardInstance.setOnKeyPress(checkKeyAswer);
             setDisabledKeys();
+            keyboardInstance.show();
         });
 
         htmlComponent.find('.next-word').on('click', thisObject.newRandomGame)
@@ -2558,8 +2631,10 @@ function gallowsClass(instanceId) {
     };
 
     this.newRandomGame = function () {
+        frango.wait.start();
         dictionaryInstance.getRandomWords(1, 5, 20).onFinish(function (words) {
             thisObject.newGame(words[0].word);
+            frango.wait.stop();
         });
     };
 
@@ -2764,25 +2839,6 @@ app.components.push(function () {
         register()
 });
 
-var crossData = [
-    { "x": 1, "y": 2, "orientation": "H", "word": "mother" },
-    { "x": 1, "y": 3, "orientation": "V", "word": "other" },
-    { "x": 12, "y": 5, "orientation": "H", "word": "homeland" },
-    { "x": 1, "y": 2, "orientation": "V", "word": "miracle" },
-    { "x": 6, "y": 12, "orientation": "V", "word": "command" },
-    { "x": 4, "y": 1, "orientation": "H", "word": "taekwondo" },
-    { "x": 7, "y": 5, "orientation": "H", "word": "santiago" },
-    { "x": 12, "y": 1, "orientation": "H", "word": "top" },
-    { "x": 5, "y": 2, "orientation": "H", "word": "crown" },
-    { "x": 7, "y": 5, "orientation": "V", "word": "soft" },
-    { "x": 1, "y": 9, "orientation": "H", "word": "send" },
-    { "x": 10, "y": 3, "orientation": "V", "word": "tap" },
-    { "x": 1, "y": 12, "orientation": "V", "word": "duck" },
-    { "x": 9, "y": 5, "orientation": "H", "word": "form" }
-]
-
-
-
 
 function crossWordsClass(instanceId) {
     /*CONST */
@@ -2800,6 +2856,11 @@ function crossWordsClass(instanceId) {
     var selectedWordData = { index: null, orientation: null }
     var inputAutomaticallyFocused = false;
     var wordsConfig = null;
+    var urlToGetGame = 'get-file/';
+    var keys = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s",
+        "t", "u", "v", "x", "w", "y", "z", "enter"];
+    var keyboardCrossWord = undefined;
+    var selectedInput = undefined;
 
     /*write the component functionalites here*/
     var getRowHTML = function (rowCount) {
@@ -2807,7 +2868,9 @@ function crossWordsClass(instanceId) {
     };
 
     var getColHTML = function (rowCount, colCount) {
-        return frango.format('<div class="cross-col" data-pos="%s-%s"><div class="sequence"></div><input type="text" maxlength=1></div>', [rowCount, colCount]);
+        return frango.format('<div class="cross-col" data-pos="%s-%s"><div class="sequence">' +
+            '</div><input type="text" maxlength="1" readonly data-disableSelector></div>',
+            [rowCount, colCount]);
     };
 
     var configureSize = function () {
@@ -2837,7 +2900,7 @@ function crossWordsClass(instanceId) {
         config();
     };
 
-    var jumpToNextInput = function (colElement) {        
+    var jumpToNextInput = function (colElement, comeBack = false) {
         var col = frango.find(colElement);
         //var hasHorizontal = colElement.hasAttribute('data-index-h');
         //var hasVertical = colElement.hasAttribute('data-index-v');
@@ -2847,6 +2910,7 @@ function crossWordsClass(instanceId) {
         var nextDataPos = "";
         var goTo = GO_RIGHT;
         var found = false;
+        var step = 1;
         /*if (!hasHorizontal) {
             goTo = GO_DOWN;
         };*/
@@ -2854,17 +2918,20 @@ function crossWordsClass(instanceId) {
             goTo = GO_DOWN
         };
 
+        if (comeBack) {
+            step = -1;
+        };
+
         if (goTo == GO_RIGHT) {
-            nextDataPos = x + '-' + (parseInt(y) + 1);
+            nextDataPos = x + '-' + (parseInt(y) + step);
         } else if (goTo == GO_DOWN) {
-            nextDataPos = (parseInt(x) + 1) + '-' + y;
+            nextDataPos = (parseInt(x) + step) + '-' + y;
         };
 
         frango.find('[data-pos="' + nextDataPos + '"].used input').loop(function () {
             inputAutomaticallyFocused = true;
             found = true;
             this.focus();
-
         });
 
         if (!found) {
@@ -2886,28 +2953,35 @@ function crossWordsClass(instanceId) {
 
     };
 
+    var onKeyPress = function (key) {
+        try {
+            if (key == "#8") {
+                selectedInput.value = "";
+                jumpToNextInput(selectedInput.parentElement, true);
+            };
+            if (keys.indexOf(key) != -1) {
+                if (selectedInput) {
+                    selectedInput.value = key;
+                    jumpToNextInput(selectedInput.parentElement);
+                }
+            };
+
+        } catch (error) {
+            alert(error);
+        };
+    };
+
     var configureInput = function () {
         var inputs = htmlComponent.find('.cross-col input');
-        inputs.on('keyup', function (e) {
-            try {
-                var keys = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s",
-                    "t", "u", "v", "x", "w", "y", "z", "enter"];
-                //not working on android 
-                //var key = e.key.toLowerCase();
-                
-                var key = this.value.substr(this.value.length-1, 1).toLowerCase();
-                /*max length not working on android */
-                this.value = key;
-                if (keys.indexOf(key) != -1) {
-                    jumpToNextInput(this.parentElement);
-                };
-
-            } catch (error) {
-                alert(error);
-            };
+        inputs.on('contextmenu', function (e) {
+            e.preventDefault();
         });
 
-        inputs.on('focus', function (e) {            
+        inputs.on('focus', function (e) {
+            this.select();
+            selectedInput = this;
+            inputs.rmCl('focused');
+            frango.find(this).adCl('focused');
             var col = frango.find(this.parentElement);
             if (!inputAutomaticallyFocused) {
                 if (col.first().hasAttribute('data-first-h') || col.first().hasAttribute('data-first-v')) {
@@ -2927,6 +3001,7 @@ function crossWordsClass(instanceId) {
                 };
             };
             markSelectedWord(selectedWordData.index);
+            keyboardCrossWord.setTextOnPainel(htmlComponent.find('.cross-definitions [data-word-index="' + selectedWordData.index + '"]').first().innerHTML);
             inputAutomaticallyFocused = false;
         });
 
@@ -3003,6 +3078,9 @@ function crossWordsClass(instanceId) {
     var configureDefinitions = function () {
         var eleDefinitions = htmlComponent.find('.cross-definitions');
         eleDefinitions.html('');
+        //var eleDefinitionsVertical = htmlComponent.find('.cross-definitions.vertical');        
+        //eleDefinitionsHorizontal.html('<li class="collection-header"></li>');
+        //eleDefinitionsVertical.html('<li class="collection-header"><h4>Vertical</h4></li>');
         var definitions = {};
         var setDefinition = function (word, index) {
             frango.wait.start();
@@ -3018,11 +3096,63 @@ function crossWordsClass(instanceId) {
         };
 
         var bindDefinitionsOnTemplate = function () {
+            var orientation = '';
             for (var indexDef = 0; indexDef < wordsConfig.length; indexDef++) {
-                eleDefinitions.addHTMLBeforeEnd(frango.format('<li data-word-index="%s" class="collection-item">%s - %s</li>',
-                    [indexDef, (indexDef + 1), definitions[wordsConfig[indexDef].word]]));
+                if (wordsConfig[indexDef].orientation == "H") {
+                    orientation = 'mdi mdi-arrow-right';
+                } else {
+                    orientation = 'mdi mdi-arrow-down';
+                };
+                eleDefinitions.addHTMLBeforeEnd(frango.format('<li class="collection-item" data-word-index="%s">%s - <i class="%s"></i> %s ' +
+                    '<div><a href="javascript:void(0)" alt="Try" data-word-index="%s" class="try black-text"><i class="mdi mdi-keyboard"></i></a>&nbsp&nbsp|&nbsp&nbsp' +
+                    '<a href="javascript:void(0)" data-word-index="%s" class="reveal black-text"><i class="mdi mdi-eye"></i></a></div></li>',
+                    [(indexDef), (indexDef + 1), orientation, frango.replace(definitions[wordsConfig[indexDef].word], wordsConfig[indexDef].word, '____', true), 
+                       indexDef, indexDef]));
             };
         };
+
+        var gotToWord = function () {
+            htmlComponent.find('.cross-definitions li a.try').on('click', function (e) {
+                var ele = this;
+                var inputs = htmlComponent.find('[data-index-h="' + ele.attr('data-word-index') + '"] input').elements;
+                if (inputs.length > 0) {
+                    inputs[0].focus();
+                } else {
+                    inputs = htmlComponent.find('[data-index-v="' + ele.attr('data-word-index') + '"] input').first();
+
+                    if (inputs.parentElement.hasAttribute('data-first-h')) {
+                        selectedWordData.index = ele.attr('data-word-index');
+                        selectedWordData.orientation = wordsConfig[selectedWordData.index].orientation;
+                        inputAutomaticallyFocused = true;
+                        htmlComponent.find('[data-index-v="' + ele.attr('data-word-index') + '"] input').elements[0].focus();
+                    } else {
+
+                        inputs.focus();
+                    };
+                };
+            });
+        };
+
+        var reveal = function () {
+            htmlComponent.find('.cross-definitions li a.reveal').on('click', function (e) {
+                var ele = this;
+                var indexWord = parseInt(ele.attr('data-word-index'));
+                var inputs = htmlComponent.find('[data-index-h="' + indexWord.toString() + '"] input').elements;
+                if (inputs.length == 0) {
+                    var inputs = htmlComponent.find('[data-index-v="' + indexWord.toString() + '"] input').elements;
+                };
+
+                for (var index = 0; index < inputs.length; index++) {
+                    var input = inputs[index];
+                    input.value = wordsConfig[indexWord].word[index];
+                };
+
+                //go to word
+                frango.find(ele.parentElement).find('a.try').first().click();
+
+            })
+        };
+
 
         for (var index = 0; index < wordsConfig.length; index++) {
             setDefinition(wordsConfig[index].word, index);
@@ -3032,60 +3162,90 @@ function crossWordsClass(instanceId) {
             if (Object.keys(definitions).length == wordsConfig.length) {
                 clearInterval(idInter);
                 bindDefinitionsOnTemplate();
-                htmlComponent.find('.cross-definitions li').on('click', function (e) {
-                    var ele = this;
-                    var inputs = htmlComponent.find('[data-index-h="' + ele.attr('data-word-index') + '"] input').elements;
-                    if (inputs.length > 0) {
-                        inputs[0].focus();
-                    } else {
-                        inputs = htmlComponent.find('[data-index-v="' + ele.attr('data-word-index') + '"] input').first();
-
-                        if (inputs.parentElement.hasAttribute('data-first-h')) {                            
-                            selectedWordData.index = ele.attr('data-word-index');
-                            selectedWordData.orientation = wordsConfig[selectedWordData.index].orientation;
-                            inputAutomaticallyFocused = true;
-                            htmlComponent.find('[data-index-v="' + ele.attr('data-word-index') + '"] input').elements[0].focus();
-                        } else {
-                            
-                            inputs.focus();
-                        };
-                    };
-                });
+                reveal();
+                gotToWord();
             };
+
         }, 1000);
 
     };
 
-    var check = function(){
-        htmlComponent.find('.cross-col').loop(function(){
-           this.rmCl('wrong');
-           this.rmCl('correct');
+    var revealAllwords = function () {
+        htmlComponent.find('.cross-definitions a.reveal').loop(function () {
+            this.click();
+        });
+    };
+
+    var check = function () {
+        htmlComponent.find('.cross-col').loop(function () {
+            this.rmCl('wrong');
+            this.rmCl('correct');
         });
         for (var index = 0; index < wordsConfig.length; index++) {
             var word = wordsConfig[index].word;
             var answer = "";
-            var cols = htmlComponent.find('[data-index-' + wordsConfig[index].orientation + '="' + index +  '"]');
-            cols.find('input').loop(function(){
+            var cols = htmlComponent.find('[data-index-' + wordsConfig[index].orientation + '="' + index + '"]');
+            cols.find('input').loop(function () {
                 answer += this.value;
             });
-            
-            if(answer == word){
+
+            if (answer == word.toLowerCase()) {
                 cols.adCl('correct');
-            }else{
+            } else {
                 cols.adCl('wrong');
             };
         };
     };
 
-    var bindMenuEvents = function(){
-        htmlComponent.find('.refresh').on('click', thisObject.newGame);
+    var bindMenuEvents = function () {
         htmlComponent.find('.check').on('click', check);
+        htmlComponent.find('.prior').on('click', priorGame);
+        htmlComponent.find('.next').on('click', nextGame);
+        htmlComponent.find('.reveal-all').on('click', revealAllwords);
+        htmlComponent.find('.save-game').on('click', saveGame); 
     };
-    
-    this.newGame = function(){
-        wordsConfig = crossData;
-        //teste ---buildado4
-        createGame();
+
+    var saveGame = function () {
+        var map = [];
+        htmlComponent.find('[data-pos]').loop(function () {
+            var ele = this;
+            var pos = ele.attr('data-pos');
+            var value = ele.find('input').first().value;
+            if (pos && value) {
+                map.push({ "pos": pos, "value": value });
+            };
+        });
+        if (map.length > 0) {
+            frango.setCookie('crossword-saved', JSON.stringify(map));
+        };
+    };
+
+    var clearSavedGame = function () {
+        frango.setCookie('crossword-saved', '', -1);
+    };
+
+    var getSavedGame = function () {
+        var map = frango.getCookie('crossword-saved');
+        if (map) {
+            map = JSON.parse(map);
+            for (var index = 0; index < map.length; index++) {
+                var element = map[index];
+                var input = htmlComponent.find('[data-pos="' + element.pos + '"]').find('input').first();
+                if (input) {
+                    input.value = element.value;
+                };
+            };
+        };
+    };
+
+    var initializeAutoSave = function () {
+        var id = setInterval(function () {
+            if (frango.find('.crossWord').elements.length == 0) {
+                clearInterval(id);
+            } else {
+                saveGame();
+            };
+        }, 30000);
     };
 
     var createGame = function () {
@@ -3096,8 +3256,85 @@ function crossWordsClass(instanceId) {
         configureDefinitions();
     };
 
-    __init__ = function () {
-        bindMenuEvents();
+    this.newGame = function (game) {
+        if (!game) {
+            game = getActualGameNumber();
+        };
+        getGameOnServer(game, function (gameData) {
+            wordsConfig = gameData;
+            createGame();
+            setActualGameNumber(game);
+            getSavedGame();            
+        });
+    };
+
+    var getGameOnServer = function (gameNumber, methodToSend) {
+        frango.wait.start();
+        frango.ajaxGet({
+            url: urlToGetGame,
+            data: { "file": 'english/crosswords/' + gameNumber + '-crossword.json' },
+            onSuccess: function (data) {
+                frango.wait.stop();                
+                data = JSON.parse(data);
+                if (typeof methodToSend == 'function') {
+                    methodToSend(data);
+                };                
+            },
+            onFailure: function (error) {
+                frango.wait.stop();                
+                frango.warning("Wasn't  possible to get the game. " + error);
+            }
+        });
+    };
+
+    var getActualGameNumber = function () {
+        var numGame =  frango.getCookie('crossword-actual-game');
+        if(numGame){
+            return numGame
+        }else{
+            return 1;
+        };
+
+    };
+
+    var nextGame = function () {
+        var game = parseInt(getActualGameNumber()) + 1;
+        clearSavedGame();
+        thisObject.newGame(game)
+    };
+
+    var priorGame = function () {
+        var game = parseInt(getActualGameNumber()) - 1;
+        if (game > 0) {
+            clearSavedGame();
+            thisObject.newGame(game);
+        };
+    };
+
+    var setActualGameNumber = function (game) {
+        if (game) {
+            frango.setCookie('crossword-actual-game', game);
+            htmlComponent.find('.game-number').first().value = game;
+        } else {
+            game = frango.getCookie('crossword-actual-game');
+            if (!game) {
+                game = 1;
+                frango.setCookie('crossword-actual-game', 1);
+                htmlComponent.find('.game-number').first().value = 1;
+            };
+        };
+        htmlComponent.find('.game-number-display').html('Game #' + game);
+    };
+
+    var __init__ = function () {
+        keyboardComponent.getInstance('keyboardCrossWord', function (instance) {
+            bindMenuEvents();
+            setActualGameNumber();
+            keyboardCrossWord = instance;
+            keyboardCrossWord.setOnKeyPress(onKeyPress);
+            keyboardCrossWord.show();
+            initializeAutoSave();
+        });
     };
 
     __init__();
@@ -3233,8 +3470,7 @@ var memoryGameClass = function (component) {
             return;
         };
 
-        
-
+    
         if (howManyCardsAreClicked < 2) {            
             howManyCardsAreClicked += 1;
             var img = card.find('img');

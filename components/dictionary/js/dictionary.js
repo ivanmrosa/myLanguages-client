@@ -307,11 +307,15 @@ dictionaryComponent = {
 
     controller: function (component) {
         //This implementation permites to create component by url route
-        var instanceID = component.componentID;
+        /*var instanceID = component.componentID; 
+        
         dictionaryComponent.getInitialData(instanceID, function (data) {
             component.bindData(data, true, function () {
-                /*on finish*/
+
             });
+        }); */
+        dictionaryComponent.getInstance(component.componentID, function(instance){
+
         });
 
     },

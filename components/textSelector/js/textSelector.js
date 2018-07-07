@@ -20,9 +20,11 @@ function textSelector(instanceId) {
     var openTextSelectedOption = function (idInterval) {
         if (thisObject.isSelecting == false && isOpened == false) {
             clearInterval(idInterval);
-            var text = window.getSelection().toString();
-            if (text) {
-                openPopup(text);
+            if (!document.activeElement.hasAttribute('data-disableSelector')){
+                var text = window.getSelection().toString();
+                if (text) {
+                    openPopup(text);
+                };    
             };
         };
     };

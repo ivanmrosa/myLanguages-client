@@ -1,15 +1,14 @@
-<span data-component="yes" data-component-name="header" data-component-container="#header" data-component-extra-data='{"title":"Gallows"}'>
+<span data-component="yes" data-component-name="header" data-component-container="#header" 
+      data-component-extra-data='{"title":"Hangman"}'>
 </span>
 
 <div id="[{(gallows) id }]" class="gallowsComponent">
-    <!--<ul class="collection">
-        <li class="collection-item">
-            <a href="javascript:void(0)" class="next-word">Next word <i class="mdi mdi-arrow-right-bold"></i> </a>
+    <ul class="collection">
+        <li class="collection-item">            
+           <a class="next-word" href="javascript:void(0)">Next word</a>
         </li>
-    </ul> -->
-    <a class="mdi mdi-refresh mdi-48px next-word" href="javascript:void(0)">Next word</a>
-
-
+    </ul>
+    
     <div class="doll">
         <img src="img/gallow-0.png" class="responsive-img gallow-img" />
     </div>
@@ -28,7 +27,10 @@
         <ul class="data-set-definition-container collection">
             <li data-datasetname="definition" data-self="true" class="collection-item">
                 <p class="word-definition">
-                    <b>[{ (definition) sequence:default@ }]</b> - [{ (definition) text}]
+                    <span data-datasetname="actualword">
+                        <b>[{ (definition) sequence:default@ }]</b> -
+                         [{ (definition) text:replaceWholeWord@[{(actualword) actualWord}]@ _____ }]
+                    </span>                    
                 </p>
                 <b>Part of speech</b> : [{ (definition) partOfSpeech:default@not found }]
             </li>

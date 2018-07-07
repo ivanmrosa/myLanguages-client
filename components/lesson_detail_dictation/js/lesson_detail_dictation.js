@@ -2,7 +2,8 @@
 lesson_detail_dictationComponent = {
     player: undefined,
     started: false,
-    dictationDictionary: undefined,    
+    dictationDictionary: undefined,
+    dictationKeyboard: undefined,
     getData: function () {
 
     },
@@ -24,7 +25,8 @@ lesson_detail_dictationComponent = {
                 lesson_detail_dictationComponent.player.setControlClass(lesson_detail_dictationComponent.player.btnStart, true);
             });
 
-            keyboardComponent.getInstance('dictation-keyboard', function (instance) {                
+            keyboardComponent.getInstance('dictation-keyboard', function (instance) {
+                lesson_detail_dictationComponent.dictationKeyboard = instance;
                 instance.setOnKeyPress(function (key) {
                     var edit = frango.find('#word-anwser').first();
                     switch (key) {
@@ -38,11 +40,29 @@ lesson_detail_dictationComponent = {
                             edit.value = edit.value + key;
                             break;
                     };
-                });                
+                });
             });
 
         });
     },
+
+    hideKeyBoard : function () {
+        var inter = setInterval(function () {
+            if (lesson_detail_dictationComponent.dictationKeyboard) {
+                lesson_detail_dictationComponent.dictationKeyboard.hide();
+                clearInterval(inter);
+            };
+        }, 1000);
+    },
+    showKeyBoard : function () {
+        var inter = setInterval(function () {
+            if (lesson_detail_dictationComponent.dictationKeyboard) {
+                lesson_detail_dictationComponent.dictationKeyboard.show();
+                clearInterval(inter);
+            };
+        }, 1000);
+    },
+
     start: function () {
         if (!lesson_detail_dictationComponent.started) {
             lesson_detail_dictationComponent.player.autoPlay = false;
@@ -57,7 +77,7 @@ lesson_detail_dictationComponent = {
                     lesson_detail_dictationComponent.dictationDictionary.getWordAudioURL);
                 frango.wait.stop();
                 lesson_detail_dictationComponent.player.playWord();
-            });            
+            });
         };
     },
     checkAnswer: function () {

@@ -70,6 +70,7 @@ function gallowsClass(instanceId) {
 
     var getDefinition = function () {
         dictionaryInstance.getWordDefinition(actualWord, function (definition) {                        
+          frango.bindDataOnTemplate('actualword', [{"actualWord":actualWord}]);            
           frango.bindDataOnTemplate('definition', definition);                        
         });
     };
@@ -81,6 +82,7 @@ function gallowsClass(instanceId) {
             keyboardInstance = instance;            
             keyboardInstance.setOnKeyPress(checkKeyAswer);
             setDisabledKeys();
+            keyboardInstance.show();
         });
 
         htmlComponent.find('.next-word').on('click', thisObject.newRandomGame)
@@ -112,8 +114,10 @@ function gallowsClass(instanceId) {
     };
 
     this.newRandomGame = function () {
+        frango.wait.start();
         dictionaryInstance.getRandomWords(1, 5, 20).onFinish(function (words) {
             thisObject.newGame(words[0].word);
+            frango.wait.stop();
         });
     };
 

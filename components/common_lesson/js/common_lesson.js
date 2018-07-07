@@ -3,6 +3,11 @@ common_lessonComponent = {
     getData: function () {
 
     },
+    checkErrorStatus : function(status){
+       if(status == 401){
+           loginComponent.logout();
+       };
+    },
     controller: function (component) {
         //component.bindData();
     },
@@ -24,14 +29,42 @@ common_lessonComponent = {
                     methodToSendData(userLearnig);
 
                 },
-                onFailure(error) {
+                onFailure(error, status) {                                     
                     frango.warning(error);
+                    frango.wait.stop();
+                    common_lessonComponent.checkErrorStatus(status);
                 }
             });
     
         }else{
           methodToSendData(JSON.parse(localUserLearning)); 
         };
+    },
+
+    setLastAccess : function(){
+        var doPost = function (updatedData) {
+            var id = updatedData["id"];
+            
+            updatedData.last_access = frango.currentDate(false);
+
+            frango.ajaxPut({
+                url: 'user-learning-language/' + id.toString() + '/',
+                data: updatedData,
+                onSuccess: function(){
+                   frango.setCookie('mylanguage-user-learning', JSON.stringify(updatedData));
+                },
+                onFailure: function (error, status) {
+                    frango.wait.stop();                                    
+                    console.log(error);
+                    common_lessonComponent.checkErrorStatus(status);
+                }
+            });
+        };
+        try {
+            common_lessonComponent.getUserLearning(doPost);
+        } catch (error) {
+            console.log(error);
+        };        
     },
 
     incrementUserScore: function (newScore) {
@@ -46,10 +79,10 @@ common_lessonComponent = {
                 onSuccess: function(){
                    frango.setCookie('mylanguage-user-learning', JSON.stringify(updatedData));
                 },
-                onFailure: function (error) {
-                    //alert(error);
-                    document.write(error);
-                    document.close();
+                onFailure: function (error, status) {
+                    frango.wait.stop();                                    
+                    console.log(error);  
+                    common_lessonComponent.checkErrorStatus(status);
                 }
             });
         };
@@ -57,11 +90,16 @@ common_lessonComponent = {
         common_lessonComponent.getUserLearning(doPost)
     },
 
-    goToNextLesson: function () {
+    goToLesson: function (lessonSequence) {
+        frango.wait.start();
         var doPost = function (updatedData) {
             var id = updatedData["id"];
-            var newSequence = updatedData["lesson_sequence"] + 1;
-
+            if (lessonSequence){
+                var newSequence = lessonSequence;
+            }else{
+                var newSequence = updatedData["lesson_sequence"] + 1;
+            };
+            
             frango.ajaxGet({
                 url: 'lesson/',
                 data: { 'sequence': newSequence },
@@ -78,12 +116,14 @@ common_lessonComponent = {
                            frango.setCookie('mylanguage-user-learning', '', -1);
                            frango.setCookie('mylanguage-actual-lesson', '', -1);
                            frango.setCookie('mylanguage-actual-words', '', -1);
-                           frango.app.navigate('#lesson/detail/?lesson_id=' + lesson_id);
+                           frango.wait.stop();
+                           frango.app.navigate('#lesson/detail/?lesson_id=' + lesson_id);                           
                         },
-                        onFailure: function (error) {
-                            //alert(error);
-                            document.write(error);
-                            document.close();
+                        onFailure: function (error, status) {                            
+                            frango.wait.stop();                                    
+                            console.log(error);
+                            alert(error)
+                            common_lessonComponent.checkErrorStatus(status);                            
                         }
                     });                    
                 }
@@ -125,26 +165,14 @@ common_lessonComponent = {
                     url: 'lesson/',
                     data: { "id": lesson_id },
                     onSuccess: function (lesson) {  
-                        lesson = JSON.parse(lesson)[0];
-                                              
-                      /*  frango.wait.stop();
-                        lesson = JSON.parse(lesson)[0];
-                        lesson["score"] = score;
-                        lesson["language_name"] = language_name;
-            
-                        if (score >= 70) {
-                            lesson["aproved"] = "true";
-                        } else {
-                            lesson["aproved"] = "false";
-                        };
-        
-                        methodToSendData(lesson);   */
+                        lesson = JSON.parse(lesson)[0];                                              
                         frango.setCookie('mylanguage-actual-lesson', JSON.stringify(lesson));
                         getLesson(lesson);
                     },
-                    onFailure: function (erro) {
+                    onFailure: function (erro, status) {
                         frango.wait.stop();
                         frango.warning(erro);
+                        common_lessonComponent.checkErrorStatus(status);
                     }
                 });                
             };            

@@ -1,13 +1,17 @@
 searchDictionaryComponent = {
 
     controller: function(component){
-       component.bindData([], true, function(){
-           dictionaryComponent.getInstance('dictionary-search-dictionary', function(dictInstance){
+       var idComponent = component.componentID + '-searchDictionary';
+       var data = {"searchDictionary":[
+           {"id":idComponent}
+       ]};
+       component.bindData(data, true, function(){
+           dictionaryComponent.getInstance(idComponent + '-dictionary', function(dictInstance){
                //dictInstance 
-               var search = frango.find('.search-dictionay');
+               var search = frango.find('#' + idComponent);
                /*btn search */
                search.find('.dict-search-btn').on('click', function(){
-                   var words = frango.find('#search-dictionary-words').first().value.trim().split(" ");
+                   var words = search.find('[name="search-dictionary-words"]').first().value.trim().split(" ");
                    
                    dictInstance.showDictionary(words, false);
                });

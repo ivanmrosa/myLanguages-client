@@ -53,6 +53,13 @@ frango.app.afterInitialize(function () {
             };
         };
     });
+    /*set access data */
+    try {
+        common_lessonComponent.setLastAccess();    
+    } catch (error) {
+        alert(error);
+    }
+    
 
 
 });
@@ -61,6 +68,16 @@ function onDeviceReady() {
     // Now safe to use device APIs
     if (cordova) {
         window.open = cordova.InAppBrowser.open;
+        /* adsense */
+        try {
+            admob.banner.config({
+                id: 'ca-app-pub-9005016662261468/5625086764',
+            });   
+            admob.banner.prepare()
+            admob.banner.show()            
+        } catch (error) {
+           alert(error);
+        };
     };
 }
 

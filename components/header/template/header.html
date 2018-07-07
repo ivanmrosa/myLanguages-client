@@ -1,17 +1,26 @@
 <div class="navbar-fixed nav-extended">
     <nav class="nav-extended">
         <div class="nav-wrapper blue lighten-2">
-            <a href="javascript:void(0)" class="brand-logo center">[{ (header) title }]</a>
-            <ul class="left">
-                <li>
-                    
-                   <a href="javascript:void(0)" onclick="[{(header) execute}] " >
-                        <i class='mdi [{(header)icon:default@mdi-arrow-left}]' style="display:[{ (header)  display}]"></i>
+            <h4  class="brand-logo center truncate">[{ (header) title }]</h4>
+            <ul class="left"  style="z-index:2">
+                <li>                    
+                   <a href="javascript:void(0)" onclick="[{(header) execute}]" >
+                        <i class='mdi [{(header)icon:default@mdi-arrow-left}]' style="display:[{(header)  display}]"></i>
                     </a> 
                 </li>
-
             </ul>
+            <ul class="right">
+                <a onclick="frango.popup.openPopup('#headerPopupDictionary')" class="mdi mdi-book-open-variant " alt="Dictionary"></a>
 
-        </div>
+            </ul>            
+        </div>        
     </nav>
+</div>
+
+<div class="popup" id="headerPopupDictionary">
+    <div class="popup-body popup-dlg">
+        <div data-component="yes" data-component-name="searchDictionary" data-component-id="generalsearchDictionary"
+              data-self="yes">
+        </div>
+    </div>
 </div>

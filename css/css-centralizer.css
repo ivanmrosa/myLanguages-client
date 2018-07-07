@@ -1,8 +1,28 @@
 
+
 .keyBoardComponent{
-    float: left;
-    width: 100%;    
+   /* float: left;
+    width: 100%;    */
+  position: fixed;  
+  bottom: 0;
+  width: 100%;
+  left: 0;
+  z-index: 100;
+  background-color: lightgray;
 }
+.keyboard-padding{
+    float: left;
+    width: 100%;
+}
+
+.keyboard-body-padding {
+   height: 162px;;
+}
+
+.keyboard-bottom-panel {
+    height: 33px;
+ }
+ 
 
 .keyBoardComponent .line{
     float: left;
@@ -11,15 +31,29 @@
 
 .keyBoardComponent .keyboard-key{
    float: left;
-   border: 0.1px solid white;
+   /*border: 0.1px solid white;*/
    width: 10%;   
-   height: 27.8px;
+   /*height: 27.8px;*/
+   height: 33px;
    box-sizing: border-box;
    padding-top: 2px;
+   font-size: 20px;
 }
+
+.keyBoardComponent .keyboard-key.enabled {
+  background-color: lightgrey;
+}
+
+.keyBoardComponent .keyboard-key.disabled {
+    background-color: gray;
+    border: 0.5px solid white;
+    border-radius: 3px;
+  }
 
 .keyBoardComponent .keyboard-key.space {
     width: 30%;
+    border: 0.5px solid white;
+    border-radius: 3px;
 }
 
 .keyBoardComponent .keyboard-key.special-character{
@@ -27,9 +61,12 @@
 }
 
 .keyBoardComponent .keyboard-key.enter {
-    width: 15%;
+    width: 25%;
 }
 
+.keyBoardComponent .keyboard-key.backspace {
+    width: 30%;
+}
 
 .keyBoardComponent .second-line{
     padding-left: 10%;    
@@ -38,6 +75,33 @@
 .keyBoardComponent .third-line{
     padding-left: 20%;
 }
+
+.keyBoardComponent.special-character-active .third-line, .keyBoardComponent.special-character-active .second-line {
+    padding-left: 0% !important;
+}
+
+.keyBoardComponent.special-character-active .keyboard-key.backspace {
+    width: 20%;
+}
+
+
+.keyBoardComponent .top-bar{
+  height: 30px;
+  width: 100%;
+  background-color: lightgray;
+  border-bottom: 1px solid white;
+  float: left;  
+}
+.keyBoardComponent .top-bar > a{
+  float: right;
+}
+
+.keyBoardComponent .top-bar .aditional-content{
+    height: 30px;
+    width: 90%;
+    float: left;
+    overflow: auto;
+  }
 
 .gallowsComponent .gallows-letter{
   float: left;
@@ -80,7 +144,7 @@
    height: 55px !important;   
    width: 55px !important; 
    float: left;   
-   border: 1px solid deepskyblue;
+   border: 1px solid black;
    margin: 2px;
    
 }
@@ -100,11 +164,11 @@
 }
 
 .crossWord .selected{
-    border-color: blue !important;
+    background-color: lightyellow !important;
 }
 
 .crossWord li.selected{
-    color: blue !important;
+    color: black !important;
 }
 
 .crossWord .wrong{
@@ -115,10 +179,13 @@
     color: green !important;
 }
 
+.crossWord input.focused {
+  background-color: darkgoldenrod;
+}
 
 .crossWord .cross-col{    
   float: left;
-  border: 1px solid black;
+  border: 1px solid grey;
   background-color: white;
   text-align: center;
 }

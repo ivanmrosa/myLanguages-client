@@ -1,31 +1,35 @@
-<span data-component-name="header" data-component-id="header" 
-      data-component-container="#header" data-component="yes">
-</span>
-    
-
-<span data-component-name="resumed_lesson" 
-      data-component-id="homeResumed" 
-      data-component-container=".homeResumed" data-component="yes">
+<span data-component-name="header" data-component-id="header" data-component-container="#header" data-component="yes">
 </span>
 
 
 <ul class="collapsible popout" data-collapsible="accordion">
+
     <li>
         <div class="collapsible-header active black-text">
             <i class="mdi mdi-menu-down"></i>Your actual lesson
         </div>
         <div class="collapsible-body homeResumed">
-            <!--  categories will come here-->
+            <span data-component-name="resumed_lesson" data-component-id="homeResumed" 
+                data-component-container=".homeResumed" data-component="yes">
+            </span>
         </div>
     </li>
+    <li>
+            <div class="collapsible-header black-text">
+                <i class="mdi mdi-menu-down"></i>Games
+            </div>
+            <div class="collapsible-body games-list">
+                <span data-component-name="games" data-component-id="gamesList" 
+                      data-component-container=".games-list" data-component="yes">
+                </span>
+            </div>
+        </li>    
     <li>
         <div class="collapsible-header black-text">
             <i class="mdi mdi-menu-down"></i>More
         </div>
         <div class="collapsible-body">
             <div class="collection">
-                <a class="collection-item" href="#search-dictionary">Dictionary</a>                
-                <a class="collection-item" href="#games">Games</a>                
                 <a class="collection-item" href="#topics">Topics</a>
                 <a class="collection-item" href="javascript:void(0)" onclick="homeComponent.showHelp()">Ajuda</a>
             </div>

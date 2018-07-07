@@ -4,16 +4,27 @@
 <div id="[{(crossWords) id }]" class="crossWord">
     <ul class="collection">
         <li class="collection-item">
-            <a href="javascript:void(0)" class="refresh">New game</a> |
-            <a href="javascript:void(0)" class="check">Check game</a>
+            <a href="javascript:void(0)" class="check">Check game</a> &nbsp; | &nbsp;
+            <a href="javascript:void(0)" class="reveal-all">Reveal all</a> &nbsp; | &nbsp;
+            <a href="javascript:void(0)" class="save-game">Save game</a>                
+            <div>
+                <a href="javascript:void(0)" class="mdi mdi-arrow-left mdi-24px prior"></a> 
+                <span class="game-number-display" style="font-size:24px">Game #1</span>
+                <a href="javascript:void(0)" class="mdi mdi-arrow-right mdi-24px next"></a>
+                <input type="hidden" value="1" class="game-number">
+            </div>
         </li>
     </ul>
 
     <div class="cross-main-box">
     </div>
     <div class="row">
-    <ul class="cross-definitions collection">
+        <ul class="cross-definitions collection">
 
-    </ul>
+        </ul>        
     </div>
+</div>
+
+<div data-component="yes" data-component-name="keyboard" data-self="yes" data-component-id="keyboardCrossWord"
+     data-auto-create="no">
 </div>

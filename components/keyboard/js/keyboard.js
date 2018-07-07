@@ -20,26 +20,26 @@ function keyboardClass(instanceId) {
 
     var setSpecialCharactersKeys = function(){
         keysFirstLine = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
-        keysSecondLine = ['@', '#', '$', '_', '&', '-', '+', '(', ')'];
-        keysThirdLine = ['/', '*', '"', "'", ':', ';', '!', '?']      
+        keysSecondLine = ['@', '#', '$', '_', '&', '-', '+', '(', ')', '/'];
+        keysThirdLine = [ '*', '"', "'", ':', ';', '!', '?', '\\']      
     };
 
     var getKeyHtml = function (key) {
-        return frango.format('<div class="orange  white-text center-align cur-pointer keyboard-key" data-key="%s">%s</div>', 
+        return frango.format('<div class="center-align cur-pointer keyboard-key" data-key="%s">%s</div>', 
           [key, key]);
     };
 
     var addFourthLinhe = function(useNormal){
         var fourthLine = htmlComponent.find('.fourth-line'); 
         fourthLine.first().innerHTML = "";
-        fourthLine.first().insertAdjacentHTML('beforeend', '<div class="orange white-text center-align cur-pointer caps-lock special keyboard-key data-key=""> '+
+        fourthLine.first().insertAdjacentHTML('beforeend', '<div class="center-align cur-pointer caps-lock special keyboard-key data-key=""> '+
           '<i class="mdi mdi-apple-keyboard-caps"></i></div>');        
         fourthLine.first().insertAdjacentHTML('beforeend', getKeyHtml(','));
         fourthLine.first().insertAdjacentHTML('beforeend', getKeyHtml('.'));
-        fourthLine.first().insertAdjacentHTML('beforeend', '<div class="orange white-text center-align cur-pointer keyboard-key special special-character" data-key="">?123</div>');
-        fourthLine.first().insertAdjacentHTML('beforeend', '<div class="orange white-text center-align cur-pointer keyboard-key special space" data-key=" ">&nbsp</div>');
-        fourthLine.first().insertAdjacentHTML('beforeend', '<div class="orange white-text center-align cur-pointer keyboard-key special" data-key="#8"><i class="mdi mdi-keyboard-backspace"></i></div>');
-        fourthLine.first().insertAdjacentHTML('beforeend', '<div class="orange white-text center-align cur-pointer keyboard-key special enter" data-key="#13">Enter</div>');        
+        fourthLine.first().insertAdjacentHTML('beforeend', '<div class="center-align cur-pointer keyboard-key special special-character" data-key="">?123</div>');
+        fourthLine.first().insertAdjacentHTML('beforeend', '<div class="center-align cur-pointer keyboard-key special space" data-key=" ">&nbsp</div>');
+        //fourthLine.first().insertAdjacentHTML('beforeend', '<div class="center-align cur-pointer keyboard-key special" data-key="#8"><i class="mdi mdi-keyboard-backspace"></i></div>');
+        fourthLine.first().insertAdjacentHTML('beforeend', '<div class="center-align cur-pointer keyboard-key special enter" data-key="#13">Enter</div>');        
         
 
         fourthLine.find('.caps-lock').on('click', function(){
@@ -74,6 +74,8 @@ function keyboardClass(instanceId) {
         if(useNormal == undefined || useNormal == null ){
             useNormal = true;
         };
+        useNormal?htmlComponent.rmCl('special-character-active'):htmlComponent.adCl('special-character-active');  
+
         var firstLine = htmlComponent.find('.first-line');
         firstLine.first().innerHTML = "";
         for (var index = 0; index < keysFirstLine.length; index++) {
@@ -94,11 +96,8 @@ function keyboardClass(instanceId) {
             thirdLine.first().insertAdjacentHTML('beforeend', getKeyHtml(key));
         };
 
-        /*var fourthLine = htmlComponent.find('.fourth-line');
-        for (var index = 0; index < keysFourthLine.length; index++) {
-            var key = keysFourthLine[index];
-            fourthLine.first().insertAdjacentHTML('beforeend', getKeyHtml(key));
-        };*/
+        /*backspace */
+        thirdLine.first().insertAdjacentHTML('beforeend', '<div class="center-align backspace cur-pointer keyboard-key special" data-key="#8"><i class="mdi mdi-keyboard-backspace"></i></div>');
 
         addFourthLinhe(useNormal);
 
@@ -111,10 +110,15 @@ function keyboardClass(instanceId) {
                 frango.warning('onKeyPress event not provied');
             };
         });
-
+        thisObject.enableAllKeys();
         thisObject.disableKeys();
 
     };
+
+    this.setTextOnPainel  = function(text){
+       htmlComponent.find('.top-bar .aditional-content').html(text);
+    };
+
 
     this.disableKey = function(key, permanent){
        if(permanent == undefined || permanent == null){
@@ -122,8 +126,8 @@ function keyboardClass(instanceId) {
        };
        var ele = htmlComponent.find(frango.format('[data-key="%s"]', [key]));
        ele.attr('data-disabled', "yes");
-       ele.rmCl('orange');
-       ele.adCl('grey');
+       ele.rmCl('enabled');
+       ele.adCl('disabled');
        if(permanent){
            disabledKeys.push(key);
        };
@@ -132,8 +136,8 @@ function keyboardClass(instanceId) {
     this.enableKey = function(key){
         var ele = htmlComponent.find(frango.format('[data-key="%s"]', [key]));
         ele.attr('data-disabled', "no");
-        ele.rmCl('grey');
-        ele.adCl('orange'); 
+        ele.rmCl('disabled');
+        ele.adCl('enabled'); 
         var idx = disabledKeys.indexOf(key);
         if(idx > -1){
             disabledKeys.splice(idx, 1);
@@ -166,9 +170,60 @@ function keyboardClass(instanceId) {
         onKeyPress = keyPressEvent;
     };
 
+    this.hide = function(){
+      htmlComponent.adCl('hide');
+    };
+ 
+    this.show = function(){
+        htmlComponent.rmCl('hide');
+    };
+    
+    this.minimizeOrMaximize = function(){
+        var body = htmlComponent.find('.body-keyboard');
+        var minimizeEle = htmlComponent.find('.minimize-keyboard');
+        if (frango.hasClass('hide', body.first())){
+           body.rmCl('hide')
+           minimizeEle.adCl('mdi-keyboard-close');
+           minimizeEle.rmCl('mdi-keyboard');
+        }else{
+           body.adCl('hide');
+           minimizeEle.rmCl('mdi-keyboard-close');
+           minimizeEle.adCl('mdi-keyboard');
+        };
+    };
+    var configureMinimizeKeyboard = function() {
+       htmlComponent.find('.minimize-keyboard').on('click', thisObject.minimizeOrMaximize);
+    };
+    
+    var configurePaddingBody = function(){
+        var interval = setInterval(function(){
+            var body = frango.find('.keyboard-padding');
+            if(body.elements.length ==0){
+               frango.find('#app').addHTMLBeforeEnd('<div class="keyboard-padding"></div>');
+               body = frango.find('.keyboard-padding');
+            };
+            if (frango.find('.keyBoardComponent').elements.length > 0){
+                if (frango.find('.body-keyboard').hasClass('hide')){
+                   body.adCl('keyboard-bottom-panel');
+                   body.rmCl('keyboard-body-padding');
+                }else{
+                    body.rmCl('keyboard-bottom-panel');
+                    body.adCl('keyboard-body-padding'); 
+                };
+            }else{
+                body.rmCl('keyboard-bottom-panel');
+                body.rmCl('keyboard-body-padding');
+                clearInterval(interval);
+            };
+        });
+    };
+
     var __init__ = function () {
+        thisObject.hide();
         setNormalKeys();
         drawKeys(true);
+        configureMinimizeKeyboard();
+        configurePaddingBody();
     };
 
     __init__();

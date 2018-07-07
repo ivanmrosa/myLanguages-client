@@ -13,8 +13,7 @@ var memoryGameClass = function (component) {
             return;
         };
 
-        
-
+    
         if (howManyCardsAreClicked < 2) {            
             howManyCardsAreClicked += 1;
             var img = card.find('img');
