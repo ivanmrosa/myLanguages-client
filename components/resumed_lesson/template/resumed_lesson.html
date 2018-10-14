@@ -1,43 +1,32 @@
-<div class="row">
-    <div class="col s12 m12">
-        <div class="card-panel " style="background-color:#607d8b">
-            <div data-datasetname="lesson">
-                <h5 class="white-text title">[{(lesson) name}]</h5>
-                <div class="white-text hide">
-                    <i class="mdi mdi-arrow-right mdi-16px white-text"></i> Minimum score : 70</div>
-                <div class="white-text hide">
-                    <i class="mdi mdi-arrow-right mdi-16px white-text"></i> Score achieved : [{(lesson) score}]
-                </div>
-                <!--<div class="white-text card-panel teal"> -->                    
-                    <a href="#lesson/detail/?lesson_id=[{(lesson) id}]" class="white-text">
-                        <i class="mdi mdi-play mdi-16px white-text"></i> Start lesson
-                    </a> </br>
-                    <a href="javascript:void(0)" class="[{(lesson) aproved:ternary@true@visible@visible  }] white-text" 
-                        onclick="common_lessonComponent.goToLesson()">
-                        <i class="mdi mdi-skip-next mdi-16px white-text"></i> Next lesson
-                    </a></br>
-                    <a href="javascript:void(0)" class="white-text" 
-                       onclick="frango.popup.openPopup('.popup-choose-lesson');frango.fillLookup('.choose-lesson')">
-                        <i class="mdi mdi-filter-variant"></i> Choose a lesson</a>
-                <!--</div></br> -->
-                <!--<div></div> -->
-            </div>
+<div class="hscroll resumed-lesson"  data-datasetname="lesson" data-self="">
+    <span class="cyan-text text-darken-4">Lessons</span>
+    <div class="hscroll-group">
+        <div class="hscroll-item  cyan darken-2" data-index="1" onclick="frango.app.navigate('#lesson/detail/?lesson_id=[{(lesson) id}]')">
+            <span class="white-text">Start [{(lesson) name}]</span>
+        </div>
+        <div class="hscroll-item  cyan darken-2" data-index="2" onclick="common_lessonComponent.goToLesson()">
+            <span class="white-text">Next lesson</span>
+        </div>
+        <div class="hscroll-item cyan darken-2" data-index="3" onclick="frango.popup.openPopup('.popup-choose-lesson');frango.fillLookup('.choose-lesson')">
+            <span class="white-text">Choose a lesson</span>
         </div>
     </div>
+
 </div>
+
 
 <div class="popup popup-choose-lesson">
     <div class="popup-body popup-dlg">
         <label for="lookup-lesson">Lesson</label>
-        <select data-lookup-url="lesson/" data-lookup-field="sequence" data-lookup-field2="name" 
-                data-content-type="json" class="lookup choose-lesson" id="lookup-choose-lesson" style="display:block" >            
+        <select data-lookup-url="lesson/" data-lookup-field="sequence" data-lookup-field2="name" data-content-type="json"
+            class="lookup choose-lesson" id="lookup-choose-lesson" style="display:block">
         </select>
 
         <div class="fixed-bottom row">
-            <a class="btn col s6" onclick="common_lessonComponent.goToLesson(frango.find('#lookup-choose-lesson').first().value)" 
-              style="position:absolute;bottom:0;left:0">Confirm</a>
-            <a class="btn red col s6" onclick="frango.popup.closePopup('.popup-choose-lesson')"
-               style="position:absolute;bottom:0;left:50%"><span class="white-text">Cancel</span></a>
+            <a class="btn col s6" onclick="common_lessonComponent.goToLesson(frango.find('#lookup-choose-lesson').first().value)"
+                style="position:absolute;bottom:0;left:0">Confirm</a>
+            <a class="btn red col s6" onclick="frango.popup.closePopup('.popup-choose-lesson')" style="position:absolute;bottom:0;left:50%"><span
+                    class="white-text">Cancel</span></a>
         </div>
     </div>
 </div>

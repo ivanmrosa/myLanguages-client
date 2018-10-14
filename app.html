@@ -5,7 +5,8 @@
   <title>Vocplus</title>
   <meta charset="utf-8">
 
-  <link href="css/icon.css" rel="stylesheet">
+  <!--<link href="css/icon.css" rel="stylesheet"> -->
+  <link rel="manifest" href="/manifest.json">  
 
   <!--Import materialize.css-->
   
@@ -19,9 +20,18 @@
 
   <!--Let browser know website is optimized for mobile-->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Vocplus">
+  <link rel="apple-touch-icon" href="images/icons/icon-152x152.png">
+  <meta name="msapplication-TileImage" content="images/icons/icon-144x144.png">
+  <meta name="msapplication-TileColor" content="#2F3BA2">
+  <meta name="theme-color" content="#2F3BA2"/>    
+
 </head>
 
 <body>
+  <noscript>Your browser does not support JavaScript!</noscript>  
   <div id="header">
   </div>
 
@@ -48,69 +58,12 @@
   <script type="text/javascript" src="cordova.js"></script>
   <script type="text/javascript" src="frango/frango.js"></script>
   <script type="text/javascript" src="frango/configFrango.js"></script>
+  <script type="text/javascript" src="swregister.js"></script>    
   <!--<script type="text/javascript" src="js/js-centralizer.js"></script> -->
 
   <!--do not erase or modify those comentaries-->
   <!--begin script debugger-->
-  <script type="text/javascript" src="js/app.js"></script>
-  <script type="text/javascript" src="js/app-routes.js"></script>
-  <script type="text/javascript" src="js/components.js"></script>
-  <script type="text/javascript" src="components/header/js/header-register.js"></script>
-  <script type="text/javascript" src="components/header/js/header.js"></script>
-  <script type="text/javascript" src="components/login/js/login-register.js"></script>
-  <script type="text/javascript" src="components/login/js/login.js"></script>
-  <script type="text/javascript" src="components/lesson_detail/js/lesson_detail-register.js"></script>
-  <script type="text/javascript" src="components/lesson_detail/js/lesson_detail.js"></script>
-  <script type="text/javascript" src="components/common_lesson/js/common_lesson-register.js"></script>
-  <script type="text/javascript" src="components/common_lesson/js/common_lesson.js"></script>
-  <script type="text/javascript" src="components/lesson_detail_words/js/lesson_detail_words-register.js"></script>
-  <script type="text/javascript" src="components/lesson_detail_words/js/lesson_detail_words.js"></script>
-  <script type="text/javascript" src="components/home/js/home-register.js"></script>
-  <script type="text/javascript" src="components/home/js/home.js"></script>
-  <script type="text/javascript" src="components/menu/js/menu-register.js"></script>
-  <script type="text/javascript" src="components/menu/js/menu.js"></script>
-  <script type="text/javascript" src="components/signup/js/signup-register.js"></script>
-  <script type="text/javascript" src="components/signup/js/signup.js"></script>
-  <script type="text/javascript" src="components/userconfig/js/userconfig-register.js"></script>
-  <script type="text/javascript" src="components/userconfig/js/userconfig.js"></script>
-  <script type="text/javascript" src="components/resumed_lesson/js/resumed_lesson-register.js"></script>
-  <script type="text/javascript" src="components/resumed_lesson/js/resumed_lesson.js"></script>
-  <script type="text/javascript" src="components/lesson/js/lesson-register.js"></script>
-  <script type="text/javascript" src="components/lesson/js/lesson.js"></script>
-  <script type="text/javascript" src="components/lesson_detail_dictation/js/lesson_detail_dictation-register.js"></script>
-  <script type="text/javascript" src="components/lesson_detail_dictation/js/lesson_detail_dictation.js"></script>
-  <script type="text/javascript" src="components/speech/js/speech-register.js"></script>
-  <script type="text/javascript" src="components/speech/js/speech.js"></script>
-  <script type="text/javascript" src="components/training_player/js/training_player-register.js"></script>
-  <script type="text/javascript" src="components/training_player/js/training_player.js"></script>
-  <script type="text/javascript" src="components/videoPlaylist/js/videoPlaylist-register.js"></script>
-  <script type="text/javascript" src="components/videoPlaylist/js/videoPlaylist.js"></script>
-  <script type="text/javascript" src="components/loader/js/loader-register.js"></script>
-  <script type="text/javascript" src="components/loader/js/loader.js"></script>
-  <script type="text/javascript" src="components/textSelector/js/textSelector-register.js"></script>
-  <script type="text/javascript" src="components/textSelector/js/textSelector.js"></script>
-  <script type="text/javascript" src="components/dictionary/js/dictionary-register.js"></script>
-  <script type="text/javascript" src="components/dictionary/js/dictionary.js"></script>
-  <script type="text/javascript" src="components/list_images/js/list_images-register.js"></script>
-  <script type="text/javascript" src="components/list_images/js/list_images.js"></script>
-  <script type="text/javascript" src="components/searchDictionary/js/searchDictionary-register.js"></script>
-  <script type="text/javascript" src="components/searchDictionary/js/searchDictionary.js"></script>
-  <script type="text/javascript" src="components/keyboard/js/keyboard-register.js"></script>
-  <script type="text/javascript" src="components/keyboard/js/keyboard.js"></script>
-  <script type="text/javascript" src="components/gallows/js/gallows-register.js"></script>
-  <script type="text/javascript" src="components/gallows/js/gallows.js"></script>
-  <script type="text/javascript" src="components/games/js/games-register.js"></script>
-  <script type="text/javascript" src="components/games/js/games.js"></script>
-  <script type="text/javascript" src="components/help/js/help-register.js"></script>
-  <script type="text/javascript" src="components/help/js/help.js"></script>
-  <script type="text/javascript" src="components/crossWords/js/crossWords-register.js"></script>
-  <script type="text/javascript" src="components/crossWords/js/crossWords.js"></script>
-  <script type="text/javascript" src="components/imageLibrary/js/imageLibrary-register.js"></script>
-  <script type="text/javascript" src="components/imageLibrary/js/imageLibrary.js"></script>
-  <script type="text/javascript" src="components/topics/js/topics-register.js"></script>
-  <script type="text/javascript" src="components/topics/js/topics.js"></script>
-  <script type="text/javascript" src="components/memoryGame/js/memoryGame-register.js"></script>
-  <script type="text/javascript" src="components/memoryGame/js/memoryGame.js"></script>
+  <script type="text/javascript" src="js/js-centralizer.js"></script>
   <!--end script debugger-->
 
 </body>

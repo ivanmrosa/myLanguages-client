@@ -3,16 +3,17 @@ resumed_lessonComponent = {
     getData: function () {
 
     },
-    controller: function (component) {
-        
+    controller: function (component) {        
         resumed_lessonComponent.bindLesson(component);
 
     },
 
     bindLesson: function (component) {        
         //frango.wait.start();
-        common_lessonComponent.getActualLesson(function(lesson){
-            component.bindData({ "lesson": [lesson]});            
+        common_lessonComponent.getActualLesson(function(lesson){            
+            component.bindData({ "lesson": [lesson]}, true, function(){
+                frango.horizontalScroll(false, '.resumed-lesson');
+            });            
         });
     }
 }

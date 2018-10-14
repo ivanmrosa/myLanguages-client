@@ -4,6 +4,8 @@ gamesComponent = {
 
     },
     controller: function(component){
-       component.bindData();
+       component.bindData([], false, function(){          
+        frango.horizontalScroll(false, '.games');
+       });
     }
 }

@@ -473,3 +473,490 @@ Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrp
 1530333692524	Marionette	WARN	TLS certificate errors will be ignored for this session
 JavaScript error: http://localhost:8081/cordova.js, line 1: SyntaxError: unexpected token: numeric literal
 [Parent 8268, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+1537048544686	geckodriver	INFO	geckodriver 0.19.1
+1537048544702	geckodriver	INFO	Listening on 127.0.0.1:56761
+1537048547783	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "-marionette" "-profile" "C:\\Users\\ivanm\\AppData\\Local\\Temp\\rust_mozprofile.b5eFZO3BYr8H"
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+1537048548806	Marionette	INFO	Enabled via --marionette
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+1537048550476	Marionette	INFO	Listening on port 56775
+1537048550932	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://localhost:8081/cordova.js, line 1: SyntaxError: unexpected token: numeric literal
+[Parent 15424, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Parent 15424, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 6616, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 5944, Chr[ome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 5944, Chrome_ChildThrea[GPU 960, C[Parent 15424, Gecko_IOThread] WARNING: pipe error: 232: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 513
+
+###!!! [Child][MessageChannel::SendAndWait] Error: Channel error: cannot send/recv
+
+1537048642410	geckodriver	INFO	geckodriver 0.19.1
+1537048642410	geckodriver	INFO	Listening on 127.0.0.1:60098
+1537048645534	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "-marionette" "-profile" "C:\\Users\\ivanm\\AppData\\Local\\Temp\\rust_mozprofile.OGNGyk2G6alO"
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+1537048646316	Marionette	INFO	Enabled via --marionette
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+1537048647728	Marionette	INFO	Listening on port 60147
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+1537048648708	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://localhost:8081/cordova.js, line 1: SyntaxError: unexpected token: numeric literal
+[Parent 12072, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 7740, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+1537054168254	geckodriver	INFO	geckodriver 0.19.1
+1537054168254	geckodriver	INFO	Listening on 127.0.0.1:53413
+1537054171388	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "-marionette" "-profile" "C:\\Users\\ivanm\\AppData\\Local\\Temp\\rust_mozprofile.IU9YU0HbO4RM"
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+1537054172274	Marionette	INFO	Enabled via --marionette
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+1537054173714	Marionette	INFO	Listening on port 53425
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+1537054174536	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://localhost:8081/cordova.js, line 1: SyntaxError: unexpected token: numeric literal
+1537054534449	geckodriver	INFO	geckodriver 0.19.1
+1537054534465	geckodriver	INFO	Listening on 127.0.0.1:56158
+1537054537549	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "-marionette" "-profile" "C:\\Users\\ivanm\\AppData\\Local\\Temp\\rust_mozprofile.EPnsD7MfXUOi"
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+1537054538442	Marionette	INFO	Enabled via --marionette
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+1537054539824	Marionette	INFO	Listening on port 56170
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+1537054540688	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://localhost:8081/cordova.js, line 1: SyntaxError: unexpected token: numeric literal
+[Child 3612, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+1537056472685	geckodriver	INFO	geckodriver 0.19.1
+1537056472700	geckodriver	INFO	Listening on 127.0.0.1:62721
+1537056475793	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "-marionette" "-profile" "C:\\Users\\ivanm\\AppData\\Local\\Temp\\rust_mozprofile.aW67F0AvKGVX"
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+1537056476714	Marionette	INFO	Enabled via --marionette
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+1537056478016	Marionette	INFO	Listening on port 62747
+1537056478962	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://localhost:8081/cordova.js, line 1: SyntaxError: unexpected token: numeric literal
+[Parent 18184, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 8828, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+1537057285817	geckodriver	INFO	geckodriver 0.19.1
+1537057285832	geckodriver	INFO	Listening on 127.0.0.1:49992
+1537057288935	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "-marionette" "-profile" "C:\\Users\\ivanm\\AppData\\Local\\Temp\\rust_mozprofile.53JV8w4YyyQq"
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+1537057289670	Marionette	INFO	Enabled via --marionette
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+1537057291072	Marionette	INFO	Listening on port 50004
+1537057292086	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://localhost:8081/cordova.js, line 1: SyntaxError: unexpected token: numeric literal
+[Child 17348, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+1537057840300	geckodriver	INFO	geckodriver 0.19.1
+1537057840300	geckodriver	INFO	Listening on 127.0.0.1:53051
+1537057843385	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "-marionette" "-profile" "C:\\Users\\ivanm\\AppData\\Local\\Temp\\rust_mozprofile.9PNj0I5urZuT"
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+1537057844248	Marionette	INFO	Enabled via --marionette
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+1537057845554	Marionette	INFO	Listening on port 53065
+1537057846578	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://localhost:8081/cordova.js, line 1: SyntaxError: unexpected token: numeric literal
+[Parent 16096, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 19004, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+1537058142823	geckodriver	INFO	geckodriver 0.19.1
+1537058142840	geckodriver	INFO	Listening on 127.0.0.1:55166
+1537058145921	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "-marionette" "-profile" "C:\\Users\\ivanm\\AppData\\Local\\Temp\\rust_mozprofile.ofkNCU158MF9"
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+1537058146706	Marionette	INFO	Enabled via --marionette
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+1537058148070	Marionette	INFO	Listening on port 55179
+1537058149080	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://localhost:8081/cordova.js, line 1: SyntaxError: unexpected token: numeric literal
+1537059826472	geckodriver	INFO	geckodriver 0.19.1
+1537059826472	geckodriver	INFO	Listening on 127.0.0.1:60469
+1537059829568	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "-marionette" "-profile" "C:\\Users\\ivanm\\AppData\\Local\\Temp\\rust_mozprofile.JH8jYhcpUXMd"
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+1537059830212	Marionette	INFO	Enabled via --marionette
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+1537059831516	Marionette	INFO	Listening on port 60483
+1537059831614	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://localhost:8081/cordova.js, line 1: SyntaxError: unexpected token: numeric literal
+JavaScript warning: http://localhost:8081/js/js-centralizer.js, line 423: unreachable code after return statement
+[Parent 12204, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+1537060324559	geckodriver	INFO	geckodriver 0.19.1
+1537060324575	geckodriver	INFO	Listening on 127.0.0.1:63393
+1537060327692	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "-marionette" "-profile" "C:\\Users\\ivanm\\AppData\\Local\\Temp\\rust_mozprofile.gqPjqmUZj9yM"
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+1537060328562	Marionette	INFO	Enabled via --marionette
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+1537060329958	Marionette	INFO	Listening on port 63405
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+1537060330840	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://localhost:8081/cordova.js, line 1: SyntaxError: unexpected token: numeric literal
+JavaScript warning: http://localhost:8081/js/js-centralizer.js, line 423: unreachable code after return statement
+[Parent 12452, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+1537060709437	geckodriver	INFO	geckodriver 0.19.1
+1537060709443	geckodriver	INFO	Listening on 127.0.0.1:49720
+1537060712527	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "-marionette" "-profile" "C:\\Users\\ivanm\\AppData\\Local\\Temp\\rust_mozprofile.fTR4bZ8WOptY"
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+1537060713384	Marionette	INFO	Enabled via --marionette
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+1537060714720	Marionette	INFO	Listening on port 49737
+1537060715652	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://localhost:8081/cordova.js, line 1: SyntaxError: unexpected token: numeric literal
+JavaScript warning: http://localhost:8081/js/js-centralizer.js, line 423: unreachable code after return statement
+[Parent 3960, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+1537060825131	geckodriver	INFO	geckodriver 0.19.1
+1537060825141	geckodriver	INFO	Listening on 127.0.0.1:51759
+1537060828224	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "-marionette" "-profile" "C:\\Users\\ivanm\\AppData\\Local\\Temp\\rust_mozprofile.69Oqoy46mafi"
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+1537060828862	Marionette	INFO	Enabled via --marionette
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+1537060830138	Marionette	INFO	Listening on port 51771
+1537060830270	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://localhost:8081/cordova.js, line 1: SyntaxError: unexpected token: numeric literal
+JavaScript warning: http://localhost:8081/js/js-centralizer.js, line 423: unreachable code after return statement
+1537061330925	geckodriver	INFO	geckodriver 0.19.1
+1537061330925	geckodriver	INFO	Listening on 127.0.0.1:54488
+1537061334024	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "-marionette" "-profile" "C:\\Users\\ivanm\\AppData\\Local\\Temp\\rust_mozprofile.giyrKNPzQq6E"
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+1537061334694	Marionette	INFO	Enabled via --marionette
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+1537061336052	Marionette	INFO	Listening on port 54501
+1537061336076	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://localhost:8081/cordova.js, line 1: SyntaxError: unexpected token: numeric literal
+JavaScript warning: http://localhost:8081/js/js-centralizer.js, line 423: unreachable code after return statement
+[Child 18120, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+1537061625530	geckodriver	INFO	geckodriver 0.19.1
+1537061625546	geckodriver	INFO	Listening on 127.0.0.1:57051
+1537061628623	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "-marionette" "-profile" "C:\\Users\\ivanm\\AppData\\Local\\Temp\\rust_mozprofile.arjT5UevfMxh"
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+1537061629302	Marionette	INFO	Enabled via --marionette
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+1537061630692	Marionette	INFO	Listening on port 57063
+1537061631798	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://localhost:8081/cordova.js, line 1: SyntaxError: unexpected token: numeric literal
+JavaScript warning: http://localhost:8081/js/js-centralizer.js, line 423: unreachable code after return statement
+[Parent 17124, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+1537061912353	geckodriver	INFO	geckodriver 0.19.1
+1537061912369	geckodriver	INFO	Listening on 127.0.0.1:59142
+1537061915469	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "-marionette" "-profile" "C:\\Users\\ivanm\\AppData\\Local\\Temp\\rust_mozprofile.fc27aBcRbbMf"
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+1537061916122	Marionette	INFO	Enabled via --marionette
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+1537061917384	Marionette	INFO	Listening on port 59154
+1537061917546	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://localhost:8081/cordova.js, line 1: SyntaxError: unexpected token: numeric literal
+JavaScript warning: http://localhost:8081/js/js-centralizer.js, line 423: unreachable code after return statement
+1537062051887	geckodriver	INFO	geckodriver 0.19.1
+1537062051887	geckodriver	INFO	Listening on 127.0.0.1:61082
+1537062054944	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "-marionette" "-profile" "C:\\Users\\ivanm\\AppData\\Local\\Temp\\rust_mozprofile.jgv0FgfZzPKV"
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+1537062055662	Marionette	INFO	Enabled via --marionette
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+1537062057136	Marionette	INFO	Listening on port 61094
+1537062058072	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://localhost:8081/cordova.js, line 1: SyntaxError: unexpected token: numeric literal
+JavaScript warning: http://localhost:8081/js/js-centralizer.js, line 423: unreachable code after return statement
+[Parent 19608, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+1537062074814	geckodriver	INFO	geckodriver 0.19.1
+1537062074823	geckodriver	INFO	Listening on 127.0.0.1:63122
+1537062077923	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "-marionette" "-profile" "C:\\Users\\ivanm\\AppData\\Local\\Temp\\rust_mozprofile.YSjqXt6HSmm6"
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+1537062078568	Marionette	INFO	Enabled via --marionette
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+IPDL protocol error: Handler returned error code!
+
+###!!! [Parent][DispatchAsyncMessage] Error: PLayerTransaction::Msg_ReleaseLayer Processing error: message was deserialized, but the handler returned false (indicating failure)
+
+IPDL protocol error: Handler returned error code!
+
+###!!! [Parent][DispatchAsyncMessage] Error: PLayerTransaction::Msg_ReleaseLayer Processing error: message was deserialized, but the handler returned false (indicating failure)
+
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+1537062079860	Marionette	INFO	Listening on port 63134
+1537062079974	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://localhost:8081/cordova.js, line 1: SyntaxError: unexpected token: numeric literal
+JavaScript warning: http://localhost:8081/js/js-centralizer.js, line 423: unreachable code after return statement
+[Child 9992, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+1537062509449	geckodriver	INFO	geckodriver 0.19.1
+1537062509451	geckodriver	INFO	Listening on 127.0.0.1:49430
+1537062512518	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "-marionette" "-profile" "C:\\Users\\ivanm\\AppData\\Local\\Temp\\rust_mozprofile.qRKOCkhoMiuX"
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+1537062513270	Marionette	INFO	Enabled via --marionette
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+1537062514560	Marionette	INFO	Listening on port 49442
+1537062514600	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://localhost:8081/cordova.js, line 1: SyntaxError: unexpected token: numeric literal
+JavaScript warning: http://localhost:8081/js/js-centralizer.js, line 423: unreachable code after return statement
+[Parent 1740, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+1537063447222	geckodriver	INFO	geckodriver 0.19.1
+1537063447237	geckodriver	INFO	Listening on 127.0.0.1:52977
+1537063450355	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "-marionette" "-profile" "C:\\Users\\ivanm\\AppData\\Local\\Temp\\rust_mozprofile.jIEjOepDAfX6"
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+1537063451196	Marionette	INFO	Enabled via --marionette
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+1537063452544	Marionette	INFO	Listening on port 52989
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+1537063453520	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://localhost:8081/cordova.js, line 1: SyntaxError: unexpected token: numeric literal
+JavaScript warning: http://localhost:8081/js/js-centralizer.js, line 423: unreachable code after return statement
+1537063685519	geckodriver	INFO	geckodriver 0.19.1
+1537063685535	geckodriver	INFO	Listening on 127.0.0.1:55389
+1537063688604	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "-marionette" "-profile" "C:\\Users\\ivanm\\AppData\\Local\\Temp\\rust_mozprofile.qTqmsMk79l4I"
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+1537063689480	Marionette	INFO	Enabled via --marionette
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+1537063690818	Marionette	INFO	Listening on port 55401
+1537063691798	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://localhost:8081/cordova.js, line 1: SyntaxError: unexpected token: numeric literal
+JavaScript warning: http://localhost:8081/js/js-centralizer.js, line 423: unreachable code after return statement
+1537064158906	geckodriver	INFO	geckodriver 0.19.1
+1537064158922	geckodriver	INFO	Listening on 127.0.0.1:58074
+1537064162031	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "-marionette" "-profile" "C:\\Users\\ivanm\\AppData\\Local\\Temp\\rust_mozprofile.m0iW503qQyMj"
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+1537064162970	Marionette	INFO	Enabled via --marionette
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+1537064164314	Marionette	INFO	Listening on port 58086
+1537064165186	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://localhost:8081/cordova.js, line 1: SyntaxError: unexpected token: numeric literal
+JavaScript warning: http://localhost:8081/js/js-centralizer.js, line 423: unreachable code after return statement
+1537064850953	geckodriver	INFO	geckodriver 0.19.1
+1537064850959	geckodriver	INFO	Listening on 127.0.0.1:61586
+1537064854019	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "-marionette" "-profile" "C:\\Users\\ivanm\\AppData\\Local\\Temp\\rust_mozprofile.t2LEIedFY5Ip"
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+1537064854862	Marionette	INFO	Enabled via --marionette
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+1537064856168	Marionette	INFO	Listening on port 61599
+1537064857192	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://localhost:8081/cordova.js, line 1: SyntaxError: unexpected token: numeric literal
+JavaScript warning: http://localhost:8081/js/js-centralizer.js, line 423: unreachable code after return statement
+[Parent 10032, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+1537065085592	geckodriver	INFO	geckodriver 0.19.1
+1537065085602	geckodriver	INFO	Listening on 127.0.0.1:64335
+1537065088662	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "-marionette" "-profile" "C:\\Users\\ivanm\\AppData\\Local\\Temp\\rust_mozprofile.IR4GdohrZ9PG"
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+1537065089520	Marionette	INFO	Enabled via --marionette
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+1537065091034	Marionette	INFO	Listening on port 64363
+1537065091784	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://localhost:8081/cordova.js, line 1: SyntaxError: unexpected token: numeric literal
+JavaScript warning: http://localhost:8081/js/js-centralizer.js, line 423: unreachable code after return statement
+1537065466122	geckodriver	INFO	geckodriver 0.19.1
+1537065466137	geckodriver	INFO	Listening on 127.0.0.1:50866
+1537065469209	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "-marionette" "-profile" "C:\\Users\\ivanm\\AppData\\Local\\Temp\\rust_mozprofile.V14k9jnTrr4L"
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+1537065469880	Marionette	INFO	Enabled via --marionette
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+1537065471196	Marionette	INFO	Listening on port 50878
+1537065471268	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://localhost:8081/cordova.js, line 1: SyntaxError: unexpected token: numeric literal
+JavaScript warning: http://localhost:8081/js/js-centralizer.js, line 423: unreachable code after return statement
+[Child 14896, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+1537097475265	geckodriver	INFO	geckodriver 0.19.1
+1537097475281	geckodriver	INFO	Listening on 127.0.0.1:55765
+1537097478411	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "-marionette" "-profile" "C:\\Users\\ivanm\\AppData\\Local\\Temp\\rust_mozprofile.19t5Efz1bLqB"
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+1537097479394	Marionette	INFO	Enabled via --marionette
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+1537097480992	Marionette	INFO	Listening on port 55777
+1537097481564	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://localhost:8081/cordova.js, line 1: SyntaxError: unexpected token: numeric literal
+JavaScript warning: http://localhost:8081/js/js-centralizer.js, line 423: unreachable code after return statement
+1537098918888	geckodriver	INFO	geckodriver 0.19.1
+1537098918897	geckodriver	INFO	Listening on 127.0.0.1:59820
+1537098921960	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "-marionette" "-profile" "C:\\Users\\ivanm\\AppData\\Local\\Temp\\rust_mozprofile.9ZKRMJ8c3fZb"
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+1537098922670	Marionette	INFO	Enabled via --marionette
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+1537098923976	Marionette	INFO	Listening on port 59832
+1537098925082	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://localhost:8081/cordova.js, line 1: SyntaxError: unexpected token: numeric literal
+JavaScript warning: http://localhost:8081/js/js-centralizer.js, line 423: unreachable code after return statement
+[Child 7740, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+1537101015602	geckodriver	INFO	geckodriver 0.19.1
+1537101015611	geckodriver	INFO	Listening on 127.0.0.1:49206
+1537101018725	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "-marionette" "-profile" "C:\\Users\\ivanm\\AppData\\Local\\Temp\\rust_mozprofile.1vws4FPs64Q2"
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+1537101019386	Marionette	INFO	Enabled via --marionette
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+1537101020786	Marionette	INFO	Listening on port 49218
+1537101021858	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://localhost:8081/cordova.js, line 1: SyntaxError: unexpected token: numeric literal
+JavaScript warning: http://localhost:8081/js/js-centralizer.js, line 423: unreachable code after return statement
+[Parent 5268, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 1472, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+1537101088906	geckodriver	INFO	geckodriver 0.19.1
+1537101088915	geckodriver	INFO	Listening on 127.0.0.1:51237
+1537101091973	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "-marionette" "-profile" "C:\\Users\\ivanm\\AppData\\Local\\Temp\\rust_mozprofile.c5BNmA2bMWbD"
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+1537101092636	Marionette	INFO	Enabled via --marionette
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+1537101093918	Marionette	INFO	Listening on port 51249
+1537101093996	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://localhost:8081/cordova.js, line 1: SyntaxError: unexpected token: numeric literal
+JavaScript warning: http://localhost:8081/js/js-centralizer.js, line 423: unreachable code after return statement
+[Child 5560, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+1537101734796	geckodriver	INFO	geckodriver 0.19.1
+1537101734796	geckodriver	INFO	Listening on 127.0.0.1:55110
+1537101737882	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "-marionette" "-profile" "C:\\Users\\ivanm\\AppData\\Local\\Temp\\rust_mozprofile.8UcSDpsJ4D6z"
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+1537101738582	Marionette	INFO	Enabled via --marionette
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+1537101739948	Marionette	INFO	Listening on port 55122
+1537101741046	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://localhost:8081/cordova.js, line 1: SyntaxError: unexpected token: numeric literal
+JavaScript warning: http://localhost:8081/js/js-centralizer.js, line 423: unreachable code after return statement
+[Child 4200, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+1537133968363	geckodriver	INFO	geckodriver 0.19.1
+1537133968379	geckodriver	INFO	Listening on 127.0.0.1:50823
+1537133971482	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "-marionette" "-profile" "C:\\Users\\ivanm\\AppData\\Local\\Temp\\rust_mozprofile.QXVQFsnWHPB2"
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+1537133972476	Marionette	INFO	Enabled via --marionette
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+1537133974308	Marionette	INFO	Listening on port 50836
+Unable to read VR Path Registry from C:\Users\ivanm\AppData\Local\openvr\openvrpaths.vrpath
+1537133974620	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://localhost:8081/cordova.js, line 1: SyntaxError: unexpected token: numeric literal
+1539481004566	geckodriver	INFO	geckodriver 0.19.1
+1539481004591	geckodriver	INFO	Listening on 127.0.0.1:55892
+1539481007686	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "-marionette" "-profile" "C:\\Users\\ivanm\\AppData\\Local\\Temp\\rust_mozprofile.Q9aX7SZ3Ndhz"
+1539481035983	geckodriver	INFO	geckodriver 0.19.1
+1539481035997	geckodriver	INFO	Listening on 127.0.0.1:56085
+1539481039066	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "-marionette" "-profile" "C:\\Users\\ivanm\\AppData\\Local\\Temp\\rust_mozprofile.ixjevNqYD8Jm"
+1539481041994	Marionette	INFO	Listening on port 56101
+1539481042197	Marionette	WARN	TLS certificate errors will be ignored for this session
+1539481042295	Marionette	DEBUG	[6442450945] Frame script loaded
+1539481042296	Marionette	DEBUG	[6442450945] Frame script registered
+1539481042318	Marionette	DEBUG	[6442450945] Received DOM event beforeunload for about:blank
+1539481042584	Marionette	DEBUG	[6442450945] Received DOM event pagehide for about:blank
+JavaScript error: http://localhost:8081/cordova.js, line 1: SyntaxError: unexpected token: numeric literal
+JavaScript warning: http://localhost:8081/js/js-centralizer.js, line 424: unreachable code after return statement
+1539481042808	Marionette	DEBUG	[6442450945] Received DOM event DOMContentLoaded for http://localhost:8081/frango-framework-build-app
+1539481042848	Marionette	DEBUG	[6442450945] Received DOM event pageshow for http://localhost:8081/frango-framework-build-app#login
+[Parent 21240, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Parent 21240, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 19044, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build[Child 17580, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346/src/ipc/chromium/src/chrome/common/ipc_channel_win.
+cc, l[Chi
+###!!! [Child][MessageChannel] Error: (msgtype=0x4A000E,name=PHttpChannel::Msg_DeletingChannel) Channel closing: too late to send/recv, messages will be lost
+
+ine 346
+[[Parent 21240, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+1539481422999	Marionette	INFO	Stopped listening on port 56101
+1539481440109	geckodriver	INFO	geckodriver 0.19.1
+1539481440128	geckodriver	INFO	Listening on 127.0.0.1:65398
+1539481443283	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "-marionette" "-profile" "C:\\Users\\ivanm\\AppData\\Local\\Temp\\rust_mozprofile.T2ez25raOGIG"
+1539481446760	Marionette	INFO	Listening on port 65412
+1539481446955	Marionette	WARN	TLS certificate errors will be ignored for this session
+1539481447039	Marionette	DEBUG	[6442450945] Frame script loaded
+1539481447041	Marionette	DEBUG	[6442450945] Frame script registered
+1539481447071	Marionette	DEBUG	[6442450945] Received DOM event beforeunload for about:blank
+1539481447472	Marionette	DEBUG	[6442450945] Received DOM event pagehide for about:blank
+JavaScript error: http://localhost:8081/cordova.js, line 1: SyntaxError: unexpected token: numeric literal
+JavaScript warning: http://localhost:8081/js/js-centralizer.js, line 424: unreachable code after return statement
+1539481448163	Marionette	DEBUG	[6442450945] Received DOM event DOMContentLoaded for http://localhost:8081/frango-framework-build-app
+1539481448183	Marionette	DEBUG	[6442450945] Received DOM event pageshow for http://localhost:8081/frango-framework-build-app#login
+1539481457049	Marionette	INFO	Stopped listening on port 65412
+1539521342021	geckodriver	INFO	geckodriver 0.19.1
+1539521342052	geckodriver	INFO	Listening on 127.0.0.1:60064
+1539521345259	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "-marionette" "-profile" "C:\\Users\\ivanm\\AppData\\Local\\Temp\\rust_mozprofile.BPHmTe2R03qp"
+1539521348249	Marionette	INFO	Listening on port 60076
+1539521348474	Marionette	WARN	TLS certificate errors will be ignored for this session
+1539521348555	Marionette	DEBUG	[6442450945] Frame script loaded
+1539521348558	Marionette	DEBUG	[6442450945] Frame script registered
+1539521348599	Marionette	DEBUG	[6442450945] Received DOM event beforeunload for about:blank
+1539521348940	Marionette	DEBUG	[6442450945] Received DOM event pagehide for about:blank
+JavaScript error: http://localhost:8081/cordova.js, line 1: SyntaxError: unexpected token: numeric literal
+JavaScript warning: http://localhost:8081/js/js-centralizer.js, line 424: unreachable code after return statement
+1539521349362	Marionette	DEBUG	[6442450945] Received DOM event DOMContentLoaded for http://localhost:8081/frango-framework-build-app
+1539521349382	Marionette	DEBUG	[6442450945] Received DOM event pageshow for http://localhost:8081/frango-framework-build-app#login
+1539521358335	Marionette	INFO	Stopped listening on port 60076
+1539522016824	geckodriver	INFO	geckodriver 0.19.1
+1539522016840	geckodriver	INFO	Listening on 127.0.0.1:61586
+1539522020006	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "-marionette" "-profile" "C:\\Users\\ivanm\\AppData\\Local\\Temp\\rust_mozprofile.xjnokLUg2tLM"
+1539522022795	Marionette	INFO	Listening on port 61598
+1539522023191	Marionette	WARN	TLS certificate errors will be ignored for this session
+1539522023334	Marionette	DEBUG	[6442450945] Frame script loaded
+1539522023340	Marionette	DEBUG	[6442450945] Frame script registered
+1539522023393	Marionette	DEBUG	[6442450945] Received DOM event beforeunload for about:blank
+1539522023744	Marionette	DEBUG	[6442450945] Received DOM event pagehide for about:blank
+JavaScript error: http://localhost:8081/cordova.js, line 1: SyntaxError: unexpected token: numeric literal
+JavaScript warning: http://localhost:8081/js/js-centralizer.js, line 424: unreachable code after return statement
+1539522024168	Marionette	DEBUG	[6442450945] Received DOM event DOMContentLoaded for http://localhost:8081/frango-framework-build-app
+1539522024214	Marionette	DEBUG	[6442450945] Received DOM event pageshow for http://localhost:8081/frango-framework-build-app#login
+1539522033128	Marionette	INFO	Stopped listening on port 61598

@@ -4,6 +4,8 @@ topicsComponent = {
 
     },
     controller: function(component){
-       component.bindData();
+       component.bindData([], true, function(){
+          frango.horizontalScroll(false, '.topics');           
+       });
     }
 }

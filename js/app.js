@@ -8,7 +8,7 @@ frango.app.handleChangingRoute(function () {
     var url = frango.app.getURL();
     if (url != 'login' && url != 'signup') {
         return loginComponent.checkUserIsLogged();
-    }
+    };
 });
 
 frango.app.initialize(function () {

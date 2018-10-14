@@ -5,7 +5,7 @@ homeComponent = {
     },
     controller: function(component){       
        component.bindData([], true, function(){
-           $('.collapsible').collapsible();
+           //$('.collapsible').collapsible();
            var firstAccess = frango.getCookie('first-access');
            if(!firstAccess){              
               frango.setCookie('first-access', false);
@@ -64,13 +64,13 @@ homeComponent = {
     },
 
     showHelp : function(){
-       helpComponent.getInstance('homeHelp',function(help){
+      /* helpComponent.getInstance('homeHelp',function(help){
            help.addItem(homeComponent.getHelpStepOne());
            help.addItem(homeComponent.getHelpStepTwo());
            help.addItem(homeComponent.getHelpStepThree());
            help.addItem(homeComponent.getHelpStepFour());
            help.addItem(homeComponent.getHelpStepFive());           
            help.start();
-       });
+       });*/
     }
 }

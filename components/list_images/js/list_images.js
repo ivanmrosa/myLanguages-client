@@ -31,12 +31,14 @@ function list_imagesClass(instanceId) {
 
     var resetImages = function (modalContainer) {
         modalContainer.find('.popup-body').first().innerHTML =  
-            '<h4 data-datasetname="metadata" data-self="true">[{ (metadata) word }]</h4> ' +
-            ' <img class="responsive-img" data-datasetname="images"  data-self="true" ' +
-            '     src="[{ (images) webformatURL }]"> '+            
-            '<div data-datasetname-empty="metadata" class="hide" > '+
-            '   <div>No images found</div> '+
+            '<div style="float:left"><h4 data-datasetname="metadata" data-self="true">[{ (metadata) word }]</h4> ' +
+            ' <img class="responsive-img float" data-datasetname="images"  data-self="true" ' +
+            '     src="[{ (images) webformatURL }]"> </div> '+            
+            '<div data-datasetname-empty="images" style="float:left;width:100%;height:100%" > '+
+            '   <div style="float;left;width:100%;text-align:center">No images found</div> '+
+            ' <div style="float:left;text-align:center;width:100%">  '+
             '   <i class="mdi mdi-emoticon-sad mdi-48px"></i> '+
+            ' </div> '+
             '</div>  ';          
     };
 

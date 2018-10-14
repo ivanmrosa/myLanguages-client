@@ -8,7 +8,7 @@ headerComponent = {
         if(extra){
            extra = JSON.parse(extra);
         };
-        var config = {"title": "", "url":"", "display": "", "execute": "window.history.back()"};
+        var config = {"title": "", "url":"", "display": "", "execute": "window.history.back()", "classDictionary": "visible"};
         var hash = frango.app.getURL();
         if(hash == "#"){
             hash = "";
@@ -23,7 +23,8 @@ headerComponent = {
                 break;
             case "login":
                 config["title"] = "login";
-                config["display"] = "none";                
+                config["display"] = "none";    
+                config["classDictionary"] = "invisible";
                 break;
             case "categories":
                 config["title"] = "categories";

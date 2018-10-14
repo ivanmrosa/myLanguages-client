@@ -1,8 +1,20 @@
 <span data-component="yes" data-component-name="header" data-component-extra-data='{"title":"Topics"}'
-      data-component-container="#header" >
+    data-component-container="#header">
 
 </span>
 
-<ul class="collection">
-    <a class="collection-item" href="#image-to-word">Learning with images</a>
-</ul>
+<div class="hscroll topics">
+    <span class="cyan-text text-darken-4">Tools</span>
+    <div class="hscroll-group">
+        <div class="hscroll-item cyan darken-2" data-index="1" onclick="frango.popup.openPopup('#headerPopupDictionary')">
+            <span class="white-text">Dictionary</span>
+        </div>
+        <div class="hscroll-item cyan darken-2" data-index="2" onclick="frango.app.navigate('#image-to-word')">
+                <span class="white-text">Learning with images</span>
+        </div>
+    
+        <!--<div class="hscroll-item cyan" data-index="2" onclick="homeComponent.showHelp()">
+            <span class="white-text">Ajuda</span>
+        </div> -->
+    </div>
+</div>

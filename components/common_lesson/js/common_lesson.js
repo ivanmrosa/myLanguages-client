@@ -43,6 +43,7 @@ common_lessonComponent = {
 
     setLastAccess : function(){
         var doPost = function (updatedData) {
+            return
             var id = updatedData["id"];
             
             updatedData.last_access = frango.currentDate(false);

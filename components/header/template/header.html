@@ -1,17 +1,16 @@
-<div class="navbar-fixed nav-extended">
+<div class="navbar-fixed nav-extended header">
     <nav class="nav-extended">
-        <div class="nav-wrapper blue lighten-2">
-            <h4  class="brand-logo center truncate">[{ (header) title }]</h4>
+        <div class="nav-wrapper white">
+            <h3  class="brand-logo center truncate cyan-text text-darken-4 bold"><strong>[{ (header) title }]</h3>
             <ul class="left"  style="z-index:2">
                 <li>                    
                    <a href="javascript:void(0)" onclick="[{(header) execute}]" >
-                        <i class='mdi [{(header)icon:default@mdi-arrow-left}]' style="display:[{(header)  display}]"></i>
+                        <i class='mdi [{(header)icon:default@mdi-arrow-left}] cyan-text text-darken-4' style="display:[{(header)  display}]"></i>
                     </a> 
                 </li>
             </ul>
-            <ul class="right">
-                <a onclick="frango.popup.openPopup('#headerPopupDictionary')" class="mdi mdi-book-open-variant " alt="Dictionary"></a>
-
+            <ul class="right [{(header)  classDictionary}] ">
+                <a onclick="frango.popup.openPopup('#headerPopupDictionary')" class="mdi mdi-book-open-variant cyan-text text-darken-4" alt="Dictionary"></a>
             </ul>            
         </div>        
     </nav>
@@ -23,4 +22,4 @@
               data-self="yes">
         </div>
     </div>
-</div>
+</div> 

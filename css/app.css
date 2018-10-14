@@ -210,3 +210,11 @@
     float: right;
     width: 50%;
 }
+
+
+/*.hscroll-item {     
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;    
+    font-weight: bold;
+}*/

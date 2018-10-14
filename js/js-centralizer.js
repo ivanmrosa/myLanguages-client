@@ -9,7 +9,7 @@ frango.app.handleChangingRoute(function () {
     var url = frango.app.getURL();
     if (url != 'login' && url != 'signup') {
         return loginComponent.checkUserIsLogged();
-    }
+    };
 });
 
 frango.app.initialize(function () {
@@ -135,7 +135,7 @@ headerComponent = {
         if(extra){
            extra = JSON.parse(extra);
         };
-        var config = {"title": "", "url":"", "display": "", "execute": "window.history.back()"};
+        var config = {"title": "", "url":"", "display": "", "execute": "window.history.back()", "classDictionary": "visible"};
         var hash = frango.app.getURL();
         if(hash == "#"){
             hash = "";
@@ -150,7 +150,8 @@ headerComponent = {
                 break;
             case "login":
                 config["title"] = "login";
-                config["display"] = "none";                
+                config["display"] = "none";    
+                config["classDictionary"] = "invisible";
                 break;
             case "categories":
                 config["title"] = "categories";
@@ -417,6 +418,7 @@ common_lessonComponent = {
 
     setLastAccess : function(){
         var doPost = function (updatedData) {
+            return
             var id = updatedData["id"];
             
             updatedData.last_access = frango.currentDate(false);
@@ -624,7 +626,7 @@ homeComponent = {
     },
     controller: function(component){       
        component.bindData([], true, function(){
-           $('.collapsible').collapsible();
+           //$('.collapsible').collapsible();
            var firstAccess = frango.getCookie('first-access');
            if(!firstAccess){              
               frango.setCookie('first-access', false);
@@ -789,16 +791,17 @@ resumed_lessonComponent = {
     getData: function () {
 
     },
-    controller: function (component) {
-        
+    controller: function (component) {        
         resumed_lessonComponent.bindLesson(component);
 
     },
 
     bindLesson: function (component) {        
         //frango.wait.start();
-        common_lessonComponent.getActualLesson(function(lesson){
-            component.bindData({ "lesson": [lesson]});            
+        common_lessonComponent.getActualLesson(function(lesson){            
+            component.bindData({ "lesson": [lesson]}, true, function(){
+                frango.horizontalScroll(false, '.resumed-lesson');
+            });            
         });
     }
 }
@@ -2129,12 +2132,14 @@ function list_imagesClass(instanceId) {
 
     var resetImages = function (modalContainer) {
         modalContainer.find('.popup-body').first().innerHTML =  
-            '<h4 data-datasetname="metadata" data-self="true">[{ (metadata) word }]</h4> ' +
-            ' <img class="responsive-img" data-datasetname="images"  data-self="true" ' +
-            '     src="[{ (images) webformatURL }]"> '+            
-            '<div data-datasetname-empty="metadata" class="hide" > '+
-            '   <div>No images found</div> '+
+            '<div style="float:left"><h4 data-datasetname="metadata" data-self="true">[{ (metadata) word }]</h4> ' +
+            ' <img class="responsive-img float" data-datasetname="images"  data-self="true" ' +
+            '     src="[{ (images) webformatURL }]"> </div> '+            
+            '<div data-datasetname-empty="images" style="float:left;width:100%;height:100%" > '+
+            '   <div style="float;left;width:100%;text-align:center">No images found</div> '+
+            ' <div style="float:left;text-align:center;width:100%">  '+
             '   <i class="mdi mdi-emoticon-sad mdi-48px"></i> '+
+            ' </div> '+
             '</div>  ';          
     };
 
@@ -2717,7 +2722,9 @@ gamesComponent = {
 
     },
     controller: function(component){
-       component.bindData();
+       component.bindData([], false, function(){          
+        frango.horizontalScroll(false, '.games');
+       });
     }
 }
 
@@ -3442,7 +3449,9 @@ topicsComponent = {
 
     },
     controller: function(component){
-       component.bindData();
+       component.bindData([], true, function(){
+          frango.horizontalScroll(false, '.topics');           
+       });
     }
 }
 

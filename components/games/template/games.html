@@ -1,10 +1,21 @@
 <span data-component="yes" data-component-name="header" data-component-extra-data='{"title":"Games"}'
-      data-component-container="#header" >
+    data-component-container="#header">
 
 </span>
 
-<ul class="collection">
-    <a class="collection-item" href="#gallows">Hangman</a>
-    <a class="collection-item" href="#memory-game">Memory game</a>
-    <a class="collection-item" href="#cross-words">Crosswords</a>
-</ul>
+
+<div class="hscroll games">
+    <span class="cyan-text text-darken-4">Games</span>
+    <div class="hscroll-group">
+        <div class="hscroll-item  cyan darken-2" data-index="1" onclick="frango.app.navigate('#gallows')">
+            <span class="white-text">Hangman</span>
+        </div>
+        <div class="hscroll-item cyan darken-2" data-index="2" onclick="frango.app.navigate('#cross-words')">
+                <span class="white-text">Crosswords</span>
+        </div>    
+        <div class="hscroll-item  cyan darken-2" data-index="3" onclick="frango.app.navigate('#memory-game')">
+            <span class="white-text" >Memory game</span>
+        </div>
+    </div>
+
+</div>
