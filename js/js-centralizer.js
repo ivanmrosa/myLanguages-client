@@ -3224,16 +3224,16 @@ function crossWordsClass(instanceId) {
             };
         });
         if (map.length > 0) {
-            frango.setCookie('crossword-saved', JSON.stringify(map));
+            localStorage.setItem('crossword-saved', JSON.stringify(map));
         };
     };
 
     var clearSavedGame = function () {
-        frango.setCookie('crossword-saved', '', -1);
+        localStorage.setItem('crossword-saved', '', -1);
     };
 
     var getSavedGame = function () {
-        var map = frango.getCookie('crossword-saved');
+        var map = localStorage.getItem('crossword-saved');
         if (map) {
             map = JSON.parse(map);
             for (var index = 0; index < map.length; index++) {
