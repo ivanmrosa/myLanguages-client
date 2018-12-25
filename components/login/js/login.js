@@ -31,10 +31,9 @@ loginComponent = {
     },
 
     getSavedToken: function (user) {
-        var app_cookie = frango.getCookie('mylanguage-username');
-        if(app_cookie){
-            app_cookie = JSON.parse(app_cookie);        
-            loginComponent.enterInSession(app_cookie['tk']);
+        var tk = frango.getCookie('tk');
+        if(tk){
+            loginComponent.enterInSession(tk);
             return app_cookie['tk'];
         }else{                        
             return ""
@@ -53,11 +52,11 @@ loginComponent = {
     },
 
     checkUserIsLogged : function(){      
-        var app_cookie = frango.getCookie('mylanguage-username');
-        if(app_cookie){
-            app_cookie = JSON.parse(app_cookie);
-            loginComponent.UserNameLogged = app_cookie["username"];
-            loginComponent.enterInSession(app_cookie['tk'], false);
+        var tk = frango.getCookie('tk');
+        var un = frango.getCookie('un');
+        if(tk){            
+            loginComponent.UserNameLogged = un;
+            loginComponent.enterInSession(tk, false);
             return true;
         }else{            
             frango.app.navigate('/login');
@@ -71,7 +70,9 @@ loginComponent = {
                 frango.wait.stop();
                 data = JSON.parse(data);
                 token = data["access_token"];
-                frango.setCookie("mylanguage-username", '{"username":"' + user + '", "tk":"' + token + '"}', 364);
+                //frango.setCookie("mylanguage-username", '{"username":"' + user + '", "tk":"' + token + '"}', 364);
+                frango.setCookie('un', user, 364);
+                frango.setCookie('tk', token, 364);
                 loginComponent.UserNameLogged = user;
                 loginComponent.enterInSession(token);
             };

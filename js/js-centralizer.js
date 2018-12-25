@@ -231,10 +231,9 @@ loginComponent = {
     },
 
     getSavedToken: function (user) {
-        var app_cookie = frango.getCookie('mylanguage-username');
-        if(app_cookie){
-            app_cookie = JSON.parse(app_cookie);        
-            loginComponent.enterInSession(app_cookie['tk']);
+        var tk = frango.getCookie('tk');
+        if(tk){
+            loginComponent.enterInSession(tk);
             return app_cookie['tk'];
         }else{                        
             return ""
@@ -253,11 +252,11 @@ loginComponent = {
     },
 
     checkUserIsLogged : function(){      
-        var app_cookie = frango.getCookie('mylanguage-username');
-        if(app_cookie){
-            app_cookie = JSON.parse(app_cookie);
-            loginComponent.UserNameLogged = app_cookie["username"];
-            loginComponent.enterInSession(app_cookie['tk'], false);
+        var tk = frango.getCookie('tk');
+        var un = frango.getCookie('un');
+        if(tk){            
+            loginComponent.UserNameLogged = un;
+            loginComponent.enterInSession(tk, false);
             return true;
         }else{            
             frango.app.navigate('/login');
@@ -271,7 +270,9 @@ loginComponent = {
                 frango.wait.stop();
                 data = JSON.parse(data);
                 token = data["access_token"];
-                frango.setCookie("mylanguage-username", '{"username":"' + user + '", "tk":"' + token + '"}', 364);
+                //frango.setCookie("mylanguage-username", '{"username":"' + user + '", "tk":"' + token + '"}', 364);
+                frango.setCookie('un', user, 364);
+                frango.setCookie('tk', token, 364);
                 loginComponent.UserNameLogged = user;
                 loginComponent.enterInSession(token);
             };
@@ -387,7 +388,7 @@ common_lessonComponent = {
         //component.bindData();
     },
     getUsername: function () {
-        return JSON.parse(frango.getCookie('mylanguage-username'))['username'];
+        return  frango.getCookie('un'); //JSON.parse(frango.getCookie('mylanguage-username'))['username'];
     },
 
     getUserLearning: function (methodToSendData) {
@@ -685,14 +686,14 @@ homeComponent = {
     },
 
     showHelp : function(){
-       helpComponent.getInstance('homeHelp',function(help){
+      /* helpComponent.getInstance('homeHelp',function(help){
            help.addItem(homeComponent.getHelpStepOne());
            help.addItem(homeComponent.getHelpStepTwo());
            help.addItem(homeComponent.getHelpStepThree());
            help.addItem(homeComponent.getHelpStepFour());
            help.addItem(homeComponent.getHelpStepFive());           
            help.start();
-       });
+       });*/
     }
 }
 
@@ -3020,9 +3021,9 @@ function crossWordsClass(instanceId) {
         mainBox.html('');
         for (var index = 1; index <= howManyRows; index++) {
             mainBox.addHTMLBeforeEnd(getRowHTML(index));
-            actualRow = mainBox.find('[data-pos="' + index + '"');
+            actualRow = mainBox.find('[data-pos="' + index + '"]');
             for (var indexCol = 1; indexCol <= howManyCols; indexCol++) {
-                actualRow.addHTMLBeforeEnd(getColHTML(index, indexCol));
+               actualRow.addHTMLBeforeEnd(getColHTML(index, indexCol));
             };
         };
 

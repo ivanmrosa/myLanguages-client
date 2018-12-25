@@ -960,3 +960,51 @@ JavaScript warning: http://localhost:8081/js/js-centralizer.js, line 424: unreac
 1539522024168	Marionette	DEBUG	[6442450945] Received DOM event DOMContentLoaded for http://localhost:8081/frango-framework-build-app
 1539522024214	Marionette	DEBUG	[6442450945] Received DOM event pageshow for http://localhost:8081/frango-framework-build-app#login
 1539522033128	Marionette	INFO	Stopped listening on port 61598
+1539565914604	geckodriver	INFO	geckodriver 0.21.0
+1539565914618	geckodriver	INFO	Listening on 127.0.0.1:52959
+1539565915629	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "-marionette" "-foreground" "-no-remote" "-profile" "/var/folders/k3/xgddx7b14wz1_llvgd0qb57r0000gq/T/rust_mozprofile.guVdTmhK0P1E"
+2018-10-14 22:11:58.124 plugin-container[1784:54679] *** CFMessagePort: bootstrap_register(): failed 1100 (0x44c) 'Permission denied', port = 0x853f, name = 'com.apple.tsm.portname'
+See /usr/include/servers/bootstrap_defs.h for the error codes.
+2018-10-14 22:11:58.126 plugin-container[1784:54679] GetInputSourceEnabledPrefs user file path = /Users/Mac/Library/Preferences/com.apple.HIToolbox.plist
+2018-10-14 22:11:58.126 plugin-container[1784:54679] GetInputSourceEnabledPrefs effective user id path = 503
+2018-10-14 22:11:58.126 plugin-container[1784:54679] GetInputSourceEnabledPrefs user pref content can not open
+1539565918861	Marionette	INFO	Listening on port 52970
+1539565918904	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://localhost:8081/cordova.js, line 1: SyntaxError: unexpected token: numeric literal
+JavaScript warning: http://localhost:8081/js/js-centralizer.js, line 424: unreachable code after return statement
+2018-10-14 22:11:59.909 plugin-container[1785:54767] *** CFMessagePort: bootstrap_register(): failed 1100 (0x44c) 'Permission denied', port = 0x760b, name = 'com.apple.tsm.portname'
+See /usr/include/servers/bootstrap_defs.h for the error codes.
+2018-10-14 22:11:59.911 plugin-container[1785:54767] GetInputSourceEnabledPrefs user file path = /Users/Mac/Library/Preferences/com.apple.HIToolbox.plist
+2018-10-14 22:11:59.911 plugin-container[1785:54767] GetInputSourceEnabledPrefs effective user id path = 503
+2018-10-14 22:11:59.911 plugin-container[1785:54767] GetInputSourceEnabledPrefs user pref content can not open
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1539569419629	geckodriver	INFO	geckodriver 0.21.0
+1539569419643	geckodriver	INFO	Listening on 127.0.0.1:53506
+1539569420658	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "-marionette" "-foreground" "-no-remote" "-profile" "/var/folders/k3/xgddx7b14wz1_llvgd0qb57r0000gq/T/rust_mozprofile.hn5fhmbNJ4GH"
+2018-10-14 23:10:22.843 plugin-container[2149:73803] *** CFMessagePort: bootstrap_register(): failed 1100 (0x44c) 'Permission denied', port = 0x8a03, name = 'com.apple.tsm.portname'
+See /usr/include/servers/bootstrap_defs.h for the error codes.
+2018-10-14 23:10:22.845 plugin-container[2149:73803] GetInputSourceEnabledPrefs user file path = /Users/Mac/Library/Preferences/com.apple.HIToolbox.plist
+2018-10-14 23:10:22.845 plugin-container[2149:73803] GetInputSourceEnabledPrefs effective user id path = 503
+2018-10-14 23:10:22.845 plugin-container[2149:73803] GetInputSourceEnabledPrefs user pref content can not open
+1539569423461	Marionette	INFO	Listening on port 53513
+1539569423537	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://localhost:8081/cordova.js, line 1: SyntaxError: unexpected token: numeric literal
+JavaScript warning: http://localhost:8081/js/js-centralizer.js, line 424: unreachable code after return statement
+2018-10-14 23:10:24.459 plugin-container[2150:73881] *** CFMessagePort: bootstrap_register(): failed 1100 (0x44c) 'Permission denied', port = 0x7707, name = 'com.apple.tsm.portname'
+See /usr/include/servers/bootstrap_defs.h for the error codes.
+2018-10-14 23:10:24.461 plugin-container[2150:73881] GetInputSourceEnabledPrefs user file path = /Users/Mac/Library/Preferences/com.apple.HIToolbox.plist
+2018-10-14 23:10:24.461 plugin-container[2150:73881] GetInputSourceEnabledPrefs effective user id path = 503
+2018-10-14 23:10:24.461 plugin-container[2150:73881] GetInputSourceEnabledPrefs user pref content can not open
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1540151313793	geckodriver	INFO	geckodriver 0.21.0
+1540151313801	geckodriver	INFO	Listening on 127.0.0.1:56225
+1540151314748	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "-marionette" "-foreground" "-no-remote" "-profile" "/var/folders/k3/xgddx7b14wz1_llvgd0qb57r0000gq/T/rust_mozprofile.kUDzkruJT99k"
+2018-10-21 16:48:37.332 plugin-container[1837:364895] *** CFMessagePort: bootstrap_register(): failed 1100 (0x44c) 'Permission denied', port = 0x893f, name = 'com.apple.tsm.portname'
+See /usr/include/servers/bootstrap_defs.h for the error codes.
+2018-10-21 16:48:38.174 plugin-container[1838:364968] *** CFMessagePort: bootstrap_register(): failed 1100 (0x44c) 'Permission denied', port = 0x7307, name = 'com.apple.tsm.portname'
+See /usr/include/servers/bootstrap_defs.h for the error codes.
+1540151318364	Marionette	INFO	Listening on port 56239
+1540151318408	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: http://localhost:8081/cordova.js, line 1: SyntaxError: unexpected token: numeric literal
+JavaScript warning: http://localhost:8081/js/js-centralizer.js, line 425: unreachable code after return statement
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping

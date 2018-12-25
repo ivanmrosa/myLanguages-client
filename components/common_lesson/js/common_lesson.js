@@ -12,7 +12,7 @@ common_lessonComponent = {
         //component.bindData();
     },
     getUsername: function () {
-        return JSON.parse(frango.getCookie('mylanguage-username'))['username'];
+        return  frango.getCookie('un'); //JSON.parse(frango.getCookie('mylanguage-username'))['username'];
     },
 
     getUserLearning: function (methodToSendData) {

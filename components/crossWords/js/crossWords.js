@@ -172,9 +172,9 @@ function crossWordsClass(instanceId) {
         mainBox.html('');
         for (var index = 1; index <= howManyRows; index++) {
             mainBox.addHTMLBeforeEnd(getRowHTML(index));
-            actualRow = mainBox.find('[data-pos="' + index + '"');
+            actualRow = mainBox.find('[data-pos="' + index + '"]');
             for (var indexCol = 1; indexCol <= howManyCols; indexCol++) {
-                actualRow.addHTMLBeforeEnd(getColHTML(index, indexCol));
+               actualRow.addHTMLBeforeEnd(getColHTML(index, indexCol));
             };
         };
 
